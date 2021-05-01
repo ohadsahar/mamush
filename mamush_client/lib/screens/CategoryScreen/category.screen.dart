@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:just_debounce_it/just_debounce_it.dart';
 import 'package:momrecipes/bloc/recipe/recipe.bloc.dart';
 import 'package:momrecipes/bloc/recipe/recipe.events.dart';
 import 'package:momrecipes/bloc/recipe/recipe.state.dart';
@@ -131,6 +132,13 @@ class CategoryScreenState extends State<CategoryScreen> {
   }
 
   _filterByName() {
+    Debounce.seconds(
+      1,
+      _goSearch,
+    );
+  }
+
+  _goSearch() {
     final isValid = _formKey.currentState!.saveAndValidate();
     final String name = _formKey.currentState!.value['name'];
     if (isValid) {

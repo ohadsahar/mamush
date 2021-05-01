@@ -1,0 +1,91 @@
+name: momrecipes
+description: A new Flutter project.
+
+# The following line prevents the package from being accidentally published to
+# pub.dev using `pub publish`. This is preferred for private packages.
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
+# Read more about iOS versioning at
+#flutter packages pub run build_runner build --delete-conflicting-outputs
+#flutter packages pub run build_runner watch
+#flutter --no-color pub global run intl_utils:generate
+#after add new strings to i10n run those 3 lines
+#flutter --no-color pub global run intl_utils:generate
+#flutter pub pub run intl_translation:extract_to_arb --output-dir=lib/l10n lib/generated/l10n.dart
+#flutter pub pub run intl_translation:generate_from_arb --output-dir=lib/l10n --no-use-deferred-loading lib/
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  cupertino_icons: ^1.0.0
+  get_it: ^6.1.1
+  get_storage: ^2.0.2
+  dio: ^4.0.0
+  flutter_svg: ^0.22.0
+  lint: ^1.5.3
+  equatable: ^2.0.0
+  injectable: ^1.2.2
+  flutter_bloc: ^7.0.0
+  intl: ^0.17.0
+  json_annotation: ^4.0.1
+  intl_utils: 2.0.0
+  global_configuration: ^2.0.0-nullsafety.1
+  flutter_form_builder: ^6.0.0
+  image_picker: ^0.7.4
+  flutter_launcher_icons: ^0.9.0
+ 
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  injectable_generator: ^1.2.2
+  json_serializable: ^4.1.1
+  flutter_gen_runner: ^3.1.1
+  build_runner: ^1.12.2
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/logo_image.png"
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/cfg/
+
+  fonts:
+    - family: Rubik
+      fonts:
+        - asset: assets/fonts/Rubik-Regular.ttf
+        - asset: assets/fonts/Rubik-SemiBold.ttf
+          weight: 400
+        - asset: assets/fonts/Rubik-Bold.ttf
+          weight: 700
+    
+
+flutter_intl:
+  enabled: true
+  main_locale: he
+
+flutter_gen:
+  output: lib/generated
+
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
+
+

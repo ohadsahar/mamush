@@ -24,7 +24,7 @@ class CategoryRecipesWidget extends StatelessWidget {
               ),
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
-              crossAxisCount: 2,
+              crossAxisCount: 3,
               crossAxisSpacing: 24,
               children: <Widget>[
                 for (var recipe in recipes)
@@ -32,10 +32,11 @@ class CategoryRecipesWidget extends StatelessWidget {
                     onTap: () => onPress(
                       recipe,
                     ),
-                    child: Column(
+                    child: Stack(
+                      alignment: Alignment.bottomCenter,
                       children: <Widget>[
                         AspectRatio(
-                          aspectRatio: 16 / 13,
+                          aspectRatio: 16 / 14,
                           child: Hero(
                             tag: recipe.id,
                             child: ClipRRect(
@@ -58,9 +59,26 @@ class CategoryRecipesWidget extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Text(
-                          recipe.recipeName,
-                          style: appTheme.textTheme.headline4,
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.black.withOpacity(0.7),
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(Dimensions.sxl),
+                              bottomRight: Radius.circular(Dimensions.sxl),
+                            ),
+                          ),
+                          height: 100,
+                          width: double.infinity,
+                          child: Container(
+                            margin: const EdgeInsets.only(
+                              right: Dimensions.sxl,
+                              top: Dimensions.sm,
+                            ),
+                            child: Text(
+                              recipe.recipeName,
+                              style: appTheme.textTheme.headline4,
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -69,7 +87,7 @@ class CategoryRecipesWidget extends StatelessWidget {
             )
           : Text(
               strings.categoryNoRecipes,
-              style: appTheme.textTheme.headline2,
+              style: appTheme.textTheme.headline3,
             ),
     );
   }

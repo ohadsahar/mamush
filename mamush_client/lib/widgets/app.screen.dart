@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:momrecipes/generated/assets.gen.dart';
+import 'package:momrecipes/theme/theme.dart';
 import 'package:momrecipes/utils/dimensions.dart';
 
 class AppScreen extends StatelessWidget {

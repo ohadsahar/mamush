@@ -14,6 +14,8 @@ class $AssetsCfgGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  AssetGenImage get foodBackground =>
+      const AssetGenImage('assets/images/food_background.png');
   AssetGenImage get logoImage =>
       const AssetGenImage('assets/images/logo_image.png');
   AssetGenImage get noUser => const AssetGenImage('assets/images/no_user.png');

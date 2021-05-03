@@ -1,4 +1,4 @@
-#Sat May 01 20:20:46 IDT 2021
+#Mon May 03 08:10:38 IDT 2021
 base.0=/Users/ohadsahar/Documents/Development/OhadProjects/mamush/mamush_client/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

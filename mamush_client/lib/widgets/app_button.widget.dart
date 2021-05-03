@@ -19,7 +19,10 @@ class AppButton extends StatelessWidget {
     return ElevatedButton(
       style: ButtonStyle(
         minimumSize: MaterialStateProperty.all<Size>(
-          Size(width, height),
+          Size(
+            width,
+            height,
+          ),
         ),
         backgroundColor: MaterialStateProperty.all<Color>(
           color,

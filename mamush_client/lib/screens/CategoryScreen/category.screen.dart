@@ -9,6 +9,7 @@ import 'package:momrecipes/bloc/tag/tag.bloc.dart';
 import 'package:momrecipes/bloc/tag/tag.events.dart';
 import 'package:momrecipes/bloc/tag/tag.state.dart';
 import 'package:momrecipes/constants/routes.dart';
+import 'package:momrecipes/generated/assets.gen.dart';
 import 'package:momrecipes/generated/l10n.dart';
 import 'package:momrecipes/model/recipe/recipe.response.dart';
 import 'package:momrecipes/model/recipe/recipe_filter.dto.dart';
@@ -17,6 +18,7 @@ import 'package:momrecipes/screens/CategoryScreen/LocalWidgets/category_recipes_
 import 'package:momrecipes/screens/CategoryScreen/LocalWidgets/tags_grid.widget.dart';
 import 'package:momrecipes/services/navigation.service.dart';
 import 'package:momrecipes/setup/injection.dart';
+import 'package:momrecipes/theme/theme.dart';
 import 'package:momrecipes/utils/dimensions.dart';
 import 'package:momrecipes/widgets/app.screen.dart';
 import 'package:momrecipes/widgets/custom_input.widget.dart';
@@ -39,66 +41,99 @@ class CategoryScreenState extends State<CategoryScreen> {
       builder: (BuildContext context, RecipeState state) {
         final name = (ModalRoute.of(context)!.settings.arguments as Map)["name"]
             .toString();
-        return AppScreen(
-          child: Container(
-            child: Column(
-              children: <Widget>[
-                const SizedBox(
-                  height: Dimensions.xxl,
+        return SafeArea(
+          child: Scaffold(
+            body: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(
+                    Assets.images.foodBackground.path,
+                  ),
+                  colorFilter: ColorFilter.mode(
+                    Colors.black.withOpacity(
+                      0.2,
+                    ),
+                    BlendMode.modulate,
+                  ),
+                  repeat: ImageRepeat.repeat,
                 ),
-                CategoryRecipesActionButtons(
-                  goBack: _goBack,
-                  categoryName: name,
-                ),
-                const SizedBox(
-                  height: Dimensions.xxl,
-                ),
-                FractionallySizedBox(
-                  widthFactor: 0.8,
-                  child: FormBuilder(
-                    key: _formKey,
-                    onChanged: () => {_filterByName()},
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    child: CustomInputWidget(
-                      autoFocus: false,
-                      validators: FormBuilderValidators.compose(
-                        [],
+              ),
+              child: Column(
+                children: <Widget>[
+                  const SizedBox(
+                    height: Dimensions.xxl,
+                  ),
+                  CategoryRecipesActionButtons(
+                    goBack: _goBack,
+                    categoryName: name,
+                  ),
+                  const SizedBox(
+                    height: Dimensions.xxl,
+                  ),
+                  FractionallySizedBox(
+                    widthFactor: 0.8,
+                    child: FormBuilder(
+                      key: _formKey,
+                      onChanged: () => {_filterByName()},
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      child: CustomInputWidget(
+                        autoFocus: false,
+                        validators: FormBuilderValidators.compose(
+                          [],
+                        ),
+                        attribute: 'name',
+                        hint: strings.categoryRecipeScreenSearchText,
+                        type: TextInputType.text,
                       ),
-                      attribute: 'name',
-                      hint: strings.categoryRecipeScreenSearchText,
-                      type: TextInputType.text,
                     ),
                   ),
+                  const SizedBox(
+                    height: Dimensions.xxl,
+                  ),
+                  BlocBuilder<TagsBloc, TagsState>(
+                    builder: (
+                      BuildContext context,
+                      TagsState state,
+                    ) {
+                      if (state is TagsLoadedState) {
+                        return SizedBox(
+                          height: 100,
+                          child: TagsGridWidget(
+                            tags: state.tags,
+                            onPress: _tagIncluded,
+                          ),
+                        );
+                      } else {
+                        return SizedBox();
+                      }
+                    },
+                  ),
+                  const SizedBox(height: 30),
+                  state is RecipeLoadedState ||
+                          state is RecipeCurrentLoadedState
+                      ? CategoryRecipesWidget(
+                          onPress: _enterRecipe,
+                          recipes: state.recipes,
+                        )
+                      : LoadingWidget(),
+                ],
+              ),
+            ),
+            floatingActionButton: Container(
+              height: MediaQuery.of(context).size.width * 0.13,
+              width: MediaQuery.of(context).size.width * 0.13,
+              child: FloatingActionButton(
+                backgroundColor: AppColors.appPrimaryColor,
+                elevation: 5,
+                onPressed: () {},
+                child: Center(
+                  child: Icon(
+                    Icons.add,
+                    size: 64,
+                    color: Colors.white,
+                  ),
                 ),
-                const SizedBox(
-                  height: Dimensions.xxl,
-                ),
-                BlocBuilder<TagsBloc, TagsState>(
-                  builder: (
-                    BuildContext context,
-                    TagsState state,
-                  ) {
-                    if (state is TagsLoadedState) {
-                      return SizedBox(
-                        height: 100,
-                        child: TagsGridWidget(
-                          tags: state.tags,
-                          onPress: _tagIncluded,
-                        ),
-                      );
-                    } else {
-                      return SizedBox();
-                    }
-                  },
-                ),
-                const SizedBox(height: 30),
-                state is RecipeLoadedState || state is RecipeCurrentLoadedState
-                    ? CategoryRecipesWidget(
-                        onPress: _enterRecipe,
-                        recipes: state.recipes,
-                      )
-                    : LoadingWidget(),
-              ],
+              ),
             ),
           ),
         );

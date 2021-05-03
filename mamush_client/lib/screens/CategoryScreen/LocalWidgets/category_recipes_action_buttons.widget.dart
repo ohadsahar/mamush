@@ -22,31 +22,18 @@ class CategoryRecipesActionButtons extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               IconButton(
-                icon: Icon(Icons.arrow_back, size: 32, color: Colors.white),
+                icon: Icon(
+                  Icons.arrow_back,
+                  size: 32,
+                  color: Colors.black,
+                ),
                 onPressed: goBack,
               ),
               Text(
                 categoryName,
-                style: appTheme.textTheme.headline2,
+                style: appTheme.textTheme.headline3,
               ),
             ],
-          ),
-          Container(
-            margin: EdgeInsets.only(
-              left: Dimensions.xxl * 2,
-            ),
-            decoration: BoxDecoration(
-              color: AppColors.appPrimaryColor,
-              borderRadius: BorderRadius.circular(32),
-            ),
-            child: IconButton(
-              icon: Icon(
-                Icons.add,
-                size: 32,
-                color: Colors.white,
-              ),
-              onPressed: () => {},
-            ),
           ),
         ],
       ),

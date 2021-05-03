@@ -17,10 +17,11 @@ class HomeCategoriesWidget extends StatelessWidget {
         padding: EdgeInsets.symmetric(
           horizontal: Dimensions.md,
         ),
-        scrollDirection: Axis.horizontal,
+        scrollDirection: Axis.vertical,
         shrinkWrap: true,
-        crossAxisCount: 2,
-        mainAxisSpacing: 36,
+        crossAxisCount: 3,
+        crossAxisSpacing: 24,
+        mainAxisSpacing: 24,
         children: <Widget>[
           for (var category in categories)
             InkWell(
@@ -30,7 +31,9 @@ class HomeCategoriesWidget extends StatelessWidget {
                   AspectRatio(
                     aspectRatio: 4 / 3,
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(32.0),
+                      borderRadius: BorderRadius.circular(
+                        Dimensions.sxl,
+                      ),
                       child: Image.network(
                         category.categoryPicture.filePath,
                         fit: BoxFit.cover,

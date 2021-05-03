@@ -24,7 +24,7 @@ class CategoryRecipesActionButtons extends StatelessWidget {
               IconButton(
                 icon: Icon(
                   Icons.arrow_back,
-                  size: 32,
+                  size: Dimensions.sxl,
                   color: Colors.black,
                 ),
                 onPressed: goBack,

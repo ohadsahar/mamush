@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:intl/intl.dart';
+import 'package:momrecipes/theme/theme.dart';
 import 'package:momrecipes/utils/dimensions.dart';
 import 'package:momrecipes/widgets/app.screen.dart';
 import 'package:momrecipes/widgets/column_scroll_view.widget.dart';
@@ -17,10 +18,17 @@ class CreateRecipeScreenState extends State<CreateRecipeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final name =
+        (ModalRoute.of(context)!.settings.arguments as Map)["categoryName"]
+            .toString();
     return AppScreen(
       child: ColumnScrollView(
         child: Column(
           children: <Widget>[
+            Text(
+              name,
+              style: appTheme.textTheme.headline4,
+            ),
             FormBuilder(
               key: _formKey,
               onChanged: () => print('changed'),
@@ -149,6 +157,16 @@ class CreateRecipeScreenState extends State<CreateRecipeScreen> {
         ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration.zero, () {
+      // final id =
+      //     (ModalRoute.of(context)!.settings.arguments as Map)["id"].toString();
+      // print(id);
+    });
   }
 
   _showSnackbar(BuildContext context, formData) {

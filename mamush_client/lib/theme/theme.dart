@@ -43,7 +43,10 @@ final ThemeData appTheme = ThemeData(
 
 class AppColors {
   static Color inputColor = Color(0xffF4F6F6);
-  static Color appPrimaryColor = Color(0xffeeb536);
+  static Color appPrimaryColor = Color(0xff1ABB9C);
   static Color secondaryColor = Color(0xff42436A);
   static Color thirdColor = Color(0xffF4F6F6);
+  static Color activeTag = Color(0xffBAF5D1);
+
+  static const categoryScreenBackground = Color(0xfff7f7f7);
 }

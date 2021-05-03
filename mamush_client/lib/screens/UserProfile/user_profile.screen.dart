@@ -111,6 +111,10 @@ class UserProfileScreenState extends State<UserProfileScreen> {
               ],
             ),
             Container(
+              height: Dimensions.getScreenFractionHeight(
+                context,
+                0.06,
+              ),
               color: Colors.black,
               padding: EdgeInsets.all(
                 Dimensions.md,
@@ -123,17 +127,20 @@ class UserProfileScreenState extends State<UserProfileScreen> {
                     icon: Icon(
                       Icons.exit_to_app,
                       color: Colors.white,
-                      size: 48,
+                      size: 32,
                     ),
                     onPressed: _disconnect,
                   ),
                   Container(
                     margin: EdgeInsets.only(
-                      right: Dimensions.sxl,
+                      right: Dimensions.sm,
                     ),
                     child: Text(
                       strings.userProfileCardDisconnect,
-                      style: appTheme.textTheme.headline4,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: Dimensions.xl,
+                      ),
                     ),
                   )
                 ],

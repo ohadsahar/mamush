@@ -65,8 +65,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "recipeScreenInstruction":
             MessageLookupByLibrary.simpleMessage("הוראות הכנה"),
         "recipeScreenInstructionNumber": m4,
-        "splashScreenDescription":
-            MessageLookupByLibrary.simpleMessage("כל המתכונים במקום אחד"),
+        "splashScreenDescription": MessageLookupByLibrary.simpleMessage(
+            "היי ברוכים הבאים לMamush \n הזינו את מספר הטלפון כדי להתחבר"),
         "splashScreenTitle": MessageLookupByLibrary.simpleMessage("Mamush"),
         "unit": MessageLookupByLibrary.simpleMessage("יחידה"),
         "userProfileCardDisconnect":

@@ -20,7 +20,6 @@ import 'package:momrecipes/services/navigation.service.dart';
 import 'package:momrecipes/setup/injection.dart';
 import 'package:momrecipes/theme/theme.dart';
 import 'package:momrecipes/utils/dimensions.dart';
-import 'package:momrecipes/widgets/app.screen.dart';
 import 'package:momrecipes/widgets/custom_input.widget.dart';
 import 'package:momrecipes/widgets/loading.widget.dart';
 
@@ -44,20 +43,21 @@ class CategoryScreenState extends State<CategoryScreen> {
         return SafeArea(
           child: Scaffold(
             body: Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(
-                    Assets.images.foodBackground.path,
-                  ),
-                  colorFilter: ColorFilter.mode(
-                    Colors.black.withOpacity(
-                      0.2,
-                    ),
-                    BlendMode.modulate,
-                  ),
-                  repeat: ImageRepeat.repeat,
-                ),
-              ),
+              color: AppColors.categoryScreenBackground,
+              // decoration: BoxDecoration(
+              // image: DecorationImage(
+              //   image: AssetImage(
+              //     Assets.images.foodBackground.path,
+              //   ),
+              //   colorFilter: ColorFilter.mode(
+              //     Colors.white.withOpacity(
+              //       0.2,
+              //     ),
+              //     BlendMode.dstATop,
+              //   ),
+              //   repeat: ImageRepeat.repeat,
+              // ),
+              // ),
               child: Column(
                 children: <Widget>[
                   const SizedBox(
@@ -71,7 +71,7 @@ class CategoryScreenState extends State<CategoryScreen> {
                     height: Dimensions.xxl,
                   ),
                   FractionallySizedBox(
-                    widthFactor: 0.8,
+                    widthFactor: 0.95,
                     child: FormBuilder(
                       key: _formKey,
                       onChanged: () => {_filterByName()},
@@ -108,7 +108,9 @@ class CategoryScreenState extends State<CategoryScreen> {
                       }
                     },
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(
+                    height: Dimensions.sm,
+                  ),
                   state is RecipeLoadedState ||
                           state is RecipeCurrentLoadedState
                       ? CategoryRecipesWidget(
@@ -125,7 +127,7 @@ class CategoryScreenState extends State<CategoryScreen> {
               child: FloatingActionButton(
                 backgroundColor: AppColors.appPrimaryColor,
                 elevation: 5,
-                onPressed: () {},
+                onPressed: _navigateToCreateRecipe,
                 child: Center(
                   child: Icon(
                     Icons.add,
@@ -229,5 +231,15 @@ class CategoryScreenState extends State<CategoryScreen> {
   _goBack() {
     final NavigationService navigationService = getIt<NavigationService>();
     navigationService.pop();
+  }
+
+  _navigateToCreateRecipe() {
+    final name =
+        (ModalRoute.of(context)!.settings.arguments as Map)["name"].toString();
+    final id =
+        (ModalRoute.of(context)!.settings.arguments as Map)["id"].toString();
+    final NavigationService navigationService = getIt<NavigationService>();
+    navigationService
+        .navigate(Routes.createRecipe, {'id': id, 'categoryName': name});
   }
 }

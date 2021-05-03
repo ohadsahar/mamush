@@ -13,8 +13,6 @@ class CategoryRecipesWidget extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    // final double width = 200;
-    // final double height = 200;
     final S strings = S.of(context);
     return Expanded(
       child: recipes.length > 0
@@ -26,6 +24,7 @@ class CategoryRecipesWidget extends StatelessWidget {
               shrinkWrap: true,
               crossAxisCount: 3,
               crossAxisSpacing: 24,
+              mainAxisSpacing: 24,
               children: <Widget>[
                 for (var recipe in recipes)
                   InkWell(
@@ -36,7 +35,7 @@ class CategoryRecipesWidget extends StatelessWidget {
                       alignment: Alignment.bottomCenter,
                       children: <Widget>[
                         AspectRatio(
-                          aspectRatio: 16 / 14,
+                          aspectRatio: 1,
                           child: Hero(
                             tag: recipe.id,
                             child: ClipRRect(
@@ -47,21 +46,24 @@ class CategoryRecipesWidget extends StatelessWidget {
                                   ? Image.network(
                                       recipe.recipePicture.filePath,
                                       fit: BoxFit.cover,
-                                      // width: width,
-                                      // height: height,
                                     )
                                   : Image.asset(
                                       Assets.images.noUser.path,
                                       fit: BoxFit.cover,
-                                      // width: width,
-                                      // height: height,
                                     ),
                             ),
                           ),
                         ),
                         Container(
                           decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(0.7),
+                            gradient: new LinearGradient(
+                              begin: Alignment.bottomCenter,
+                              end: Alignment.topCenter,
+                              colors: [
+                                const Color(0xff000000),
+                                const Color(0xff000000).withOpacity(0.1),
+                              ],
+                            ),
                             borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(Dimensions.sxl),
                               bottomRight: Radius.circular(Dimensions.sxl),

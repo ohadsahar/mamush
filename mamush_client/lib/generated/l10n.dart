@@ -70,10 +70,10 @@ class S {
     );
   }
 
-  /// `כל המתכונים במקום אחד`
+  /// `היי ברוכים הבאים לMamush \n הזינו את מספר הטלפון כדי להתחבר`
   String get splashScreenDescription {
     return Intl.message(
-      'כל המתכונים במקום אחד',
+      'היי ברוכים הבאים לMamush \n הזינו את מספר הטלפון כדי להתחבר',
       name: 'splashScreenDescription',
       desc: '',
       args: [],

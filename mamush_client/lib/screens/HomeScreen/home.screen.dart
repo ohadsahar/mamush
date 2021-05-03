@@ -49,11 +49,20 @@ class HomeScreenState extends State<HomeScreen> {
                         ),
                         child: HomeActionButtonsWidget(),
                       ),
-                      HomeScreenProfileImageWidget(
-                        profileImage: state.user.profilePicture != null
-                            ? state.user.profilePicture!.filePath
-                            : Assets.images.noUser.path,
+                      Container(
+                        width: Dimensions.getScreenFractionWidth(
+                          context,
+                          0.5,
+                        ),
+                        child: Image.asset(
+                          Assets.images.logoImage.path,
+                        ),
                       ),
+                      // HomeScreenProfileImageWidget(
+                      //   profileImage: state.user.profilePicture != null
+                      //       ? state.user.profilePicture!.filePath
+                      //       : Assets.images.noUser.path,
+                      // ),
                       const SizedBox(
                         height: Dimensions.md,
                       ),
@@ -65,14 +74,14 @@ class HomeScreenState extends State<HomeScreen> {
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(
-                        height: Dimensions.xxl,
+                        height: Dimensions.sxl * 2,
                       ),
                       Text(
                         strings.homeScreenMainCategories,
                         style: appTheme.textTheme.headline4,
                       ),
                       const SizedBox(
-                        height: Dimensions.md,
+                        height: Dimensions.sxl,
                       ),
                       BlocBuilder<CategoryBloc, CategoryState>(
                         builder: (

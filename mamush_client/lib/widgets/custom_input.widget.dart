@@ -52,7 +52,7 @@ class CustomInputWidget extends StatelessWidget {
           ),
         ),
         filled: true,
-        fillColor: AppColors.inputColor,
+        fillColor: Colors.white,
       ),
       style: TextStyle(
         color: Colors.black,

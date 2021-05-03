@@ -16,6 +16,14 @@ class TagsGridWidget extends StatefulWidget {
 }
 
 class _TagsGridWidgetState extends State<TagsGridWidget> {
+  var listOfColors = [
+    const Color(0xff000000),
+    const Color(0xff000000).withOpacity(0.1),
+  ];
+  var listOfColorsActive = [
+    const Color(0xff000123),
+    const Color(0xff000456).withOpacity(0.1),
+  ];
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -36,8 +44,8 @@ class _TagsGridWidgetState extends State<TagsGridWidget> {
                 margin: EdgeInsets.symmetric(
                   horizontal: Dimensions.md,
                 ),
-                child: ElevatedButton(
-                  onPressed: () {
+                child: InkWell(
+                  onTap: () {
                     widget.onPress(widget.tags[index].id);
                     widget.tags[index].isSelected =
                         widget.tags[index].isSelected == true ? false : true;
@@ -49,25 +57,38 @@ class _TagsGridWidgetState extends State<TagsGridWidget> {
                       () {},
                     );
                   },
-                  child: Text(
-                    widget.tags[index].name,
-                    style: appTheme.textTheme.headline6,
-                    textAlign: TextAlign.center,
-                    maxLines: 3,
-                    softWrap: true,
-                  ),
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                          Dimensions.xl,
-                        ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: AppColors.appPrimaryColor,
+                      ),
+                      // boxShadow: [
+                      //   BoxShadow(
+                      //     color: Colors.grey.withOpacity(
+                      //       0.3,
+                      //     ),
+                      //     blurRadius: 20,
+                      //     offset: Offset(8, 12), // Shadow position
+                      //   ),
+                      // ],
+                      color: widget.tags[index].isSelected == true
+                          ? AppColors.activeTag
+                          : Colors.white,
+                      borderRadius: BorderRadius.circular(
+                        Dimensions.xl,
                       ),
                     ),
-                    backgroundColor: MaterialStateProperty.all<Color>(
-                      widget.tags[index].isSelected == true
-                          ? AppColors.appPrimaryColor
-                          : AppColors.inputColor,
+                    child: Center(
+                      child: Text(
+                        widget.tags[index].name,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: Dimensions.sxl,
+                        ),
+                        textAlign: TextAlign.center,
+                        maxLines: 3,
+                        softWrap: true,
+                      ),
                     ),
                   ),
                 ),

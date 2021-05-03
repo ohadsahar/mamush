@@ -75,7 +75,9 @@ class PhoneInputScreen extends StatelessWidget {
                         height:
                             Dimensions.getScreenFractionHeight(context, 0.07),
                         color: AppColors.appPrimaryColor,
-                        onSubmit: () => _onSubmit(context),
+                        onSubmit: () => _onSubmit(
+                          context,
+                        ),
                         text: strings.acceptButton,
                       ),
                     ],

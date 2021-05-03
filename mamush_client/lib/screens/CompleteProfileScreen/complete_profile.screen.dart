@@ -44,8 +44,14 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
               ? ColumnScrollView(
                   child: Column(
                     children: <Widget>[
+                      const SizedBox(
+                        height: Dimensions.sxl,
+                      ),
                       CompleteProfileTitleWidget(
                         title: strings.completeProfileScreenWhoCooking,
+                      ),
+                      const SizedBox(
+                        height: Dimensions.sxl * 2,
                       ),
                       CompleteProfileCameraWidget(
                         image: _image,
@@ -55,7 +61,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                         modalBottomSheetMenu: _modalBottomSheetMenu,
                       ),
                       const SizedBox(
-                        height: Dimensions.xl,
+                        height: Dimensions.sxl * 1.75,
                       ),
                       FractionallySizedBox(
                         widthFactor: 0.7,
@@ -79,7 +85,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                         ),
                       ),
                       const SizedBox(
-                        height: Dimensions.xxl * 1.25,
+                        height: Dimensions.xxl * 2,
                       ),
                       AppButton(
                         width: Dimensions.getScreenFractionWidth(

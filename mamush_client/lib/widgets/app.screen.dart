@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:momrecipes/generated/assets.gen.dart';
-import 'package:momrecipes/theme/theme.dart';
 import 'package:momrecipes/utils/dimensions.dart';
 
 class AppScreen extends StatelessWidget {
@@ -14,8 +13,14 @@ class AppScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: Container(
-          width: Dimensions.getScreenFractionWidth(context, 1),
-          height: Dimensions.getScreenFractionHeight(context, 1),
+          width: Dimensions.getScreenFractionWidth(
+            context,
+            1,
+          ),
+          height: Dimensions.getScreenFractionHeight(
+            context,
+            1,
+          ),
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage(
@@ -24,9 +29,9 @@ class AppScreen extends StatelessWidget {
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
                 Colors.black.withOpacity(
-                  0.7,
+                  0.5,
                 ),
-                BlendMode.softLight,
+                BlendMode.darken,
               ),
             ),
           ),

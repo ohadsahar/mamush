@@ -14,7 +14,7 @@ class CategoryRecipesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final S strings = S.of(context);
-    return Expanded(
+    return Container(
       child: recipes.length > 0
           ? GridView.count(
               padding: EdgeInsets.symmetric(

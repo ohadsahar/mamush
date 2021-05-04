@@ -25,13 +25,13 @@ class CategoryRecipesActionButtons extends StatelessWidget {
                 icon: Icon(
                   Icons.arrow_back,
                   size: Dimensions.sxl,
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
                 onPressed: goBack,
               ),
               Text(
                 categoryName,
-                style: appTheme.textTheme.headline3,
+                style: appTheme.textTheme.headline4,
               ),
             ],
           ),

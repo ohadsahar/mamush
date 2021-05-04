@@ -32,27 +32,26 @@ class CompleteProfileCameraWidget extends StatelessWidget {
       child: Stack(
         children: <Widget>[
           ClipOval(
-            child: Uri.parse(filePath).isAbsolute
-                ? Image.network(
-                    filePath,
-                    width: width,
-                    height: height,
-                    fit: BoxFit.cover,
-                  )
-                : image.path == strings.emptyString
-                    ? Image.asset(
-                        Assets.images.noUser.path,
-                        width: width,
-                        height: height,
-                        fit: BoxFit.cover,
-                      )
-                    : Image.file(
-                        image,
-                        width: width,
-                        height: height,
-                        fit: BoxFit.cover,
-                      ),
-          ),
+              child: !Uri.parse(image.path).isAbsolute
+                  ? Image.file(
+                      image,
+                      width: width,
+                      height: height,
+                      fit: BoxFit.cover,
+                    )
+                  : Uri.parse(filePath).isAbsolute
+                      ? Image.network(
+                          filePath,
+                          width: width,
+                          height: height,
+                          fit: BoxFit.cover,
+                        )
+                      : Image.asset(
+                          Assets.images.noUser.path,
+                          width: width,
+                          height: height,
+                          fit: BoxFit.cover,
+                        )),
           new Positioned(
             bottom: 0,
             left: Dimensions.getScreenFractionWidth(

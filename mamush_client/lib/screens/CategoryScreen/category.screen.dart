@@ -9,6 +9,7 @@ import 'package:momrecipes/bloc/tag/tag.bloc.dart';
 import 'package:momrecipes/bloc/tag/tag.events.dart';
 import 'package:momrecipes/bloc/tag/tag.state.dart';
 import 'package:momrecipes/constants/routes.dart';
+import 'package:momrecipes/generated/assets.gen.dart';
 import 'package:momrecipes/generated/l10n.dart';
 import 'package:momrecipes/model/recipe/recipe.response.dart';
 import 'package:momrecipes/model/recipe/recipe_filter.dto.dart';
@@ -55,36 +56,58 @@ class CategoryScreenState extends State<CategoryScreen> {
                             title: Column(
                               children: [
                                 SizedBox(
-                                  height: Dimensions.sxl * 1.25,
+                                  height: Dimensions.md,
                                 ),
                                 CategoryRecipesActionButtons(
                                   goBack: _goBack,
-                                  categoryName: name,
-                                ),
-                                SizedBox(
-                                  height: Dimensions.sxl,
                                 ),
                               ],
                             ),
                             collapsedHeight: Dimensions.getScreenFractionHeight(
                               context,
-                              0.1,
+                              0.05,
                             ),
-                            backgroundColor: AppColors.appPrimaryColor,
+                            backgroundColor: Colors.white.withOpacity(
+                              0.5,
+                            ),
                             expandedHeight: Dimensions.getScreenFractionHeight(
                               context,
-                              0.25,
+                              0.3,
                             ),
                             floating: false,
                             pinned: true,
                             flexibleSpace: FlexibleSpaceBar(
                               centerTitle: false,
                               background: Container(
-                                color: AppColors.appPrimaryColor,
+                                decoration: BoxDecoration(
+                                  //color: Colors.grey,
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                      Assets.images.categoryBackground.path,
+                                    ),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
                                 child: Column(
                                   children: [
                                     SizedBox(
-                                      height: Dimensions.sxl * 3,
+                                      height: Dimensions.sxl * 1.5,
+                                    ),
+                                    Text(
+                                      name,
+                                      // style: appTheme.textTheme.headline3,
+                                      style: TextStyle(
+                                        color: Color(0xff000924),
+                                        fontSize:
+                                            Dimensions.getScreenFractionWidth(
+                                          context,
+                                          0.08,
+                                        ),
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: Dimensions.sxl,
                                     ),
                                     FractionallySizedBox(
                                       widthFactor: 0.9,
@@ -94,6 +117,16 @@ class CategoryScreenState extends State<CategoryScreen> {
                                         autovalidateMode:
                                             AutovalidateMode.onUserInteraction,
                                         child: CustomInputWidget(
+                                          prefixIcon: Container(
+                                            margin: EdgeInsets.only(
+                                              left: Dimensions.md,
+                                            ),
+                                            child: Icon(
+                                              Icons.search,
+                                              color: Colors.white,
+                                              size: Dimensions.sxl * 1.75,
+                                            ),
+                                          ),
                                           autoFocus: false,
                                           validators:
                                               FormBuilderValidators.compose(
@@ -142,7 +175,9 @@ class CategoryScreenState extends State<CategoryScreen> {
                         child: state is RecipeLoadedState ||
                                 state is RecipeCurrentLoadedState
                             ? CategoryRecipesWidget(
-                                onPress: _enterRecipe, recipes: state.recipes)
+                                onPress: _enterRecipe,
+                                recipes: state.recipes,
+                              )
                             : LoadingWidget(),
                       ),
                     ),

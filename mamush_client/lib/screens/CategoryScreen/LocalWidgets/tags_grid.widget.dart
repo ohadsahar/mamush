@@ -16,14 +16,15 @@ class TagsGridWidget extends StatefulWidget {
 }
 
 class _TagsGridWidgetState extends State<TagsGridWidget> {
-  var listOfColors = [
-    const Color(0xff000000),
-    const Color(0xff000000).withOpacity(0.1),
+  final activeColors = [
+    const Color(0xff00B460),
+    const Color(0xff00D38C),
   ];
-  var listOfColorsActive = [
-    const Color(0xff000123),
-    const Color(0xff000456).withOpacity(0.1),
+  final unActiveColors = [
+    Colors.white,
+    Colors.white,
   ];
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -59,21 +60,24 @@ class _TagsGridWidgetState extends State<TagsGridWidget> {
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                      border: Border.all(
-                        color: AppColors.appPrimaryColor,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color(0xff0DC93133),
+                          blurRadius: 12,
+                          spreadRadius: 0,
+                          offset: Offset(
+                            0,
+                            7,
+                          ), // Shadow position
+                        ),
+                      ],
+                      gradient: new LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: widget.tags[index].isSelected == true
+                            ? activeColors
+                            : unActiveColors,
                       ),
-                      // boxShadow: [
-                      //   BoxShadow(
-                      //     color: Colors.grey.withOpacity(
-                      //       0.3,
-                      //     ),
-                      //     blurRadius: 20,
-                      //     offset: Offset(8, 12), // Shadow position
-                      //   ),
-                      // ],
-                      color: widget.tags[index].isSelected == true
-                          ? AppColors.activeTag
-                          : Colors.white,
                       borderRadius: BorderRadius.circular(
                         Dimensions.xl,
                       ),
@@ -82,8 +86,10 @@ class _TagsGridWidgetState extends State<TagsGridWidget> {
                       child: Text(
                         widget.tags[index].name,
                         style: TextStyle(
-                          color: Colors.black,
-                          fontSize: Dimensions.sxl,
+                          color: widget.tags[index].isSelected == true
+                              ? Colors.white
+                              : Color(0xff828282),
+                          fontSize: Dimensions.xxl,
                         ),
                         textAlign: TextAlign.center,
                         maxLines: 3,

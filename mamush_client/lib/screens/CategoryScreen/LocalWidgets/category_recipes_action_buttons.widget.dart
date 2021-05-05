@@ -4,11 +4,9 @@ import 'package:momrecipes/utils/dimensions.dart';
 
 class CategoryRecipesActionButtons extends StatelessWidget {
   final VoidCallback goBack;
-  final String categoryName;
 
   const CategoryRecipesActionButtons({
     required this.goBack,
-    required this.categoryName,
   });
 
   @override
@@ -25,13 +23,9 @@ class CategoryRecipesActionButtons extends StatelessWidget {
                 icon: Icon(
                   Icons.arrow_back,
                   size: Dimensions.sxl,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
                 onPressed: goBack,
-              ),
-              Text(
-                categoryName,
-                style: appTheme.textTheme.headline4,
               ),
             ],
           ),

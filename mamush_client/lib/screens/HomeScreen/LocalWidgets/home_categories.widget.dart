@@ -28,21 +28,39 @@ class HomeCategoriesWidget extends StatelessWidget {
               onTap: () => onPress(category.id, category.name),
               child: Column(
                 children: <Widget>[
-                  AspectRatio(
-                    aspectRatio: 4 / 3,
-                    child: ClipRRect(
+                  Card(
+                    shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(
                         Dimensions.sxl,
                       ),
-                      child: Image.network(
-                        category.categoryPicture.filePath,
-                        fit: BoxFit.cover,
-                      ),
                     ),
-                  ),
-                  Text(
-                    category.name,
-                    style: appTheme.textTheme.headline4,
+                    color: Colors.white,
+                    elevation: 5,
+                    child: Column(
+                      children: [
+                        AspectRatio(
+                          aspectRatio: 4 / 3,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(
+                              Dimensions.sxl,
+                            ),
+                            child: Image.network(
+                              category.categoryPicture.filePath,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(
+                            Dimensions.sm,
+                          ),
+                          child: Text(
+                            category.name,
+                            style: appTheme.textTheme.headline4,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

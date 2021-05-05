@@ -10,6 +10,7 @@ class CustomInputWidget extends StatelessWidget {
   final String? Function(String?) validators;
   final String? initialValue;
   final bool autoFocus;
+  final Widget? prefixIcon;
   const CustomInputWidget({
     required this.hint,
     required this.attribute,
@@ -17,6 +18,7 @@ class CustomInputWidget extends StatelessWidget {
     required this.validators,
     this.initialValue,
     this.autoFocus = true,
+    this.prefixIcon,
   });
   @override
   Widget build(BuildContext context) {
@@ -27,6 +29,7 @@ class CustomInputWidget extends StatelessWidget {
       keyboardType: type,
       autofocus: autoFocus,
       decoration: InputDecoration(
+        prefixIcon: prefixIcon,
         contentPadding: EdgeInsets.all(
           Dimensions.xl * 1.25,
         ),
@@ -34,14 +37,15 @@ class CustomInputWidget extends StatelessWidget {
         errorStyle: appTheme.textTheme.headline5,
         hintStyle: TextStyle(
           fontSize: Dimensions.xxl,
+          color: Colors.white,
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: new BorderRadius.circular(
             Dimensions.sm,
           ),
           borderSide: BorderSide(
-            color: AppColors.appPrimaryColor,
-            width: 1,
+            color: Colors.transparent,
+            width: 0,
           ),
         ),
         border: OutlineInputBorder(
@@ -52,11 +56,14 @@ class CustomInputWidget extends StatelessWidget {
           ),
         ),
         filled: true,
-        fillColor: Colors.white,
+        fillColor: Color(0xff595A5A).withOpacity(
+          0.49,
+        ),
       ),
       style: TextStyle(
-        color: Colors.black,
+        color: Colors.white,
         fontSize: Dimensions.xl,
+        fontWeight: FontWeight.w400,
       ),
     );
   }

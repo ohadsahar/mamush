@@ -13,7 +13,7 @@ final ThemeData appTheme = ThemeData(
     ),
     //Mini Titles
     headline2: TextStyle(
-      color: Colors.white,
+      color: Colors.black,
       fontSize: 34,
       fontWeight: FontWeight.bold,
     ),
@@ -24,7 +24,7 @@ final ThemeData appTheme = ThemeData(
     ),
     //Mini Mini titles
     headline4: TextStyle(
-      color: Colors.white,
+      color: Colors.black,
       fontSize: 32,
       fontWeight: FontWeight.w400,
     ),
@@ -48,5 +48,5 @@ class AppColors {
   static Color thirdColor = Color(0xffF4F6F6);
   static Color activeTag = Color(0xffBAF5D1);
 
-  static const categoryScreenBackground = Color(0xfff7f7f7);
+  static const categoryScreenBackground = Color(0xffEFEFEF);
 }

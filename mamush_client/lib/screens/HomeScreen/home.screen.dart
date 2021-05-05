@@ -35,76 +35,116 @@ class HomeScreenState extends State<HomeScreen> {
         UserState state,
       ) {
         return AppScreen(
+          withImage: false,
           child: state is UserUpdateState
-              ? Container(
-                  child: Column(
-                    children: <Widget>[
-                      InkWell(
-                        onTap: _navigateToUserProfile,
-                        child: Container(
-                          alignment: Alignment.topLeft,
-                          margin: EdgeInsets.only(
-                            top: Dimensions.xl,
-                            left: Dimensions.xl,
+              ? Stack(
+                  children: [
+                    Container(
+                      color: AppColors.categoryScreenBackground,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Container(
+                            height: Dimensions.getScreenFractionHeight(
+                              context,
+                              0.25,
+                            ),
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage(
+                                  Assets.images.categoryBackground.path,
+                                ),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            child: Column(
+                              children: [
+                                InkWell(
+                                  onTap: _navigateToUserProfile,
+                                  child: Container(
+                                    alignment: Alignment.bottomLeft,
+                                    margin: EdgeInsets.only(
+                                      top: Dimensions.xl,
+                                      left: Dimensions.xl,
+                                    ),
+                                    child: ClipOval(
+                                      child: state.user.profilePicture != null
+                                          ? Image.network(
+                                              state.user.profilePicture!
+                                                  .filePath,
+                                              width: 100,
+                                              height: 100,
+                                              fit: BoxFit.cover,
+                                            )
+                                          : SizedBox(),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                          child: ClipOval(
-                            child: state.user.profilePicture != null
-                                ? Image.network(
-                                    state.user.profilePicture!.filePath,
-                                    width: 100,
-                                    height: 100,
-                                    fit: BoxFit.cover,
-                                  )
-                                : SizedBox(),
+                          SizedBox(
+                            height: Dimensions.getScreenFractionHeight(
+                              context,
+                              0.12,
+                            ),
                           ),
-                        ),
+                          Text(
+                            strings.homeScreenHelloAndWelcome(
+                              state.user.fullName!,
+                            ),
+                            style: appTheme.textTheme.headline2,
+                            textAlign: TextAlign.center,
+                          ),
+                          const SizedBox(
+                            height: Dimensions.sxl * 2,
+                          ),
+                          Text(
+                            strings.homeScreenMainCategories,
+                            style: appTheme.textTheme.headline4,
+                          ),
+                          const SizedBox(
+                            height: Dimensions.sxl,
+                          ),
+                          BlocBuilder<CategoryBloc, CategoryState>(
+                            builder: (
+                              BuildContext context,
+                              CategoryState state,
+                            ) {
+                              if (state is CategoryLoaded) {
+                                return HomeCategoriesWidget(
+                                  categories: state.categories,
+                                  onPress: _enterCategoryScreen,
+                                );
+                              } else {
+                                return LoadingWidget();
+                              }
+                            },
+                          ),
+                        ],
                       ),
-                      Container(
+                    ),
+                    Positioned(
+                      top: Dimensions.getScreenFractionHeight(
+                        context,
+                        0.09,
+                      ),
+                      left: Dimensions.getScreenFractionWidth(
+                        context,
+                        0.28,
+                      ),
+                      child: Container(
                         width: Dimensions.getScreenFractionWidth(
                           context,
-                          0.5,
+                          0.45,
                         ),
+                        height: 400,
                         child: Image.asset(
                           Assets.images.logoImage.path,
                         ),
                       ),
-                      const SizedBox(
-                        height: Dimensions.md,
-                      ),
-                      Text(
-                        strings.homeScreenHelloAndWelcome(
-                          state.user.fullName!,
-                        ),
-                        style: appTheme.textTheme.headline2,
-                        textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(
-                        height: Dimensions.sxl * 2,
-                      ),
-                      Text(
-                        strings.homeScreenMainCategories,
-                        style: appTheme.textTheme.headline4,
-                      ),
-                      const SizedBox(
-                        height: Dimensions.sxl,
-                      ),
-                      BlocBuilder<CategoryBloc, CategoryState>(
-                        builder: (
-                          BuildContext context,
-                          CategoryState state,
-                        ) {
-                          if (state is CategoryLoaded) {
-                            return HomeCategoriesWidget(
-                              categories: state.categories,
-                              onPress: _enterCategoryScreen,
-                            );
-                          } else {
-                            return LoadingWidget();
-                          }
-                        },
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 )
               : LoadingWidget(),
         );

@@ -38,6 +38,16 @@ final ThemeData appTheme = ThemeData(
       fontWeight: FontWeight.bold,
       fontSize: 32,
     ),
+    subtitle1: TextStyle(
+      color: Colors.white,
+      fontSize: 32,
+      fontWeight: FontWeight.w400,
+    ),
+    subtitle2: TextStyle(
+      color: Colors.white,
+      fontSize: 28,
+      fontWeight: FontWeight.w400,
+    ),
   ),
 );
 

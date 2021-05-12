@@ -49,6 +49,7 @@ class PhoneInputScreen extends StatelessWidget {
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           initialValue: {'phoneNumber': ''},
                           child: CustomInputWidget(
+                            onChange: (value) => {},
                             validators: FormBuilderValidators.compose(
                               [
                                 FormBuilderValidators.minLength(

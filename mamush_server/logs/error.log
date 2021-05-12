@@ -540,3 +540,71 @@
 2021-05-01T16:01:39.690Z error: no data
 2021-05-01T16:01:39.700Z error: error authenticating jwt
 2021-05-01T16:01:39.704Z error: no data
+2021-05-11T11:55:24.486Z error: insert or update on table "instructions" violates foreign key constraint "FK_412eec8482892c972e1ff29ce24"
+2021-05-11T11:55:24.490Z error: Cannot connect to db. this could be fatal
+2021-05-11T11:55:56.056Z error: insert or update on table "instructions" violates foreign key constraint "FK_412eec8482892c972e1ff29ce24"
+2021-05-11T11:55:56.060Z error: Cannot connect to db. this could be fatal
+2021-05-11T11:55:59.356Z error: insert or update on table "instructions" violates foreign key constraint "FK_412eec8482892c972e1ff29ce24"
+2021-05-11T11:55:59.360Z error: Cannot connect to db. this could be fatal
+2021-05-11T11:56:53.261Z error: insert or update on table "user" violates foreign key constraint "FK_f58f9c73bc58e409038e56a4055"
+2021-05-11T11:56:53.265Z error: Cannot connect to db. this could be fatal
+2021-05-11T12:15:59.434Z error: error authenticating jwt
+2021-05-11T12:15:59.437Z error: no data
+2021-05-11T13:15:21.413Z error: Relation Ingredient#recipeIngredient and RecipeIngredient#ingredient both has cascade remove set. This may lead to unexpected circular removals. Please set cascade remove only from one side of relationship.
+2021-05-11T13:15:21.417Z error: Cannot connect to db. this could be fatal
+2021-05-11T13:16:09.117Z error: Relation Ingredient#recipeIngredient and RecipeIngredient#ingredient both has cascade remove set. This may lead to unexpected circular removals. Please set cascade remove only from one side of relationship.
+2021-05-11T13:16:09.120Z error: Cannot connect to db. this could be fatal
+2021-05-11T13:41:52.427Z error: no schema has been selected to create in
+2021-05-11T13:41:52.431Z error: Cannot connect to db. this could be fatal
+2021-05-11T13:42:57.763Z error: no schema has been selected to create in
+2021-05-11T13:42:57.767Z error: Cannot connect to db. this could be fatal
+2021-05-11T13:43:17.478Z error: no schema has been selected to create in
+2021-05-11T13:43:17.483Z error: Cannot connect to db. this could be fatal
+2021-05-11T13:43:58.158Z error: no schema has been selected to create in
+2021-05-11T13:43:58.162Z error: Cannot connect to db. this could be fatal
+2021-05-11T15:31:51.923Z error: Relation User#recipe and Recipe#user both has cascade remove set. This may lead to unexpected circular removals. Please set cascade remove only from one side of relationship.
+2021-05-11T15:31:51.927Z error: Cannot connect to db. this could be fatal
+2021-05-11T15:32:05.281Z error: User wasn't found
+2021-05-11T15:32:05.284Z error: No user with id1
+2021-05-11T15:32:05.289Z error: error authenticating jwt
+2021-05-11T15:32:05.291Z error: no data
+2021-05-11T15:32:13.041Z error: User wasn't found
+2021-05-11T15:32:13.045Z error: No user with id1
+2021-05-11T15:32:13.047Z error: error authenticating jwt
+2021-05-11T15:32:13.048Z error: no data
+2021-05-11T15:32:29.101Z error: User wasn't found
+2021-05-11T15:32:29.103Z error: No user with id1
+2021-05-11T15:32:29.105Z error: error authenticating jwt
+2021-05-11T15:32:29.106Z error: no data
+2021-05-11T15:32:30.105Z error: User wasn't found
+2021-05-11T15:32:30.107Z error: No user with id1
+2021-05-11T15:32:30.109Z error: error authenticating jwt
+2021-05-11T15:32:30.110Z error: no data
+2021-05-11T15:33:31.697Z error: User wasn't found
+2021-05-11T15:33:31.699Z error: No user with id1
+2021-05-11T15:33:31.705Z error: error authenticating jwt
+2021-05-11T15:33:31.707Z error: no data
+2021-05-11T15:33:32.680Z error: User wasn't found
+2021-05-11T15:33:32.682Z error: No user with id1
+2021-05-11T15:33:32.684Z error: error authenticating jwt
+2021-05-11T15:33:32.685Z error: no data
+2021-05-11T15:33:36.224Z error: User wasn't found
+2021-05-11T15:33:36.227Z error: No user with id1
+2021-05-11T15:33:36.229Z error: error authenticating jwt
+2021-05-11T15:33:36.230Z error: no data
+2021-05-11T15:42:12.723Z error: User wasn't found
+2021-05-11T15:42:12.725Z error: No user with id1
+2021-05-11T15:42:12.731Z error: error authenticating jwt
+2021-05-11T15:42:12.733Z error: no data
+2021-05-11T15:45:02.811Z error: User wasn't found
+2021-05-11T15:45:02.814Z error: No user with id1
+2021-05-11T15:45:02.819Z error: error authenticating jwt
+2021-05-11T15:45:02.821Z error: no data
+2021-05-11T15:45:06.473Z error: User wasn't found
+2021-05-11T15:45:06.476Z error: No user with id1
+2021-05-11T15:45:06.478Z error: error authenticating jwt
+2021-05-11T15:45:06.479Z error: no data
+2021-05-11T15:46:08.179Z error: User wasn't found
+2021-05-11T15:46:08.182Z error: No user with id1
+2021-05-11T15:46:08.189Z error: error authenticating jwt
+2021-05-11T15:46:08.191Z error: no data

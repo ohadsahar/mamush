@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:momrecipes/constants/enums.dart';
 import 'package:momrecipes/generated/l10n.dart';
+import 'package:momrecipes/model/ingrediants/ingrediants.response.dart';
 import 'package:momrecipes/model/recipe/recipe.response.dart';
 import 'package:momrecipes/theme/theme.dart';
 import 'package:momrecipes/utils/dimensions.dart';
 
 class RecipeIngredientsItemWidget extends StatefulWidget {
-  final Ingredients ingredient;
+  final RecipeIngredients ingredient;
   const RecipeIngredientsItemWidget({
     required this.ingredient,
   });
@@ -46,7 +47,7 @@ class _RecipeIngredientsItemWidgetState
               ),
             ),
             Text(
-              '${widget.ingredient.ingredientName} ',
+              '${widget.ingredient.ingredient.ingredientName} ',
               style: appTheme.textTheme.headline3,
             ),
             Text(
@@ -71,6 +72,8 @@ class _RecipeIngredientsItemWidgetState
         return strings.unit;
       case Enums.gram:
         return strings.gram;
+      case Enums.spoon:
+        return strings.spoon;
       default:
         return strings.emptyString;
     }

@@ -7,15 +7,12 @@ export class CreateRecipeDTO {
 	@IsString()
 	recipeName: string;
 
-	// @IsOptional()
 	@IsArray()
-	ingredients: CreateIngredientsDTO[];
+	recipeIngredients: CreateRecipeIngredientsDTO[];
 
-	// @IsOptional()
 	@IsArray()
 	instructions: CreateInstructionsDTO[];
 
-	// @IsOptional()
 	@IsArray()
 	tags: CreateTagDTO[];
 
@@ -30,14 +27,15 @@ export class CreateRecipeDTO {
 
 }
 
-export class CreateIngredientsDTO {
+export class CreateRecipeIngredientsDTO {
 
 	@IsNumber()
 	@Type(() => Number)
 	id: number;
 
-	@IsString()
-	ingredientName: string;
+	@IsNumber()
+	@Type(() => Number)
+	ingredient: number;
 
 	@IsString()
 	type: EIngredientType;
@@ -77,6 +75,6 @@ export class CreateTagDTO {
 	@Type(() => Number)
 	category: number;
 
-	user:number;
+	user: number;
 
 }

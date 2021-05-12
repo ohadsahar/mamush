@@ -33,14 +33,14 @@ class RecipeIngredientsWidget extends StatelessWidget {
           children: [
             Text(
               strings.recipeScreen(
-                recipe.ingredients.length,
+                recipe.recipeIngredients.length,
               ),
               style: appTheme.textTheme.headline3,
             ),
             const SizedBox(
               height: Dimensions.xxl,
             ),
-            for (var ingredient in recipe.ingredients)
+            for (var ingredient in recipe.recipeIngredients)
               RecipeIngredientsItemWidget(
                 ingredient: ingredient,
               ),

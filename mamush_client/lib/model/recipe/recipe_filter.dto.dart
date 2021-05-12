@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:momrecipes/model/recipe/recipe.response.dart';
+import 'package:momrecipes/model/ingrediants/ingrediants.response.dart';
 
 part 'recipe_filter.dto.g.dart';
 

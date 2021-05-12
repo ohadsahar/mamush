@@ -62,14 +62,14 @@ const init = () => {
 	switch (argv.env) {
 		case 'prod':
 		case 'production':
-			config = require(path.join(envPath, 'prod.json'));
+			config = require(path.join(envPath, 'dev.json'));
 			break;
 		case 'dev':
 		case 'develop':
 			config = require(path.join(envPath, 'dev.json'));
 			break;
 		default:
-			config = require(path.join(envPath, 'prod.json'));
+			config = require(path.join(envPath, 'dev.json'));
 			break;
 	}
 	return Object.assign(config, constants);

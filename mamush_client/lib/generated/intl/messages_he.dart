@@ -19,16 +19,20 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'he';
 
-  static String m0(fullName) => "היי ${fullName},\n מה בתפריט של היום ?";
+  static String m0(categoryName) => "יצירת מתכון נוסף בקטגורית ${categoryName}";
 
-  static String m1(ingredientsAmount, unit) => "${ingredientsAmount} ${unit}";
+  static String m1(name) => "היי ${name} לא נמצא במאגר שלנו, תרצו להוסיף?";
 
-  static String m2(time) => "טיימר: ${time} דקות";
+  static String m2(fullName) => "היי ${fullName},\n מה בתפריט של היום ?";
 
-  static String m3(ingredientsLength) =>
+  static String m3(ingredientsAmount, unit) => "${ingredientsAmount} ${unit}";
+
+  static String m4(time) => "טיימר: ${time} דקות";
+
+  static String m5(ingredientsLength) =>
       "הרכיבים שצריך: (${ingredientsLength})";
 
-  static String m4(number) => "#${number}";
+  static String m6(number) => "#${number}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -48,26 +52,33 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("גלרייה"),
         "completeProfileScreenWhoCooking":
             MessageLookupByLibrary.simpleMessage("מי הממוש שמבשל/ת פה?"),
+        "createRecipeAddRecipeName":
+            MessageLookupByLibrary.simpleMessage("שם המתכון"),
+        "createRecipeAnotherRecipeInCategory": m0,
+        "createRecipeItemNotExists": m1,
+        "createRecipeNextLevel":
+            MessageLookupByLibrary.simpleMessage("השלב הבא"),
         "emptyString": MessageLookupByLibrary.simpleMessage(""),
         "gram": MessageLookupByLibrary.simpleMessage("גרם"),
-        "homeScreenHelloAndWelcome": m0,
+        "homeScreenHelloAndWelcome": m2,
         "homeScreenMainCategories":
             MessageLookupByLibrary.simpleMessage("קטגוריות ראשיות"),
         "phoneInputScreenError":
             MessageLookupByLibrary.simpleMessage("שדה זה אינו בפורמט התקין"),
         "phoneInputScreenInsertPhone":
             MessageLookupByLibrary.simpleMessage("הזנ/י מספר טלפון"),
-        "recipeAmount": m1,
-        "recipeInstructionTimer": m2,
-        "recipeScreen": m3,
+        "recipeAmount": m3,
+        "recipeInstructionTimer": m4,
+        "recipeScreen": m5,
         "recipeScreenFinishedRecipe":
             MessageLookupByLibrary.simpleMessage("סיימתי"),
         "recipeScreenInstruction":
             MessageLookupByLibrary.simpleMessage("הוראות הכנה"),
-        "recipeScreenInstructionNumber": m4,
+        "recipeScreenInstructionNumber": m6,
         "splashScreenDescription": MessageLookupByLibrary.simpleMessage(
             "היי ברוכים הבאים לMamush \n הזינו את מספר הטלפון כדי להתחבר"),
         "splashScreenTitle": MessageLookupByLibrary.simpleMessage("Mamush"),
+        "spoon": MessageLookupByLibrary.simpleMessage("כפיות"),
         "unit": MessageLookupByLibrary.simpleMessage("יחידה"),
         "userProfileCardDisconnect":
             MessageLookupByLibrary.simpleMessage("התנתק"),

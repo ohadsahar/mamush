@@ -300,6 +300,46 @@ class S {
     );
   }
 
+  /// `שם המתכון`
+  String get createRecipeAddRecipeName {
+    return Intl.message(
+      'שם המתכון',
+      name: 'createRecipeAddRecipeName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `השלב הבא`
+  String get createRecipeNextLevel {
+    return Intl.message(
+      'השלב הבא',
+      name: 'createRecipeNextLevel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `היי {name} לא נמצא במאגר שלנו, תרצו להוסיף?`
+  String createRecipeItemNotExists(Object name) {
+    return Intl.message(
+      'היי $name לא נמצא במאגר שלנו, תרצו להוסיף?',
+      name: 'createRecipeItemNotExists',
+      desc: '',
+      args: [name],
+    );
+  }
+
+  /// `יצירת מתכון נוסף בקטגורית {categoryName}`
+  String createRecipeAnotherRecipeInCategory(Object categoryName) {
+    return Intl.message(
+      'יצירת מתכון נוסף בקטגורית $categoryName',
+      name: 'createRecipeAnotherRecipeInCategory',
+      desc: '',
+      args: [categoryName],
+    );
+  }
+
   /// `יחידה`
   String get unit {
     return Intl.message(
@@ -315,6 +355,16 @@ class S {
     return Intl.message(
       'גרם',
       name: 'gram',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `כפיות`
+  String get spoon {
+    return Intl.message(
+      'כפיות',
+      name: 'spoon',
       desc: '',
       args: [],
     );

@@ -16,6 +16,7 @@ export class User extends MainEntity {
 	@JoinColumn()
 	profilePicture: File;
 
-
+	// @OneToMany(() => Recipe, recipe => recipe.user)
+	// recipe: Recipe[];
 
 }

@@ -25,8 +25,8 @@ Recipe _$RecipeFromJson(Map<String, dynamic> json) {
   return Recipe(
     id: json['id'] as int,
     recipeName: json['recipeName'] as String,
-    ingredients: (json['ingredients'] as List<dynamic>)
-        .map((e) => Ingredients.fromJson(e as Map<String, dynamic>))
+    recipeIngredients: (json['recipeIngredients'] as List<dynamic>)
+        .map((e) => RecipeIngredients.fromJson(e as Map<String, dynamic>))
         .toList(),
     tags: (json['tags'] as List<dynamic>?)
         ?.map((e) => Tags.fromJson(e as Map<String, dynamic>))
@@ -43,29 +43,42 @@ Recipe _$RecipeFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$RecipeToJson(Recipe instance) => <String, dynamic>{
       'id': instance.id,
       'recipeName': instance.recipeName,
-      'ingredients': instance.ingredients,
+      'recipeIngredients': instance.recipeIngredients,
       'tags': instance.tags,
       'instructions': instance.instructions,
       'recipePicture': instance.recipePicture,
     };
 
-Ingredients _$IngredientsFromJson(Map<String, dynamic> json) {
-  return Ingredients(
-    id: json['id'] as int,
-    ingredientName: json['ingredientName'] as String,
+RecipeIngredients _$RecipeIngredientsFromJson(Map<String, dynamic> json) {
+  return RecipeIngredients(
+    id: json['id'] as int?,
     type: json['type'] as String,
     amount: json['amount'] as int,
+    ingredient: Ingredient.fromJson(json['ingredient'] as Map<String, dynamic>),
     isSelected: json['isSelected'] as bool?,
   );
 }
 
-Map<String, dynamic> _$IngredientsToJson(Ingredients instance) =>
+Map<String, dynamic> _$RecipeIngredientsToJson(RecipeIngredients instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'type': instance.type,
+      'amount': instance.amount,
+      'ingredient': instance.ingredient,
+      'isSelected': instance.isSelected,
+    };
+
+Ingredient _$IngredientFromJson(Map<String, dynamic> json) {
+  return Ingredient(
+    id: json['id'] as int,
+    ingredientName: json['ingredientName'] as String,
+  );
+}
+
+Map<String, dynamic> _$IngredientToJson(Ingredient instance) =>
     <String, dynamic>{
       'id': instance.id,
       'ingredientName': instance.ingredientName,
-      'type': instance.type,
-      'amount': instance.amount,
-      'isSelected': instance.isSelected,
     };
 
 Tags _$TagsFromJson(Map<String, dynamic> json) {

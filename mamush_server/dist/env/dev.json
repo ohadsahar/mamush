@@ -10,7 +10,7 @@
   "dbHost": "localhost",
   "dbUser": "postgres",
   "dbPass": "Flower123",
-  "dbName": "mamush_dev",
+  "dbName": "mamush_development",
   "appName": "Mamush",
   "dropSchema": false
 }

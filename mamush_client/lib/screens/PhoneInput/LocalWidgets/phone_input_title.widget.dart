@@ -19,20 +19,16 @@ class PhoneInputTitleWidget extends StatelessWidget {
             Assets.images.logoImage.path,
           ),
         ),
-        // Text(
-        //   strings.splashScreenTitle,
-        //   style: TextStyle(
-        //     color: Colors.white,
-        //     fontSize: 130,
-        //     fontWeight: FontWeight.bold,
-        //   ),
-        // ),
         const SizedBox(
           height: Dimensions.sxl,
         ),
         Text(
           strings.splashScreenDescription,
-          style: appTheme.textTheme.headline4,
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 34,
+            fontWeight: FontWeight.w400,
+          ),
           textAlign: TextAlign.center,
         ),
       ],

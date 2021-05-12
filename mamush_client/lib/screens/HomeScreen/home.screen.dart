@@ -67,14 +67,25 @@ class HomeScreenState extends State<HomeScreen> {
                                       top: Dimensions.xl,
                                       left: Dimensions.xl,
                                     ),
-                                    child: ClipOval(
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Colors.white,
+                                          width: 5,
+                                        ),
+                                        borderRadius: BorderRadius.circular(
+                                          60,
+                                        ),
+                                      ),
                                       child: state.user.profilePicture != null
-                                          ? Image.network(
-                                              state.user.profilePicture!
-                                                  .filePath,
-                                              width: 100,
-                                              height: 100,
-                                              fit: BoxFit.cover,
+                                          ? ClipOval(
+                                              child: Image.network(
+                                                state.user.profilePicture!
+                                                    .filePath,
+                                                width: 100,
+                                                height: 100,
+                                                fit: BoxFit.cover,
+                                              ),
                                             )
                                           : SizedBox(),
                                     ),

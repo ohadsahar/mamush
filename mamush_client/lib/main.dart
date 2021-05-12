@@ -7,6 +7,7 @@ import 'package:momrecipes/bloc/auth/auth.bloc.dart';
 import 'package:momrecipes/bloc/auth/auth.controller.dart';
 import 'package:momrecipes/bloc/category/category.bloc.dart';
 import 'package:momrecipes/bloc/category/category.controller.dart';
+import 'package:momrecipes/bloc/ingredients/ingredients.controller.dart';
 import 'package:momrecipes/bloc/recipe/recipe.bloc.dart';
 import 'package:momrecipes/bloc/recipe/recipe.controller.dart';
 import 'package:momrecipes/bloc/tag/tag.bloc.dart';
@@ -20,6 +21,7 @@ import 'package:momrecipes/services/navigation.service.dart';
 import 'package:momrecipes/setup/injection.dart';
 import 'package:momrecipes/theme/theme.dart';
 
+import 'bloc/ingredients/ingredients.bloc.dart';
 import 'generated/l10n.dart';
 
 Future<void> main(dynamic enviorment) async {
@@ -60,6 +62,11 @@ class MyApp extends StatelessWidget {
         BlocProvider<TagsBloc>(
           create: (BuildContext context) => TagsBloc(
             tagsController: TagsController(),
+          ),
+        ),
+        BlocProvider<IngrediantBloc>(
+          create: (BuildContext context) => IngrediantBloc(
+            ingrediantController: IngrediantController(),
           ),
         ),
       ],

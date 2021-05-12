@@ -23,7 +23,7 @@ class RecipeResponse {
 class Recipe {
   int id;
   String recipeName;
-  List<Ingredients> ingredients;
+  List<RecipeIngredients> recipeIngredients;
   List<Tags>? tags;
   List<Instructions> instructions;
   AppFile? recipePicture;
@@ -31,7 +31,7 @@ class Recipe {
   Recipe({
     required this.id,
     required this.recipeName,
-    required this.ingredients,
+    required this.recipeIngredients,
     this.tags,
     required this.instructions,
     this.recipePicture,
@@ -42,29 +42,45 @@ class Recipe {
 }
 
 @JsonSerializable()
-class Ingredients {
-  int id;
-  String ingredientName;
+class RecipeIngredients {
+  int? id;
   String type;
   int amount;
+  Ingredient ingredient;
   bool? isSelected;
 
-  Ingredients({
-    required this.id,
-    required this.ingredientName,
+  RecipeIngredients({
+    this.id,
     required this.type,
     required this.amount,
+    required this.ingredient,
     this.isSelected,
   });
 
-  factory Ingredients.fromJson(Map<String, dynamic> json) =>
-      _$IngredientsFromJson(json);
+  factory RecipeIngredients.fromJson(Map<String, dynamic> json) =>
+      _$RecipeIngredientsFromJson(json);
 
-  Map<String, dynamic> toJson() => _$IngredientsToJson(this);
+  Map<String, dynamic> toJson() => _$RecipeIngredientsToJson(this);
 
   onSelected(bool value) {
     this.isSelected = value;
   }
+}
+
+@JsonSerializable()
+class Ingredient {
+  int id;
+  String ingredientName;
+
+  Ingredient({
+    required this.id,
+    required this.ingredientName,
+  });
+
+  factory Ingredient.fromJson(Map<String, dynamic> json) =>
+      _$IngredientFromJson(json);
+
+  Map<String, dynamic> toJson() => _$IngredientToJson(this);
 }
 
 @JsonSerializable()

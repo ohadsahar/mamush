@@ -14,7 +14,11 @@ class CompleteProfileTitleWidget extends StatelessWidget {
       ),
       Text(
         title,
-        style: appTheme.textTheme.headline2,
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 28,
+          fontWeight: FontWeight.w400,
+        ),
       ),
       const SizedBox(
         height: Dimensions.xxl,

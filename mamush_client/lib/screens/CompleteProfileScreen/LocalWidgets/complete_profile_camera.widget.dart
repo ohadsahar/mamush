@@ -26,50 +26,96 @@ class CompleteProfileCameraWidget extends StatelessWidget {
       context,
       0.3,
     );
-    final S strings = S.of(context);
     return InkWell(
       onTap: modalBottomSheetMenu,
       child: Stack(
         children: <Widget>[
-          ClipOval(
-              child: !Uri.parse(image.path).isAbsolute
-                  ? Image.file(
-                      image,
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.white,
+                width: 5,
+              ),
+              borderRadius: BorderRadius.circular(
+                300,
+              ),
+            ),
+            child: ClipOval(
+              child: image.path == ""
+                  ? Image.asset(
+                      Assets.images.noUser.path,
                       width: width,
                       height: height,
                       fit: BoxFit.cover,
                     )
-                  : Uri.parse(filePath).isAbsolute
-                      ? Image.network(
-                          filePath,
+                  : !Uri.parse(image.path).isAbsolute
+                      ? Image.file(
+                          image,
                           width: width,
                           height: height,
                           fit: BoxFit.cover,
                         )
-                      : Image.asset(
-                          Assets.images.noUser.path,
-                          width: width,
-                          height: height,
-                          fit: BoxFit.cover,
-                        )),
+                      : Uri.parse(filePath).isAbsolute
+                          ? Image.network(
+                              filePath,
+                              width: width,
+                              height: height,
+                              fit: BoxFit.cover,
+                            )
+                          : Image.asset(
+                              Assets.images.noUser.path,
+                              width: width,
+                              height: height,
+                              fit: BoxFit.cover,
+                            ),
+            ),
+          ),
           new Positioned(
             bottom: 0,
             left: Dimensions.getScreenFractionWidth(
               context,
               0.01,
             ),
-            child: MaterialButton(
-              padding: EdgeInsets.all(
-                Dimensions.sm,
-              ),
-              shape: CircleBorder(),
-              onPressed: modalBottomSheetMenu,
-              color: AppColors.appPrimaryColor,
-              textColor: Colors.white,
-              child: Icon(
-                Icons.camera_alt,
-                size: 42,
-                color: Colors.white,
+            child: InkWell(
+              onTap: modalBottomSheetMenu,
+              child: Container(
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color(0xff0DC93133),
+                      blurRadius: 12,
+                      spreadRadius: 0,
+                      offset: Offset(
+                        0,
+                        7,
+                      ), // Shadow position
+                    ),
+                  ],
+                  gradient: new LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      const Color(0xff00B460),
+                      const Color(0xff00D38C),
+                    ],
+                  ),
+                  borderRadius: BorderRadius.circular(
+                    Dimensions.xl,
+                  ),
+                ),
+                padding: EdgeInsets.all(
+                  Dimensions.sm,
+                ),
+
+                //  color: AppColors.appPrimaryColor,
+                // textColor: Colors.white,
+                child: Container(
+                  child: Icon(
+                    Icons.camera_alt,
+                    size: 42,
+                    color: Colors.white,
+                  ),
+                ),
               ),
             ),
           ),

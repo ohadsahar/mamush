@@ -89,22 +89,6 @@ class UserProfileScreenState extends State<UserProfileScreen> {
                     ),
                   ],
                 ),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.center,
-                //   crossAxisAlignment: CrossAxisAlignment.center,
-                //   children: <Widget>[
-                //     UserProfileActionCardWidget(
-                //       cardName: strings.userProfileCardDisconnect,
-                //       onPress: _disconnect,
-                //       icon: Icons.logout,
-                //     ),
-                //     UserProfileActionCardWidget(
-                //       cardName: strings.userProfileCardEditProfile,
-                //       onPress: _editProfile,
-                //       icon: Icons.edit,
-                //     ),
-                //   ],
-                // ),
                 const SizedBox(
                   height: Dimensions.md,
                 ),

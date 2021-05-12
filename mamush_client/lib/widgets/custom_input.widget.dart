@@ -11,6 +11,8 @@ class CustomInputWidget extends StatelessWidget {
   final String? initialValue;
   final bool autoFocus;
   final Widget? prefixIcon;
+  final bool? change;
+  final onChange;
   const CustomInputWidget({
     required this.hint,
     required this.attribute,
@@ -19,9 +21,13 @@ class CustomInputWidget extends StatelessWidget {
     this.initialValue,
     this.autoFocus = true,
     this.prefixIcon,
+    this.change = false,
+    this.onChange,
   });
   @override
   Widget build(BuildContext context) {
+    //final ValueChanged _onChanged = (val) => print(val);
+
     return FormBuilderTextField(
       initialValue: initialValue,
       validator: validators,
@@ -36,7 +42,7 @@ class CustomInputWidget extends StatelessWidget {
         hintText: hint,
         errorStyle: appTheme.textTheme.headline5,
         hintStyle: TextStyle(
-          fontSize: Dimensions.xxl,
+          fontSize: Dimensions.sxl,
           color: Colors.white,
         ),
         focusedBorder: OutlineInputBorder(
@@ -60,9 +66,10 @@ class CustomInputWidget extends StatelessWidget {
           0.49,
         ),
       ),
+      onChanged: onChange,
       style: TextStyle(
         color: Colors.white,
-        fontSize: Dimensions.xl,
+        fontSize: Dimensions.sxl,
         fontWeight: FontWeight.w400,
       ),
     );

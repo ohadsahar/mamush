@@ -14,18 +14,13 @@ class $AssetsCfgGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  AssetGenImage get appBackground =>
-      const AssetGenImage('assets/images/app_background.png');
   AssetGenImage get categoryBackground =>
       const AssetGenImage('assets/images/category_background.png');
-  AssetGenImage get foodBackground =>
-      const AssetGenImage('assets/images/food_background.png');
   AssetGenImage get logoImage =>
       const AssetGenImage('assets/images/logo_image.png');
   AssetGenImage get noUser => const AssetGenImage('assets/images/no_user.png');
   AssetGenImage get splashBackground =>
       const AssetGenImage('assets/images/splash_background.png');
-  String get splashImage => 'assets/images/splash_image.svg';
 }
 
 class Assets {

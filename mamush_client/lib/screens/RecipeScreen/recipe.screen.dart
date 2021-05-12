@@ -128,8 +128,8 @@ class _RecipeScreenState extends State<RecipeScreen> {
 
   _onSubmit(Recipe recipe) {
     print(recipe);
-    for (var i = 0; i < recipe.ingredients.length; i++) {
-      recipe.ingredients[i].onSelected(false);
+    for (var i = 0; i < recipe.recipeIngredients.length; i++) {
+      recipe.recipeIngredients[i].onSelected(false);
     }
     setState(() {});
     _goBack();

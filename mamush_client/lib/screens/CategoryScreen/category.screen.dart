@@ -117,6 +117,7 @@ class CategoryScreenState extends State<CategoryScreen> {
                                         autovalidateMode:
                                             AutovalidateMode.onUserInteraction,
                                         child: CustomInputWidget(
+                                          onChange: (value) => {},
                                           prefixIcon: Container(
                                             margin: EdgeInsets.only(
                                               left: Dimensions.md,
@@ -189,10 +190,23 @@ class CategoryScreenState extends State<CategoryScreen> {
               height: MediaQuery.of(context).size.width * 0.13,
               width: MediaQuery.of(context).size.width * 0.13,
               child: FloatingActionButton(
-                backgroundColor: AppColors.appPrimaryColor,
+                // backgroundColor: AppColors.appPrimaryColor,
                 elevation: 5,
                 onPressed: _navigateToCreateRecipe,
-                child: Center(
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: new LinearGradient(
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                      colors: [
+                        const Color(0xff00B460),
+                        const Color(0xff00D38C),
+                      ],
+                    ),
+                  ),
+                  height: MediaQuery.of(context).size.width * 0.13,
+                  width: MediaQuery.of(context).size.width * 0.13,
                   child: Icon(
                     Icons.add,
                     size: Dimensions.sxl * 2,

@@ -78,7 +78,8 @@ class CategoryRecipesWidget extends StatelessWidget {
                             ),
                             child: Text(
                               recipe.recipeName,
-                              style: appTheme.textTheme.headline4,
+                              style: appTheme.textTheme.subtitle1,
+                              textAlign: TextAlign.right,
                             ),
                           ),
                         ),

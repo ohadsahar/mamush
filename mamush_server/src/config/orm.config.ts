@@ -6,6 +6,7 @@ import { Recipe } from '../api/models/recipe.model';
 import { Ingredient } from '../api/models/ingredient.model';
 import { Instructions } from '../api/models/instructions.model';
 import { Tag } from '../api/models/tag.model';
+import { RecipeIngredient } from '../api/models/recipeIngredient.model';
 
 const config = getConfig();
 
@@ -23,6 +24,7 @@ const ormConfig = {
 		Recipe,
 		Ingredient,
 		Instructions,
+		RecipeIngredient,
 		Tag
 	],
 	ssl: config.ssl,

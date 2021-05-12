@@ -4,8 +4,8 @@ import { Category } from './category.model';
 import { User } from './user.model';
 import { File } from './file.model';
 import { Instructions } from './instructions.model';
-import { Ingredient } from './ingredient.model';
 import { Tag } from './tag.model';
+import { RecipeIngredient } from './recipeIngredient.model';
 
 @Entity()
 export class Recipe extends MainEntity {
@@ -13,27 +13,33 @@ export class Recipe extends MainEntity {
 	@Column({ nullable: true })
 	recipeName: string;
 
-	@ManyToMany(() => Ingredient, { cascade: true, eager: true })
+	@ManyToMany(() => RecipeIngredient,
+		{ cascade: true, eager: true })
 	@JoinTable()
-	ingredients: Ingredient[];
+	recipeIngredients: RecipeIngredient[];
 
-	@ManyToMany(() => Tag, { cascade: true, eager: true })
+	@ManyToMany(() => Tag,
+		{ cascade: true, eager: true })
 	@JoinTable()
 	tags: Tag[];
 
-	@OneToMany(() => Instructions, instructions => instructions.recipe, { cascade: true, eager: true })
+	@OneToMany(() => Instructions, instructions => instructions.recipe,
+		{ cascade: true, eager: true })
 	@JoinColumn()
 	instructions: Instructions[];
 
-	@ManyToOne(() => Category, { cascade: true, onUpdate: 'CASCADE', onDelete: 'CASCADE' })
+	@ManyToOne(() => Category,
+		{ cascade: true, onUpdate: 'CASCADE', onDelete: 'CASCADE' })
 	@JoinColumn()
 	category: Category | Category['id'];
 
-	@ManyToOne(() => Recipe, { cascade: true, onUpdate: 'CASCADE', onDelete: 'CASCADE' })
+	@ManyToOne(() => Recipe,
+		{ cascade: true, onUpdate: 'CASCADE', onDelete: 'CASCADE' })
 	@JoinColumn()
 	user: User | User['id'];
 
-	@OneToOne(() => File, { nullable: true, onDelete: 'SET NULL' })
+	@OneToOne(() => File,
+		{ nullable: true, onDelete: 'SET NULL' })
 	@JoinColumn()
 	recipePicture: File;
 }

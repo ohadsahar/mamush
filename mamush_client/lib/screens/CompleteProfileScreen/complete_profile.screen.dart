@@ -68,6 +68,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                         child: FormBuilder(
                           key: _formKey,
                           child: CustomInputWidget(
+                            onChange: (value) => {},
                             initialValue: state.user.fullName,
                             validators: FormBuilderValidators.compose(
                               [

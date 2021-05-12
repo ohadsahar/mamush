@@ -16,6 +16,7 @@ export class FilterDTO {
 	@IsOptional()
 	tags: IdDTO[];
 
+	@IsOptional()
 	@IsNumber()
 	@Type(() => Number)
 	category: number;

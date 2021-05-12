@@ -43,6 +43,7 @@ class AppSplashScreenState extends State<AppSplashScreen> {
 
   Future<void> _navigateToRelevantScreen() async {
     final StorageService storageService = getIt<StorageService>();
+    //storageService.setToken('');
     final String? token = storageService.token;
     NavigationService navigationService = getIt<NavigationService>();
     navigationService.navigateReplace(

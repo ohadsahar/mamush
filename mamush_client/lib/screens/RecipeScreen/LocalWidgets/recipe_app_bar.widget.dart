@@ -24,7 +24,7 @@ class RecipeAppBarWidget extends StatelessWidget {
               icon: Icon(
                 Icons.arrow_back,
                 size: Dimensions.sxl,
-                color: Colors.white,
+                color: Colors.black,
               ),
               onPressed: goBack,
             ),

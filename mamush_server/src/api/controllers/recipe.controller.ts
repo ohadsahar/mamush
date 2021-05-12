@@ -13,7 +13,8 @@ const recipeService = Container.get(RecipeService);
 export const create = async (req: Request, res: Response) => {
 	try {
 		const transformed = plainToClass(CreateRecipeDTO, req.body);
-		const result = await recipeService.create(transformed, req.user, req.file);
+		const userID = req.user.id;
+		const result = await recipeService.create(transformed, userID, req.file);
 		return resHandlerService.handleSuccess(res, result);
 	} catch (error) {
 		return resHandlerService.handleError(res, error);
@@ -23,15 +24,13 @@ export const create = async (req: Request, res: Response) => {
 export const get = async (req: Request, res: Response) => {
 	try {
 		const transformed = plainToClass(IdDTO, req.params);
-		const result = await recipeService.get(transformed);
+		const userID = req.user.id;
+		const result = await recipeService.get(transformed, userID);
 		return resHandlerService.handleSuccess(res, result);
 	} catch (error) {
 		return resHandlerService.handleError(res, error);
 	}
 };
-
-
-
 
 export const getById = async (req: Request, res: Response) => {
 	try {
@@ -46,7 +45,8 @@ export const getById = async (req: Request, res: Response) => {
 export const searchByAll = async (req: Request, res: Response) => {
 	try {
 		const transformed = plainToClass(FilterDTO, req.body);
-		const result = await recipeService.searchByAll(transformed);
+		const userID = req.user.id;
+		const result = await recipeService.searchByAll(transformed, userID);
 		return resHandlerService.handleSuccess(res, result);
 	} catch (error) {
 		return resHandlerService.handleError(res, error);

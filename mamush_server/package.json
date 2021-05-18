@@ -13,7 +13,7 @@
     "start": "node dist/app.js",
     "deploy": "git add . && git commit -m Heroku && git push heroku master",
     "logs": "heroku logs --tail",
-    "clean": "heroku builds:cache:purge -a dafdef",
+    "clean": "heroku builds:cache:purge -a mamush-server",
     "build-ts": "tsc && npm run copy-static-assets",
     "run-ts": "ts-node src/app.ts",
     "postinstall": "tsc",

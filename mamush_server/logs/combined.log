@@ -5634,3 +5634,111 @@
 2021-05-11T15:46:36.614Z info: DB is connected
 2021-05-11T15:46:36.615Z info: localhost
 2021-05-11T15:46:36.620Z info: Server listening on port 3000. Enjoy!
+2021-05-12T13:26:00.367Z info: Starting server...
+2021-05-12T13:26:00.377Z info: Env: dev
+2021-05-12T13:26:00.660Z info: Initiating jwt
+2021-05-12T13:26:00.662Z info: DB is connected
+2021-05-12T13:26:00.663Z info: localhost
+2021-05-12T13:26:00.668Z info: Server listening on port 3000. Enjoy!
+2021-05-13T15:42:41.063Z info: Starting server...
+2021-05-13T15:42:41.070Z info: Env: dev
+2021-05-13T15:42:41.594Z info: Initiating jwt
+2021-05-13T15:42:41.599Z info: DB is connected
+2021-05-13T15:42:41.601Z info: localhost
+2021-05-13T15:42:41.608Z info: Server listening on port 3000. Enjoy!
+2021-05-13T17:47:23.650Z info: Starting server...
+2021-05-13T17:47:23.654Z info: Env: dev
+2021-05-13T17:47:23.826Z info: Initiating jwt
+2021-05-13T17:47:23.828Z info: DB is connected
+2021-05-13T17:47:23.829Z info: localhost
+2021-05-13T17:47:23.832Z info: Server listening on port 3000. Enjoy!
+2021-05-13T17:48:33.423Z info: Starting server...
+2021-05-13T17:48:33.427Z info: Env: dev
+2021-05-13T17:48:33.582Z info: Initiating jwt
+2021-05-13T17:48:33.584Z info: DB is connected
+2021-05-13T17:48:33.585Z info: localhost
+2021-05-13T17:48:33.587Z info: Server listening on port 3000. Enjoy!
+2021-05-13T17:50:38.587Z info: Starting server...
+2021-05-13T17:50:38.590Z info: Env: dev
+2021-05-13T17:50:38.722Z info: Initiating jwt
+2021-05-13T17:50:38.724Z info: DB is connected
+2021-05-13T17:50:38.725Z info: localhost
+2021-05-13T17:50:38.728Z info: Server listening on port 3000. Enjoy!
+2021-05-18T13:11:53.852Z info: Starting server...
+2021-05-18T13:11:53.858Z info: Env: dev
+2021-05-18T13:11:57.469Z info: Initiating jwt
+2021-05-18T13:11:57.471Z info: DB is connected
+2021-05-18T13:11:57.473Z info: localhost
+2021-05-18T13:11:57.476Z info: Server listening on port 3000. Enjoy!
+2021-05-18T13:23:06.519Z info: Starting server...
+2021-05-18T13:23:06.523Z info: Env: dev
+2021-05-18T13:23:06.728Z info: Initiating jwt
+2021-05-18T13:23:06.730Z info: DB is connected
+2021-05-18T13:23:06.731Z info: localhost
+2021-05-18T13:23:06.736Z info: Server listening on port 3000. Enjoy!
+2021-05-18T13:24:13.678Z info: Starting server...
+2021-05-18T13:24:13.683Z info: Env: dev
+2021-05-18T13:24:13.861Z info: Initiating jwt
+2021-05-18T13:24:13.865Z info: DB is connected
+2021-05-18T13:24:13.866Z info: localhost
+2021-05-18T13:24:13.878Z info: Server listening on port 3000. Enjoy!
+2021-05-18T13:24:46.372Z info: Starting server...
+2021-05-18T13:24:46.376Z info: Env: dev
+2021-05-18T13:24:46.507Z info: Initiating jwt
+2021-05-18T13:24:46.509Z info: DB is connected
+2021-05-18T13:24:46.510Z info: localhost
+2021-05-18T13:24:46.513Z info: Server listening on port 3000. Enjoy!
+2021-05-18T13:25:19.557Z info: Starting server...
+2021-05-18T13:25:19.561Z info: Env: dev
+2021-05-18T13:25:19.709Z info: Initiating jwt
+2021-05-18T13:25:19.711Z info: DB is connected
+2021-05-18T13:25:19.712Z info: localhost
+2021-05-18T13:25:19.715Z info: Server listening on port 3000. Enjoy!
+2021-05-18T13:25:25.845Z info: Starting server...
+2021-05-18T13:25:25.849Z info: Env: dev
+2021-05-18T13:25:26.037Z info: Initiating jwt
+2021-05-18T13:25:26.038Z info: DB is connected
+2021-05-18T13:25:26.040Z info: localhost
+2021-05-18T13:25:26.042Z info: Server listening on port 3000. Enjoy!
+2021-05-18T13:29:07.442Z info: Starting server...
+2021-05-18T13:29:07.446Z info: Env: dev
+2021-05-18T13:29:07.599Z info: Initiating jwt
+2021-05-18T13:29:07.601Z info: DB is connected
+2021-05-18T13:29:07.602Z info: localhost
+2021-05-18T13:29:07.604Z info: Server listening on port 3000. Enjoy!
+2021-05-18T13:30:02.245Z info: Starting server...
+2021-05-18T13:30:02.248Z info: Env: dev
+2021-05-18T13:30:02.498Z info: Initiating jwt
+2021-05-18T13:30:02.512Z info: DB is connected
+2021-05-18T13:30:02.513Z info: localhost
+2021-05-18T13:30:02.516Z info: Server listening on port 3000. Enjoy!
+2021-05-18T13:30:54.109Z info: Starting server...
+2021-05-18T13:30:54.114Z info: Env: dev
+2021-05-18T13:30:54.270Z info: Initiating jwt
+2021-05-18T13:30:54.272Z info: DB is connected
+2021-05-18T13:30:54.273Z info: localhost
+2021-05-18T13:30:54.275Z info: Server listening on port 3000. Enjoy!
+2021-05-18T13:31:55.983Z info: Starting server...
+2021-05-18T13:31:55.987Z info: Env: dev
+2021-05-18T13:31:56.162Z info: Initiating jwt
+2021-05-18T13:31:56.170Z info: DB is connected
+2021-05-18T13:31:56.205Z info: localhost
+2021-05-18T13:31:56.225Z info: Server listening on port 3000. Enjoy!
+2021-05-18T13:35:30.243Z info: Starting server...
+2021-05-18T13:35:30.251Z info: Env: dev
+2021-05-18T13:35:30.608Z info: Initiating jwt
+2021-05-18T13:35:30.610Z info: DB is connected
+2021-05-18T13:35:30.611Z info: localhost
+2021-05-18T13:35:30.615Z info: Server listening on port 3000. Enjoy!
+2021-05-18T13:38:02.018Z info: Starting server...
+2021-05-18T13:38:02.022Z info: Env: dev
+2021-05-18T13:38:02.239Z info: Initiating jwt
+2021-05-18T13:38:02.241Z info: DB is connected
+2021-05-18T13:38:02.242Z info: localhost
+2021-05-18T13:38:02.245Z info: Server listening on port 3000. Enjoy!
+2021-05-18T13:39:24.710Z info: Starting server...
+2021-05-18T13:39:24.713Z info: Env: dev
+2021-05-18T13:39:24.865Z info: Initiating jwt
+2021-05-18T13:39:24.867Z info: DB is connected
+2021-05-18T13:39:24.868Z info: localhost
+2021-05-18T13:39:24.870Z info: Server listening on port 3000. Enjoy!

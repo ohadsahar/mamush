@@ -18,10 +18,12 @@ export class RecipeService {
 				createRecipeDTO.recipeIngredients[i].id = Number(createRecipeDTO.recipeIngredients[i].id);
 			}
 		}
-		for (let i = 0; i < createRecipeDTO.tags.length; i++) {
-			createRecipeDTO.tags[i].id = Number(createRecipeDTO.tags[i].id);
-			createRecipeDTO.tags[i].category = Number(createRecipeDTO.tags[i].category);
-			createRecipeDTO.tags[i].user = Number(userID);
+		if (createRecipeDTO.tags) {
+			for (let i = 0; i < createRecipeDTO.tags.length; i++) {
+				createRecipeDTO.tags[i].id = Number(createRecipeDTO.tags[i].id);
+				createRecipeDTO.tags[i].category = Number(createRecipeDTO.tags[i].category);
+				createRecipeDTO.tags[i].user = Number(userID);
+			}
 		}
 
 		if (recipePicture) {

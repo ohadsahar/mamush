@@ -10,7 +10,7 @@ import { storage } from '../middlewares/multerMiddleware';
 const handleFile = multer({ storage }).single('recipePicture');
 
 export const router = Router()
-	.post('', handleFile, isAuthenticatedGuard, validationMiddleware(CreateRecipeDTO), create)
+	.post('', handleFile, isAuthenticatedGuard, create)
 	.get('/category/:id', isAuthenticatedGuard, validationMiddleware(IdDTO), get)
 	.get('/:id', isAuthenticatedGuard, validationMiddleware(IdDTO), getById)
 	.post('/search', isAuthenticatedGuard, searchByAll);

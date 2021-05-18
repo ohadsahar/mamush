@@ -1,21 +1,17 @@
 {
-  "name": "prod",
+  "name": "dev",
   "synchronize": true,
-  "production": true,
-  "dropSchema": false,
+  "production": false,
   "logging": false,
   "port": 3000,
   "dbPort": 5432,
-  "ssl": {
-    "rejectUnauthorized": false
-  },
+  "ssl": false,
   "logger": "tiny",
-  "dbHost": "ec2-52-48-65-240.eu-west-1.compute.amazonaws.com",
-  "dbUser": "nrvuwnpbpjouuo",
-  "dbPass": "8e57aaf4d2d7ab8e4d9709c613893a40c73d59ef9835e02ba735cd33e75cb721",
-  "dbName": "d6i4r0c4nhpjc0",
-  "appName": "Daf Def"
+  "dbHost": "ec2-54-74-35-87.eu-west-1.compute.amazonaws.com",
+  "dbUser": "qeinirlurtytll",
+  "dbPass": "c417aff4dc8bee2ea5d44d3c35a8649609640f33a007e46987045befa17ae28f",
+  "dbName": "de9nm0masg9fdc",
+  "appName": "Mamush",
+  "dropSchema": false
 }
-
-
 

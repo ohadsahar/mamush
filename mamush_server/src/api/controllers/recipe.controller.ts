@@ -12,9 +12,11 @@ const recipeService = Container.get(RecipeService);
 
 export const create = async (req: Request, res: Response) => {
 	try {
-		const transformed = plainToClass(CreateRecipeDTO, req.body);
+	//	const transformed = plainToClass(CreateRecipeDTO, req.body);
+		req.body.recipeIngredients = JSON.parse(req.body.recipeIngredients);
+		req.body.instructions = JSON.parse(req.body.instructions);
 		const userID = req.user.id;
-		const result = await recipeService.create(transformed, userID, req.file);
+		const result = await recipeService.create(req.body, userID, req.file);
 		return resHandlerService.handleSuccess(res, result);
 	} catch (error) {
 		return resHandlerService.handleError(res, error);

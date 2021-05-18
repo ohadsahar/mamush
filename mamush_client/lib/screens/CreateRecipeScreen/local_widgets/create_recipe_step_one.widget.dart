@@ -11,11 +11,11 @@ import 'package:momrecipes/widgets/app_button.widget.dart';
 import 'package:momrecipes/widgets/custom_input.widget.dart';
 
 class CreateRecipeStepOneWidget extends StatefulWidget {
-  final Function onSubmit;
+  final Function imageSelected;
   final formKey;
   const CreateRecipeStepOneWidget({
-    required this.onSubmit,
     required this.formKey,
+    required this.imageSelected,
   });
   @override
   _CreateRecipeStepOneWidgetState createState() =>
@@ -71,10 +71,6 @@ class _CreateRecipeStepOneWidgetState extends State<CreateRecipeStepOneWidget> {
                 context,
                 0.2,
               ),
-            ),
-            AppButton(
-              onSubmit: () => widget.onSubmit(_image),
-              text: strings.acceptButton,
             ),
           ],
         ),
@@ -135,5 +131,6 @@ class _CreateRecipeStepOneWidgetState extends State<CreateRecipeStepOneWidget> {
         );
       }
     });
+    widget.imageSelected(_image);
   }
 }

@@ -106,14 +106,14 @@ class Tags {
 
 @JsonSerializable()
 class Instructions {
-  int id;
+  int? id;
   String instructionsDescription;
   bool hasTimer;
   int? timer;
   bool? timerOn;
 
   Instructions({
-    required this.id,
+    this.id,
     required this.instructionsDescription,
     required this.hasTimer,
     this.timer,

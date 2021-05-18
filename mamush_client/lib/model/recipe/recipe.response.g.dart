@@ -97,7 +97,7 @@ Map<String, dynamic> _$TagsToJson(Tags instance) => <String, dynamic>{
 
 Instructions _$InstructionsFromJson(Map<String, dynamic> json) {
   return Instructions(
-    id: json['id'] as int,
+    id: json['id'] as int?,
     instructionsDescription: json['instructionsDescription'] as String,
     hasTimer: json['hasTimer'] as bool,
     timer: json['timer'] as int?,

@@ -8,9 +8,12 @@ import 'package:just_debounce_it/just_debounce_it.dart';
 import 'package:momrecipes/bloc/ingredients/ingredients.bloc.dart';
 import 'package:momrecipes/bloc/ingredients/ingredients.events.dart';
 import 'package:momrecipes/bloc/ingredients/ingredients.state.dart';
+import 'package:momrecipes/constants/enums.dart';
 import 'package:momrecipes/generated/l10n.dart';
 import 'package:momrecipes/model/ingrediants/ingrediants.response.dart';
 import 'package:momrecipes/model/recipe/recipe.response.dart';
+import 'package:momrecipes/screens/CreateRecipeScreen/local_widgets/create_recipe_step_two_header.widget.dart';
+import 'package:momrecipes/screens/CreateRecipeScreen/local_widgets/create_recipe_step_two_ingredient_search_view.widget.dart';
 import 'package:momrecipes/theme/theme.dart';
 import 'package:momrecipes/utils/dimensions.dart';
 import 'package:momrecipes/widgets/app_button.widget.dart';
@@ -19,8 +22,10 @@ import 'package:momrecipes/widgets/loading.widget.dart';
 
 class CreateRecipeStepTWoWidget extends StatefulWidget {
   final Function onSubmit;
+  final List<RecipeIngredients> indgredientsToSave;
   const CreateRecipeStepTWoWidget({
     required this.onSubmit,
+    required this.indgredientsToSave,
   });
   @override
   _CreateRecipeStepTWoWidgetState createState() =>
@@ -32,8 +37,10 @@ class _CreateRecipeStepTWoWidgetState extends State<CreateRecipeStepTWoWidget> {
   final picker = ImagePicker();
   late IngrediantBloc ingrediantBloc;
   final List<Ingredients> indgredients = [];
-  List<RecipeIngredients> indgredientsToSave = [];
+
   late String searchValue;
+  final _formKey = GlobalKey<FormBuilderState>();
+  final typeOptions = ['גרם', 'יחידה', 'כפית'];
 
   @override
   Widget build(BuildContext context) {
@@ -41,144 +48,22 @@ class _CreateRecipeStepTWoWidgetState extends State<CreateRecipeStepTWoWidget> {
     return Center(
       child: Column(
         children: [
-          const SizedBox(
-            height: Dimensions.sxl * 3,
-          ),
-          const SizedBox(
-            height: Dimensions.sxl * 1.5,
-          ),
-          FractionallySizedBox(
-            widthFactor: 0.7,
-            child: CustomInputWidget(
-              onChange: (value) => {_getChanges(value)},
-              change: true,
-              // onChange: _onChanged,
-              initialValue: '',
-              validators: FormBuilderValidators.compose(
-                [
-                  FormBuilderValidators.minLength(
-                    context,
-                    1,
-                    errorText: strings.completeProfileScreenError,
-                  ),
-                ],
-              ),
-              hint: strings.createRecipeAddRecipeName,
-              attribute: 'recipeName',
-              type: TextInputType.text,
-            ),
-          ),
+          CreateRecipeStepTwoHeaderWidget(getChanges: _getChanges),
           BlocBuilder<IngrediantBloc, IngredientsState>(
             builder: (
               BuildContext context,
               IngredientsState state,
             ) {
               if (state is IngredientLoadedState) {
-                return Column(
-                  children: <Widget>[
-                    const SizedBox(
-                      height: Dimensions.sxl,
-                    ),
-                    for (var ingredient in state.ingredients)
-                      InkWell(
-                        onTap: () => _addIngredients(ingredient),
-                        child: Column(
-                          children: <Widget>[
-                            FractionallySizedBox(
-                              widthFactor: 0.7,
-                              child: Container(
-                                padding: EdgeInsets.all(
-                                  Dimensions.xl,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  border: Border(
-                                    bottom: BorderSide(
-                                      width: Dimensions.sm,
-                                      color: AppColors.thirdColor,
-                                    ),
-                                  ),
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(
-                                        Dimensions.sm,
-                                      ),
-                                      child: Text(
-                                        ingredient.ingredientName,
-                                        style: appTheme.textTheme.headline3,
-                                        textAlign: TextAlign.right,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    if (state.ingredients.length <= 0)
-                      FractionallySizedBox(
-                        widthFactor: 0.7,
-                        child: Container(
-                          padding: EdgeInsets.all(
-                            Dimensions.xl,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border(
-                              bottom: BorderSide(
-                                width: Dimensions.sm,
-                                color: AppColors.thirdColor,
-                              ),
-                            ),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(
-                                  Dimensions.sm,
-                                ),
-                                child: FittedBox(
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        strings.createRecipeItemNotExists(
-                                          searchValue,
-                                        ),
-                                        style: appTheme.textTheme.headline4,
-                                        textAlign: TextAlign.right,
-                                      ),
-                                      Container(
-                                        margin: EdgeInsets.only(
-                                          right: Dimensions.sxl,
-                                        ),
-                                        child: AppButton(
-                                          onSubmit: _createIngredient,
-                                          text: strings.acceptButton,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      )
-                    else
-                      SizedBox(),
-                  ],
-                );
+                return CreateRecipeStepTwoIngredientSearchViewWidget(
+                    addIngredients: _addIngredients,
+                    searchValue: searchValue,
+                    ingredients: state.ingredients);
               } else {
-                return LoadingWidget();
+                return SizedBox();
               }
             },
           ),
-          //Table And Logic
           BlocConsumer<IngrediantBloc, IngredientsState>(
             listener: (context, IngredientsState state) {
               if (state is IngrediendAddedSucessfullyState) {
@@ -189,67 +74,240 @@ class _CreateRecipeStepTWoWidgetState extends State<CreateRecipeStepTWoWidget> {
                   amount: 1,
                   ingredient: state.createdIngredient,
                 );
-                indgredientsToSave.add(
+                widget.indgredientsToSave.add(
                   recipeIngredients,
                 );
-                setState(() {
-                  indgredientsToSave = indgredientsToSave;
-                });
+                setState(() {});
               }
             },
             builder: (context, state) {
               return SizedBox();
             },
           ),
-          for (var ingredient in indgredientsToSave)
-            Column(
-              children: [
-                Text(
-                  ingredient.ingredient.ingredientName,
-                ),
-                Text(ingredient.amount.toString()),
-                Text(ingredient.type),
-              ],
-            ),
-
-          SizedBox(
-            height: Dimensions.getScreenFractionHeight(
-              context,
-              0.2,
-            ),
+          // for (var ingredient in indgredientsToSave)
+          const SizedBox(
+            height: Dimensions.sxl,
           ),
-          //Change to fab later
-          AppButton(
-            onSubmit: _submitted,
-            text: strings.createRecipeNextLevel,
+          Column(
+            children: [
+              Container(
+                width: Dimensions.getScreenFractionWidth(
+                  context,
+                  0.92,
+                ),
+                height: 60,
+                decoration: BoxDecoration(
+                  gradient: new LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      const Color(0xff00B460),
+                      const Color(0xff00D38C),
+                    ],
+                  ),
+                ),
+                child: Container(
+                  padding: EdgeInsets.all(8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        width: Dimensions.getScreenFractionWidth(
+                          context,
+                          0.2,
+                        ),
+                        child: Text(
+                          'שם המצרך',
+                          style: appTheme.textTheme.headline3,
+                        ),
+                      ),
+                      SizedBox(
+                        width: Dimensions.getScreenFractionWidth(
+                          context,
+                          0.09,
+                        ),
+                        child: Text(
+                          ' מידה',
+                          style: appTheme.textTheme.headline3,
+                        ),
+                      ),
+                      SizedBox(
+                        width: Dimensions.getScreenFractionWidth(
+                          context,
+                          0.15,
+                        ),
+                        child: Text(
+                          ' כמות',
+                          style: appTheme.textTheme.headline3,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                height: Dimensions.getScreenFractionHeight(
+                  context,
+                  0.38,
+                ),
+                child: ListView.builder(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: Dimensions.md,
+                  ),
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  itemCount: widget.indgredientsToSave.length,
+                  itemBuilder: (BuildContext context, int index) => Container(
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          width: double.infinity,
+                          height: 75,
+                          margin: EdgeInsets.symmetric(
+                            horizontal: Dimensions.md,
+                          ),
+                          child: Container(
+                            padding: EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color(0xff0DC93133),
+                                  blurRadius: 12,
+                                  spreadRadius: 0,
+                                  offset: Offset(
+                                    0,
+                                    7,
+                                  ), // Shadow position
+                                ),
+                              ],
+                            ),
+                            child: FormBuilder(
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  SizedBox(
+                                    width: Dimensions.getScreenFractionWidth(
+                                      context,
+                                      0.3,
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        IconButton(
+                                          icon: Icon(
+                                            Icons.delete,
+                                          ),
+                                          onPressed: () =>
+                                              _removeIngredient(index),
+                                        ),
+                                        Text(
+                                          widget.indgredientsToSave[index]
+                                              .ingredient.ingredientName,
+                                          style: appTheme.textTheme.headline4,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: Dimensions.getScreenFractionWidth(
+                                      context,
+                                      0.2,
+                                    ),
+                                    child: FormBuilderDropdown(
+                                      name: 'type',
+                                      decoration: InputDecoration(
+                                        labelText: convertToLanguage(
+                                          widget.indgredientsToSave[index].type,
+                                        ),
+                                        labelStyle:
+                                            appTheme.textTheme.headline4,
+                                      ),
+                                      onChanged: (value) => {
+                                        setState(() {
+                                          widget.indgredientsToSave[index]
+                                                  .type =
+                                              languageToEnum(value.toString());
+                                        })
+                                      },
+                                      validator: FormBuilderValidators.compose([
+                                        FormBuilderValidators.required(context)
+                                      ]),
+                                      items: typeOptions
+                                          .map(
+                                            (type) => DropdownMenuItem(
+                                              value: type,
+                                              child: Text(
+                                                '$type',
+                                                style: appTheme
+                                                    .textTheme.headline4,
+                                              ),
+                                            ),
+                                          )
+                                          .toList(),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: Dimensions.getScreenFractionWidth(
+                                      context,
+                                      0.2,
+                                    ),
+                                    child: CustomInputWidget(
+                                      onChange: (value) => {
+                                        setState(() {
+                                          widget.indgredientsToSave[index]
+                                              .amount = int.parse(value);
+                                        })
+                                      },
+                                      initialValue: widget
+                                          .indgredientsToSave[index].amount
+                                          .toString(),
+                                      autoFocus: false,
+                                      validators: FormBuilderValidators.compose(
+                                        [],
+                                      ),
+                                      attribute: 'name',
+                                      hint: strings
+                                          .createRecipeStepTwoAmountInput,
+                                      type: TextInputType.text,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),
     );
   }
 
-  _submitted() {
-    print(indgredientsToSave);
+  _removeIngredient(int index) {
+    widget.indgredientsToSave.removeAt(index);
+    setState(() {});
   }
 
   _getChanges(String value) {
     setState(() {
       searchValue = value;
     });
-    ingrediantBloc = BlocProvider.of<IngrediantBloc>(context);
-    ingrediantBloc.add(
-      IngrediantEvents.getIngredients(value),
-    );
-  }
-
-  _createIngredient() {
-    ingrediantBloc = BlocProvider.of<IngrediantBloc>(context);
-    ingrediantBloc.add(
-      IngrediantEvents.createIngredient(
-        searchValue,
-        indgredients,
-      ),
-    );
+    if (searchValue.length > 0) {
+      ingrediantBloc = BlocProvider.of<IngrediantBloc>(context);
+      ingrediantBloc.add(
+        IngrediantEvents.getIngredients(value),
+      );
+    } else {
+      ingrediantBloc.add(IngrediantEvents.resetIngredientsSearch());
+    }
   }
 
   _addIngredients(Ingredients ingredient) {
@@ -263,9 +321,37 @@ class _CreateRecipeStepTWoWidgetState extends State<CreateRecipeStepTWoWidget> {
       amount: 1,
       ingredient: existsIngredient,
     );
-    indgredientsToSave.add(recipeIngredients);
+    widget.indgredientsToSave.add(recipeIngredients);
     ingrediantBloc = BlocProvider.of<IngrediantBloc>(context);
     ingrediantBloc.add(IngrediantEvents.resetIngredientsSearch());
     setState(() {});
+  }
+
+  convertToLanguage(String type) {
+    final S strings = S.of(context);
+    switch (type) {
+      case Enums.unit:
+        return strings.unit;
+      case Enums.gram:
+        return strings.gram;
+      case Enums.spoon:
+        return strings.spoon;
+      default:
+        return strings.emptyString;
+    }
+  }
+
+  languageToEnum(String type) {
+    final S strings = S.of(context);
+    switch (type) {
+      case 'יחידה':
+        return Enums.unit;
+      case 'גרם':
+        return Enums.gram;
+      case 'כפית':
+        return Enums.spoon;
+      default:
+        return strings.emptyString;
+    }
   }
 }

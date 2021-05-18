@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:momrecipes/model/recipe/create_recipe.dto.dart';
 import 'package:momrecipes/model/recipe/recipe.response.dart';
 import 'package:momrecipes/services/storage.service.dart';
 import 'package:momrecipes/model/recipe/recipe_filter.dto.dart';
@@ -33,5 +34,18 @@ class RecipeService {
       response.data as Map<String, dynamic>,
     );
     return recipesResponse.data;
+  }
+
+  Future<bool> createRecipe(CreateRecipeDTO createRecipeDTO) async {
+    try {
+      final String uri = '/recipe';
+      final formData = await createRecipeDTO.toFormData();
+      print(formData);
+      final response = await dio.post(uri, data: formData);
+      return true;
+    } catch (e) {
+      throw new Error();
+      print(e);
+    }
   }
 }

@@ -40,6 +40,7 @@ class IngrediantBloc extends Bloc<IngrediantEvents, IngredientsState> {
         yield IngredientLoadedState(
           ingredients: [],
         );
+        yield IngredientInitState();
         break;
     }
   }

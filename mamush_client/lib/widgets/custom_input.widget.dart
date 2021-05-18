@@ -13,6 +13,7 @@ class CustomInputWidget extends StatelessWidget {
   final Widget? prefixIcon;
   final bool? change;
   final onChange;
+  final int maxLines;
   const CustomInputWidget({
     required this.hint,
     required this.attribute,
@@ -23,6 +24,7 @@ class CustomInputWidget extends StatelessWidget {
     this.prefixIcon,
     this.change = false,
     this.onChange,
+    this.maxLines = 1,
   });
   @override
   Widget build(BuildContext context) {
@@ -32,6 +34,7 @@ class CustomInputWidget extends StatelessWidget {
       initialValue: initialValue,
       validator: validators,
       name: attribute,
+      maxLines: maxLines,
       keyboardType: type,
       autofocus: autoFocus,
       decoration: InputDecoration(

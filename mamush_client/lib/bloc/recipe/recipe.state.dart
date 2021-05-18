@@ -19,6 +19,10 @@ class RecipeLoadedState extends RecipeState {
   });
 }
 
+class RecipLoadingeCreateState extends RecipeState {}
+
+class RecipLoadedeCreateState extends RecipeState {}
+
 class RecipeCurrentLoadedState extends RecipeState {
   final Recipe recipe;
   final List<Recipe> recipes;

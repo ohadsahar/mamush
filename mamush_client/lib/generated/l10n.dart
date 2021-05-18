@@ -340,6 +340,56 @@ class S {
     );
   }
 
+  /// `הקלד מספר`
+  String get createRecipeStepTwoAmountInput {
+    return Intl.message(
+      'הקלד מספר',
+      name: 'createRecipeStepTwoAmountInput',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `סוג`
+  String get createRecipeStepTwoType {
+    return Intl.message(
+      'סוג',
+      name: 'createRecipeStepTwoType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `יצירת הוראות הכנה`
+  String get createRecipeStepThree {
+    return Intl.message(
+      'יצירת הוראות הכנה',
+      name: 'createRecipeStepThree',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `הקלד/י הוראות הכנה`
+  String get createRecipeStepThreeAddInstruction {
+    return Intl.message(
+      'הקלד/י הוראות הכנה',
+      name: 'createRecipeStepThreeAddInstruction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `זמן`
+  String get createRecipeStepThreeTimer {
+    return Intl.message(
+      'זמן',
+      name: 'createRecipeStepThreeTimer',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `יחידה`
   String get unit {
     return Intl.message(

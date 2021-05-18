@@ -2,6 +2,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:momrecipes/bloc/recipe/recipe.controller.dart';
 import 'package:momrecipes/bloc/recipe/recipe.events.dart';
 import 'package:momrecipes/bloc/recipe/recipe.state.dart';
+import 'package:momrecipes/constants/routes.dart';
+import 'package:momrecipes/services/navigation.service.dart';
+import 'package:momrecipes/setup/injection.dart';
 
 class RecipeBloc extends Bloc<RecipeEvents, RecipeState> {
   final RecipeController recipeController;
@@ -39,6 +42,18 @@ class RecipeBloc extends Bloc<RecipeEvents, RecipeState> {
           recipe: event.recipe,
           recipes: event.recipes,
         );
+        break;
+      case ERecipeEvents.createRecipe:
+        yield RecipLoadingeCreateState();
+        final response =
+            await recipeController.createRecipe(event.createRecipeDTO);
+        if (response) {
+          final NavigationService navigationService =
+              getIt<NavigationService>();
+          navigationService.navigateReplace(Routes.homeScreen, null);
+        }
+        yield RecipLoadedeCreateState();
+
         break;
     }
   }

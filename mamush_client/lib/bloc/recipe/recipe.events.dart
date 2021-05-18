@@ -1,11 +1,13 @@
+import 'package:momrecipes/model/recipe/create_recipe.dto.dart';
 import 'package:momrecipes/model/recipe/recipe.response.dart';
 import 'package:momrecipes/model/recipe/recipe_filter.dto.dart';
 
-enum ERecipeEvents { getRecipes, filterRecipe, setCurrentRecipe }
+enum ERecipeEvents { getRecipes, filterRecipe, setCurrentRecipe, createRecipe }
 
 class RecipeEvents {
   late ERecipeEvents eventType;
   late RecipeFilterDTO recipeFilterDTO;
+  late CreateRecipeDTO createRecipeDTO;
   late Recipe recipe;
   late List<Recipe> recipes;
   late String id;
@@ -24,5 +26,9 @@ class RecipeEvents {
     this.recipe = recipe;
     this.recipes = recipes;
     this.eventType = ERecipeEvents.setCurrentRecipe;
+  }
+  RecipeEvents.createRecipe(CreateRecipeDTO createRecipeDTO) {
+    this.createRecipeDTO = createRecipeDTO;
+    this.eventType = ERecipeEvents.createRecipe;
   }
 }

@@ -9,7 +9,7 @@
 
 // const countryService = Container.get(CountryService);
 // const channelService = Container.get(ChannelService);
-// const tvShowService = Container.get(TvShowService);
+ const tvShowService = Container.get(TvShowService);
 
 // const countries = [
 //     {name: 'Israel'},

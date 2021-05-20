@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:momrecipes/theme/theme.dart';
 import 'package:momrecipes/utils/dimensions.dart';
 
 class RecipeAppBarWidget extends StatelessWidget {
@@ -30,7 +29,11 @@ class RecipeAppBarWidget extends StatelessWidget {
             ),
             Text(
               recipeName,
-              style: appTheme.textTheme.headline2,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: Dimensions.sxl * 1.25,
+                fontWeight: FontWeight.w400,
+              ),
             ),
           ],
         ),

@@ -41,14 +41,15 @@ class CompleteProfileCameraWidget extends StatelessWidget {
               ),
             ),
             child: ClipOval(
-              child: image.path == ""
+              child: image.path == "" && !Uri.parse(filePath).isAbsolute
                   ? Image.asset(
                       Assets.images.noUser.path,
                       width: width,
                       height: height,
                       fit: BoxFit.cover,
                     )
-                  : !Uri.parse(image.path).isAbsolute
+                  : !Uri.parse(image.path).isAbsolute &&
+                          !Uri.parse(filePath).isAbsolute
                       ? Image.file(
                           image,
                           width: width,

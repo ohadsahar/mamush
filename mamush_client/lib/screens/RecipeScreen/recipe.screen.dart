@@ -95,7 +95,7 @@ class _RecipeScreenState extends State<RecipeScreen> {
                             icon: Icon(
                               Icons.delete_forever,
                               size: Dimensions.sxl,
-                              color: Colors.black,
+                              color: Colors.red,
                             ),
                             onPressed: _delete,
                           ),

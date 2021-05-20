@@ -19,6 +19,7 @@ import 'package:momrecipes/setup/injection.dart';
 import 'package:momrecipes/theme/theme.dart';
 import 'package:momrecipes/utils/dimensions.dart';
 import 'package:momrecipes/widgets/column_scroll_view.widget.dart';
+import 'package:momrecipes/widgets/loading.widget.dart';
 
 class CreateRecipeScreen extends StatefulWidget {
   @override
@@ -42,100 +43,111 @@ class CreateRecipeScreenState extends State<CreateRecipeScreen> {
             .toString();
 
     final S strings = S.of(context);
-    return Scaffold(
-      backgroundColor: AppColors.thirdColor,
-      body: SafeArea(
-        child: ColumnScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                margin: EdgeInsets.only(
-                  right: Dimensions.sxl,
-                  top: Dimensions.sxl,
-                ),
-                child: Row(
+    return BlocBuilder<RecipeBloc, RecipeState>(
+      builder: (BuildContext context, RecipeState state) {
+        if (state is RecipLoadedeCreateState ||
+            state is RecipeCurrentLoadedState ||
+            state is RecipeLoadedState) {
+          return Scaffold(
+            backgroundColor: AppColors.thirdColor,
+            body: SafeArea(
+              child: ColumnScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    IconButton(
-                      icon: Icon(
-                        Icons.arrow_back_ios,
+                    Container(
+                      margin: EdgeInsets.only(
+                        right: Dimensions.sxl,
+                        top: Dimensions.sxl,
                       ),
-                      onPressed: _goBack,
-                    ),
-                    Text(
-                      strings.createRecipeAnotherRecipeInCategory(
-                        categoryName,
+                      child: Row(
+                        children: [
+                          IconButton(
+                            icon: Icon(
+                              Icons.arrow_back_ios,
+                            ),
+                            onPressed: _goBack,
+                          ),
+                          Text(
+                            strings.createRecipeAnotherRecipeInCategory(
+                              categoryName,
+                            ),
+                            style: appTheme.textTheme.headline3,
+                          ),
+                        ],
                       ),
-                      style: appTheme.textTheme.headline3,
                     ),
+                    counter == 0
+                        ? CreateRecipeStepOneWidget(
+                            // onSubmit: _onSubmitFirstStep,
+                            formKey: _formKey,
+                            imageSelected: _imageSelected,
+                            recipeName:
+                                data != null ? data['recipeName'] ?? '' : '',
+                            recipePicture: data != null
+                                ? data['recipePicture'] != null
+                                    ? data['recipePicture'].filePath ?? ''
+                                    : ''
+                                : '',
+                          )
+                        : counter == 1
+                            ? CreateRecipeStepTWoWidget(
+                                onSubmit: _onSubmitSecondStep,
+                                indgredientsToSave: indgredientsToSave,
+                              )
+                            : CreateRecipeStepThreeWidget(
+                                onSubmit: _onFinishForm,
+                                instructionsToSave: instructionsToSave,
+                              ),
                   ],
                 ),
               ),
-              counter == 0
-                  ? CreateRecipeStepOneWidget(
-                      // onSubmit: _onSubmitFirstStep,
-                      formKey: _formKey,
-                      imageSelected: _imageSelected,
-                      recipeName: data != null ? data['recipeName'] ?? '' : '',
-                      recipePicture: data != null
-                          ? data['recipePicture'] != null
-                              ? data['recipePicture'].filePath ?? ''
-                              : ''
-                          : '',
-                    )
-                  : counter == 1
-                      ? CreateRecipeStepTWoWidget(
-                          onSubmit: _onSubmitSecondStep,
-                          indgredientsToSave: indgredientsToSave,
-                        )
-                      : CreateRecipeStepThreeWidget(
-                          onSubmit: _onFinishForm,
-                          instructionsToSave: instructionsToSave,
-                        ),
-            ],
-          ),
-        ),
-      ),
-      floatingActionButton: Container(
-        height: MediaQuery.of(context).size.width * 0.13,
-        width: MediaQuery.of(context).size.width * 0.13,
-        child: FloatingActionButton(
-          // backgroundColor: AppColors.appPrimaryColor,
-          elevation: 5,
-          onPressed: () => {
-            if (counter == 0)
-              {_onSubmitFirstStep()}
-            else if (counter == 1)
-              {
-                _onSubmitSecondStep(indgredientsToSave),
-              }
-            else if (counter == 2)
-              {
-                _onFinishForm(instructionsToSave),
-              }
-          },
-          child: Container(
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              gradient: new LinearGradient(
-                begin: Alignment.centerLeft,
-                end: Alignment.centerRight,
-                colors: [
-                  const Color(0xff00B460),
-                  const Color(0xff00D38C),
-                ],
+            ),
+            floatingActionButton: Container(
+              height: MediaQuery.of(context).size.width * 0.13,
+              width: MediaQuery.of(context).size.width * 0.13,
+              child: FloatingActionButton(
+                // backgroundColor: AppColors.appPrimaryColor,
+                elevation: 5,
+                onPressed: () => {
+                  if (counter == 0)
+                    {_onSubmitFirstStep()}
+                  else if (counter == 1)
+                    {
+                      _onSubmitSecondStep(indgredientsToSave),
+                    }
+                  else if (counter == 2)
+                    {
+                      _onFinishForm(instructionsToSave),
+                    }
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: new LinearGradient(
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                      colors: [
+                        const Color(0xff00B460),
+                        const Color(0xff00D38C),
+                      ],
+                    ),
+                  ),
+                  height: MediaQuery.of(context).size.width * 0.13,
+                  width: MediaQuery.of(context).size.width * 0.13,
+                  child: Icon(
+                    Icons.check,
+                    size: Dimensions.sxl * 2,
+                    color: Colors.white,
+                  ),
+                ),
               ),
             ),
-            height: MediaQuery.of(context).size.width * 0.13,
-            width: MediaQuery.of(context).size.width * 0.13,
-            child: Icon(
-              Icons.check,
-              size: Dimensions.sxl * 2,
-              color: Colors.white,
-            ),
-          ),
-        ),
-      ),
+          );
+        } else {
+          return Center(child: LoadingWidget());
+        }
+      },
     );
   }
 

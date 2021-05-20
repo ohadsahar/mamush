@@ -125,16 +125,30 @@ class _CreateRecipeStepThreeWidgetState
                                                     .timerOn ==
                                                 true
                                             ? CustomInputWidget(
+                                                onChange: (value) => {
+                                                  setState(() {
+                                                    widget
+                                                            .instructionsToSave[
+                                                                index]
+                                                            .timer =
+                                                        int.parse(value);
+                                                    widget
+                                                        .instructionsToSave[
+                                                            index]
+                                                        .hasTimer = true;
+                                                  })
+                                                },
                                                 initialValue: widget
                                                     .instructionsToSave[index]
-                                                    .instructionsDescription,
+                                                    .timer
+                                                    .toString(),
                                                 autoFocus: false,
                                                 validators:
                                                     FormBuilderValidators
                                                         .compose(
                                                   [],
                                                 ),
-                                                attribute: 'name',
+                                                attribute: 'timer_on',
                                                 hint: strings
                                                     .createRecipeStepThreeTimer,
                                                 type: TextInputType.number,

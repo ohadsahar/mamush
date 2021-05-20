@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:momrecipes/bloc/recipe/recipe.bloc.dart';
+import 'package:momrecipes/bloc/recipe/recipe.events.dart';
 import 'package:momrecipes/bloc/recipe/recipe.state.dart';
+import 'package:momrecipes/constants/routes.dart';
 import 'package:momrecipes/generated/assets.gen.dart';
 import 'package:momrecipes/generated/l10n.dart';
 import 'package:momrecipes/model/recipe/recipe.response.dart';
@@ -74,6 +76,30 @@ class _RecipeScreenState extends State<RecipeScreen> {
                             recipeName: state.recipe.recipeName,
                           ),
                         ),
+                        Positioned(
+                          top: Dimensions.xl,
+                          left: Dimensions.xl,
+                          child: IconButton(
+                            icon: Icon(
+                              Icons.edit,
+                              size: Dimensions.sxl,
+                              color: Colors.white,
+                            ),
+                            onPressed: _edit,
+                          ),
+                        ),
+                        Positioned(
+                          top: Dimensions.xl,
+                          left: Dimensions.xl * 4,
+                          child: IconButton(
+                            icon: Icon(
+                              Icons.delete_forever,
+                              size: Dimensions.sxl,
+                              color: Colors.black,
+                            ),
+                            onPressed: _delete,
+                          ),
+                        ),
                       ],
                     ),
                     const SizedBox(
@@ -123,6 +149,35 @@ class _RecipeScreenState extends State<RecipeScreen> {
           return LoadingWidget();
         }
       },
+    );
+  }
+
+  void _edit() {
+    final name =
+        (ModalRoute.of(context)!.settings.arguments as Map)["categoryName"]
+            .toString();
+    final id =
+        (ModalRoute.of(context)!.settings.arguments as Map)["id"].toString();
+    final NavigationService navigationService = getIt<NavigationService>();
+    navigationService
+        .navigateReplace(Routes.createRecipe, {'id': id, 'categoryName': name});
+  }
+
+  void _delete() {
+    final name =
+        (ModalRoute.of(context)!.settings.arguments as Map)["categoryName"]
+            .toString();
+    final id =
+        (ModalRoute.of(context)!.settings.arguments as Map)["id"].toString();
+
+    final _recipeBloc = BlocProvider.of<RecipeBloc>(context);
+    _recipeBloc.add(
+      RecipeEvents.deleteRecipe(
+        _recipeBloc.state.recipe.id.toString(),
+        _recipeBloc.state.recipes,
+        id,
+        name,
+      ),
     );
   }
 

@@ -12,10 +12,14 @@ import 'package:momrecipes/widgets/custom_input.widget.dart';
 
 class CreateRecipeStepOneWidget extends StatefulWidget {
   final Function imageSelected;
+  final String? recipeName;
+  final String recipePicture;
   final formKey;
   const CreateRecipeStepOneWidget({
     required this.formKey,
     required this.imageSelected,
+    this.recipeName,
+    required this.recipePicture,
   });
   @override
   _CreateRecipeStepOneWidgetState createState() =>
@@ -39,7 +43,7 @@ class _CreateRecipeStepOneWidgetState extends State<CreateRecipeStepOneWidget> {
             ),
             CompleteProfileCameraWidget(
               image: _image,
-              filePath: '',
+              filePath: widget.recipePicture,
               modalBottomSheetMenu: _modalBottomSheetMenu,
             ),
             const SizedBox(
@@ -49,7 +53,8 @@ class _CreateRecipeStepOneWidgetState extends State<CreateRecipeStepOneWidget> {
               widthFactor: 0.7,
               child: CustomInputWidget(
                 onChange: (value) => {},
-                initialValue: '',
+                initialValue:
+                    widget.recipeName != null ? widget.recipeName : '',
                 validators: FormBuilderValidators.compose(
                   [
                     FormBuilderValidators.minLength(

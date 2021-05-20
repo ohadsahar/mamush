@@ -295,7 +295,10 @@ class CategoryScreenState extends State<CategoryScreen> {
 
   _enterRecipe(Recipe recipe) {
     final NavigationService navigationService = getIt<NavigationService>();
-
+    final name =
+        (ModalRoute.of(context)!.settings.arguments as Map)["name"].toString();
+    final id =
+        (ModalRoute.of(context)!.settings.arguments as Map)["id"].toString();
     _recipeBloc = BlocProvider.of<RecipeBloc>(context);
     _recipeBloc.add(
       RecipeEvents.setCurrentRecipe(
@@ -303,12 +306,13 @@ class CategoryScreenState extends State<CategoryScreen> {
         _recipeBloc.state.recipes,
       ),
     );
-    navigationService.navigate(Routes.recipeScreen, null);
+    navigationService
+        .navigate(Routes.recipeScreen, {'id': id, 'categoryName': name});
   }
 
   _goBack() {
     final NavigationService navigationService = getIt<NavigationService>();
-    navigationService.pop();
+    navigationService.navigateReplace(Routes.homeScreen, null);
   }
 
   _navigateToCreateRecipe() {

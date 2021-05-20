@@ -8,6 +8,7 @@ import 'package:flutter/widgets.dart';
 class $AssetsCfgGen {
   const $AssetsCfgGen();
 
+  String get dev => 'assets/cfg/dev.json';
   String get prod => 'assets/cfg/prod.json';
 }
 

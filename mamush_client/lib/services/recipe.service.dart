@@ -40,12 +40,26 @@ class RecipeService {
     try {
       final String uri = '/recipe';
       final formData = await createRecipeDTO.toFormData();
-      print(formData);
       final response = await dio.post(uri, data: formData);
-      return true;
+      if (response.data != null) {
+        return true;
+      }
+      return false;
     } catch (e) {
       throw new Error();
-      print(e);
+    }
+  }
+
+  Future<bool> deleteRecipe(String id) async {
+    try {
+      final String uri = '/recipe/$id';
+      final response = await dio.delete(uri);
+      if (response.data != null) {
+        return true;
+      }
+      return false;
+    } catch (e) {
+      throw new Error();
     }
   }
 }

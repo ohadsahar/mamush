@@ -4,6 +4,7 @@ import 'package:momrecipes/bloc/recipe/recipe.events.dart';
 import 'package:momrecipes/bloc/recipe/recipe.state.dart';
 import 'package:momrecipes/constants/routes.dart';
 import 'package:momrecipes/services/navigation.service.dart';
+import 'package:momrecipes/services/navigation.service.dart';
 import 'package:momrecipes/setup/injection.dart';
 
 class RecipeBloc extends Bloc<RecipeEvents, RecipeState> {
@@ -53,6 +54,27 @@ class RecipeBloc extends Bloc<RecipeEvents, RecipeState> {
           navigationService.navigateReplace(Routes.homeScreen, null);
         }
         yield RecipLoadedeCreateState();
+        break;
+
+      case ERecipeEvents.deleteRecipe:
+        yield RecipLoadingeCreateState();
+        final response = await recipeController.deleteRecipe(event.id);
+        if (response) {
+          final NavigationService navigationService =
+              getIt<NavigationService>();
+          final index = event.recipes.indexWhere(
+              (recipe) => recipe.id.toString() == event.id.toString());
+          if (index >= 0) {
+            event.recipes.removeAt(index);
+          }
+          yield RecipeLoadedState(
+            recipes: event.recipes,
+          );
+          navigationService.navigate(Routes.categoryScreen, {
+            'id': event.categoryID,
+            'name': event.categoryName,
+          });
+        }
 
         break;
     }

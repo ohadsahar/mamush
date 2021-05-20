@@ -8,6 +8,7 @@ abstract class RecipeRepo {
   Future<List<Recipe>> getRecipes(String id);
   Future<List<Recipe>> getRecipeByFilter(RecipeFilterDTO recipeFilterDTO);
   Future<bool> createRecipe(CreateRecipeDTO createRecipeDTO);
+  Future<bool> deleteRecipe(String id);
 }
 
 class RecipeController extends RecipeRepo {
@@ -28,5 +29,11 @@ class RecipeController extends RecipeRepo {
   Future<bool> createRecipe(CreateRecipeDTO createRecipeDTO) async {
     final RecipeService recipeService = getIt<RecipeService>();
     return await recipeService.createRecipe(createRecipeDTO);
+  }
+
+  @override
+  Future<bool> deleteRecipe(String id) async {
+    final RecipeService recipeService = getIt<RecipeService>();
+    return await recipeService.deleteRecipe(id);
   }
 }

@@ -79,6 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "recipeAmount": m3,
         "recipeInstructionTimer": m4,
         "recipeScreen": m5,
+        "recipeScreenEditRecipe": MessageLookupByLibrary.simpleMessage("עריכה"),
         "recipeScreenFinishedRecipe":
             MessageLookupByLibrary.simpleMessage("סיימתי"),
         "recipeScreenInstruction":

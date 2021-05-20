@@ -220,6 +220,16 @@ class S {
     );
   }
 
+  /// `עריכה`
+  String get recipeScreenEditRecipe {
+    return Intl.message(
+      'עריכה',
+      name: 'recipeScreenEditRecipe',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `{ingredientsAmount} {unit}`
   String recipeAmount(Object ingredientsAmount, Object unit) {
     return Intl.message(

@@ -8,6 +8,7 @@ part 'create_recipe.dto.g.dart';
 
 @JsonSerializable()
 class CreateRecipeDTO {
+  int? id;
   String recipeName;
   String? recipePicture;
   List<RecipeIngredients> recipeIngredients;
@@ -15,6 +16,7 @@ class CreateRecipeDTO {
   String category;
 
   CreateRecipeDTO({
+    required this.id,
     required this.recipeName,
     required this.recipePicture,
     required this.recipeIngredients,
@@ -28,7 +30,6 @@ class CreateRecipeDTO {
       _$CreateRecipeDTOFromJson(json);
 
   Future<FormData> toFormData() async {
-    var counter = 0;
     final map = toJson();
     if (recipePicture != null && recipePicture != '') {
       map['recipePicture'] = await MultipartFile.fromFile(recipePicture!);
@@ -37,17 +38,6 @@ class CreateRecipeDTO {
         jsonEncode(map['recipeIngredients'].map((e) => e.toJson()).toList());
     map['instructions'] =
         jsonEncode(map['instructions'].map((e) => e.toJson()).toList());
-    // map['recipeIngredients'] = jsonEncode(map['instructions']);
-    // map['instructions'] = jsonEncode(map['recipeIngredients']);
-    // recipeIngredients.forEach((recipeIngredient) {
-    //   map['recipeIngredients'][counter] = recipeIngredient;
-    // });
-    // counter = 0;
-    // instructions.forEach((instruction) {
-    //   map['instructions'][counter] = instruction;
-    // });
-    //  map['recipeIngredients'] = map['recipeIngredients'];
-    //  map['instructions'] = map['instructions'];
     return FormData.fromMap(map);
   }
 }

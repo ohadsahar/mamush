@@ -1,7 +1,5 @@
-import 'dart:convert';
 import 'dart:io';
 
-import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,17 +7,17 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:momrecipes/bloc/recipe/recipe.bloc.dart';
 import 'package:momrecipes/bloc/recipe/recipe.events.dart';
+import 'package:momrecipes/bloc/recipe/recipe.state.dart';
 import 'package:momrecipes/generated/l10n.dart';
 import 'package:momrecipes/model/recipe/create_recipe.dto.dart';
 import 'package:momrecipes/model/recipe/recipe.response.dart';
 import 'package:momrecipes/screens/CreateRecipeScreen/local_widgets/create_recipe_step_one.widget.dart';
 import 'package:momrecipes/screens/CreateRecipeScreen/local_widgets/create_recipe_step_three.widget.dart';
 import 'package:momrecipes/screens/CreateRecipeScreen/local_widgets/create_recipe_step_two.widget.dart';
-import 'package:momrecipes/services/storage.service.dart';
+import 'package:momrecipes/services/navigation.service.dart';
 import 'package:momrecipes/setup/injection.dart';
 import 'package:momrecipes/theme/theme.dart';
 import 'package:momrecipes/utils/dimensions.dart';
-import 'package:momrecipes/widgets/app.screen.dart';
 import 'package:momrecipes/widgets/column_scroll_view.widget.dart';
 
 class CreateRecipeScreen extends StatefulWidget {
@@ -30,6 +28,7 @@ class CreateRecipeScreen extends StatefulWidget {
 class CreateRecipeScreenState extends State<CreateRecipeScreen> {
   late File _image = File('');
   late RecipeBloc _recipeBloc;
+  late int id = 0;
   var counter = 0;
   final picker = ImagePicker();
   List<RecipeIngredients> indgredientsToSave = [];
@@ -41,8 +40,7 @@ class CreateRecipeScreenState extends State<CreateRecipeScreen> {
     final categoryName =
         (ModalRoute.of(context)!.settings.arguments as Map)["categoryName"]
             .toString();
-    final id =
-        (ModalRoute.of(context)!.settings.arguments as Map)["id"].toString();
+
     final S strings = S.of(context);
     return Scaffold(
       backgroundColor: AppColors.thirdColor,
@@ -78,6 +76,12 @@ class CreateRecipeScreenState extends State<CreateRecipeScreen> {
                       // onSubmit: _onSubmitFirstStep,
                       formKey: _formKey,
                       imageSelected: _imageSelected,
+                      recipeName: data != null ? data['recipeName'] ?? '' : '',
+                      recipePicture: data != null
+                          ? data['recipePicture'] != null
+                              ? data['recipePicture'].filePath ?? ''
+                              : ''
+                          : '',
                     )
                   : counter == 1
                       ? CreateRecipeStepTWoWidget(
@@ -135,6 +139,28 @@ class CreateRecipeScreenState extends State<CreateRecipeScreen> {
     );
   }
 
+  @override
+  void initState() {
+    super.initState();
+    _recipeBloc = BlocProvider.of<RecipeBloc>(context);
+    if (_recipeBloc.state is RecipeCurrentLoadedState) {
+      data = {
+        'id': _recipeBloc.state.recipe.id,
+        'recipeName': _recipeBloc.state.recipe.recipeName,
+        'recipePicture': _recipeBloc.state.recipe.recipePicture,
+        'recipeIngredients': _recipeBloc.state.recipe.recipeIngredients,
+        'instructions': _recipeBloc.state.recipe.instructions,
+        'category': 1
+      };
+      setState(() {
+        indgredientsToSave = data['recipeIngredients'];
+        instructionsToSave = data['instructions'];
+        id = _recipeBloc.state.recipe.id;
+        counter = 0;
+      });
+    }
+  }
+
   _onSubmitFirstStep() {
     final isValid = _formKey.currentState!.saveAndValidate();
     final recipeName = _formKey.currentState!.value['recipeName'];
@@ -158,17 +184,17 @@ class CreateRecipeScreenState extends State<CreateRecipeScreen> {
   }
 
   _onFinishForm(List<Instructions> instructions) {
+    _recipeBloc = BlocProvider.of<RecipeBloc>(context);
     final categoryID =
         (ModalRoute.of(context)!.settings.arguments as Map)["id"].toString();
-
     CreateRecipeDTO createRecipeDTO = new CreateRecipeDTO(
+      id: id,
       recipeName: data['recipeName'],
       recipePicture: data['image'].path,
       recipeIngredients: indgredientsToSave,
       instructions: instructions,
       category: categoryID,
     );
-    _recipeBloc = BlocProvider.of<RecipeBloc>(context);
     _recipeBloc.add(RecipeEvents.createRecipe(createRecipeDTO));
   }
 
@@ -179,8 +205,15 @@ class CreateRecipeScreenState extends State<CreateRecipeScreen> {
   }
 
   _goBack() {
-    setState(() {
-      counter -= 1;
-    });
+    if (counter - 1 < 0) {
+      final NavigationService navigationService = getIt<NavigationService>();
+      navigationService.pop();
+    } else {
+      setState(
+        () {
+          counter -= 1;
+        },
+      );
+    }
   }
 }

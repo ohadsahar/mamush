@@ -2,7 +2,13 @@ import 'package:momrecipes/model/recipe/create_recipe.dto.dart';
 import 'package:momrecipes/model/recipe/recipe.response.dart';
 import 'package:momrecipes/model/recipe/recipe_filter.dto.dart';
 
-enum ERecipeEvents { getRecipes, filterRecipe, setCurrentRecipe, createRecipe }
+enum ERecipeEvents {
+  getRecipes,
+  filterRecipe,
+  setCurrentRecipe,
+  createRecipe,
+  deleteRecipe
+}
 
 class RecipeEvents {
   late ERecipeEvents eventType;
@@ -11,6 +17,8 @@ class RecipeEvents {
   late Recipe recipe;
   late List<Recipe> recipes;
   late String id;
+  late String categoryName;
+  late String categoryID;
 
   RecipeEvents.getRecipes(String id) {
     this.id = id;
@@ -30,5 +38,18 @@ class RecipeEvents {
   RecipeEvents.createRecipe(CreateRecipeDTO createRecipeDTO) {
     this.createRecipeDTO = createRecipeDTO;
     this.eventType = ERecipeEvents.createRecipe;
+  }
+
+  RecipeEvents.deleteRecipe(
+    String id,
+    List<Recipe> recipes,
+    String categoryID,
+    String categoryName,
+  ) {
+    this.categoryID = categoryID;
+    this.categoryName = categoryName;
+    this.id = id;
+    this.eventType = ERecipeEvents.deleteRecipe;
+    this.recipes = recipes;
   }
 }

@@ -36,7 +36,7 @@ class CreateRecipeStepTwoHeaderWidget extends StatelessWidget {
                 ),
               ],
             ),
-            hint: strings.createRecipeAddRecipeName,
+            hint: strings.createRecipeStepTwoIngredientName,
             attribute: 'recipeName',
             type: TextInputType.text,
           ),

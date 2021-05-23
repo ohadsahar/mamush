@@ -155,7 +155,8 @@ class CreateRecipeScreenState extends State<CreateRecipeScreen> {
   void initState() {
     super.initState();
     _recipeBloc = BlocProvider.of<RecipeBloc>(context);
-    if (_recipeBloc.state is RecipeCurrentLoadedState) {
+    if (_recipeBloc.state is RecipeCurrentLoadedState &&
+        _recipeBloc.state.recipe.id != 0) {
       data = {
         'id': _recipeBloc.state.recipe.id,
         'recipeName': _recipeBloc.state.recipe.recipeName,

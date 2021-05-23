@@ -83,10 +83,6 @@ class _CreateRecipeStepOneWidgetState extends State<CreateRecipeStepOneWidget> {
     );
   }
 
-  void _onChanged(String value) {
-    print(value);
-  }
-
   void _modalBottomSheetMenu() {
     final S strings = S.of(context);
     final String imageType = 'image';

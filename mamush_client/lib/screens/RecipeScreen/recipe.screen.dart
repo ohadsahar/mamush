@@ -25,7 +25,7 @@ class RecipeScreen extends StatefulWidget {
 }
 
 class _RecipeScreenState extends State<RecipeScreen> {
-  final double imageHeight = 0.4;
+  final double imageHeight = 0.18;
   final double width = 0.9;
   @override
   Widget build(BuildContext context) {
@@ -63,10 +63,22 @@ class _RecipeScreenState extends State<RecipeScreen> {
                                     imageHeight,
                                   ),
                                   child: Image.asset(
-                                    Assets.images.noUser.path,
+                                    Assets.images.emptyStateFood.path,
                                     fit: BoxFit.cover,
                                   ),
                                 ),
+                        ),
+                        Positioned(
+                          child: Container(
+                            width: double.infinity,
+                            height: Dimensions.getScreenFractionHeight(
+                              context,
+                              0.075,
+                            ),
+                            color: Colors.black.withOpacity(
+                              0.6,
+                            ),
+                          ),
                         ),
                         Positioned(
                           top: Dimensions.xl,
@@ -82,7 +94,7 @@ class _RecipeScreenState extends State<RecipeScreen> {
                           child: IconButton(
                             icon: Icon(
                               Icons.edit,
-                              size: Dimensions.sxl,
+                              size: Dimensions.sxl * 1.25,
                               color: Colors.white,
                             ),
                             onPressed: _edit,
@@ -94,7 +106,7 @@ class _RecipeScreenState extends State<RecipeScreen> {
                           child: IconButton(
                             icon: Icon(
                               Icons.delete_forever,
-                              size: Dimensions.sxl,
+                              size: Dimensions.sxl * 1.25,
                               color: Colors.red,
                             ),
                             onPressed: _delete,
@@ -159,8 +171,10 @@ class _RecipeScreenState extends State<RecipeScreen> {
     final id =
         (ModalRoute.of(context)!.settings.arguments as Map)["id"].toString();
     final NavigationService navigationService = getIt<NavigationService>();
-    navigationService
-        .navigateReplace(Routes.createRecipe, {'id': id, 'categoryName': name});
+    navigationService.navigateReplace(Routes.createRecipe, {
+      'id': id,
+      'categoryName': name,
+    });
   }
 
   void _delete() {
@@ -182,7 +196,6 @@ class _RecipeScreenState extends State<RecipeScreen> {
   }
 
   _onSubmit(Recipe recipe) {
-    print(recipe);
     for (var i = 0; i < recipe.recipeIngredients.length; i++) {
       recipe.recipeIngredients[i].onSelected(false);
     }

@@ -48,6 +48,11 @@ final ThemeData appTheme = ThemeData(
       fontSize: 28,
       fontWeight: FontWeight.w400,
     ),
+    bodyText1: TextStyle(
+      color: Colors.black,
+      fontWeight: FontWeight.w400,
+      fontSize: 28,
+    ),
   ),
 );
 

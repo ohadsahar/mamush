@@ -157,7 +157,9 @@ class HomeScreenState extends State<HomeScreen> {
                     ),
                   ],
                 )
-              : LoadingWidget(),
+              : Center(
+                  child: LoadingWidget(),
+                ),
         );
       },
     );

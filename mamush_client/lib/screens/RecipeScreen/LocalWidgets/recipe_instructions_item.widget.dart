@@ -24,7 +24,7 @@ class RecipeInstructionsItemWidget extends StatelessWidget {
       color: AppColors.thirdColor,
       child: Padding(
         padding: EdgeInsets.all(
-          Dimensions.xl,
+          Dimensions.sm,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -52,7 +52,7 @@ class RecipeInstructionsItemWidget extends StatelessWidget {
                     style: appTheme.textTheme.headline3,
                   ),
                   const SizedBox(
-                    height: Dimensions.xl,
+                    height: Dimensions.sm,
                   ),
                   hasTimer
                       ? Row(

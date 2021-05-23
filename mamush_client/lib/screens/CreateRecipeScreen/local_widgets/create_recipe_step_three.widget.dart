@@ -31,7 +31,7 @@ class _CreateRecipeStepThreeWidgetState
         Container(
           height: Dimensions.getScreenFractionHeight(
             context,
-            0.9,
+            0.65,
           ),
           child: ListView.builder(
             shrinkWrap: true,
@@ -110,7 +110,8 @@ class _CreateRecipeStepThreeWidgetState
                                           left: Dimensions.sxl,
                                         ),
                                         child: Text(
-                                          'צריך כאן טיימר',
+                                          strings
+                                              .createRecipeStepThreeNeedTimer,
                                           style: appTheme.textTheme.headline4,
                                         ),
                                       ),
@@ -175,9 +176,9 @@ class _CreateRecipeStepThreeWidgetState
         ),
         Positioned(
           bottom: 0,
-          right: Dimensions.getScreenFractionWidth(
+          left: Dimensions.getScreenFractionWidth(
             context,
-            0.35,
+            0.65,
           ),
           child: AppButton(
             onSubmit: _addNewInsturaction,

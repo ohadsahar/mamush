@@ -48,7 +48,7 @@ class CategoryRecipesWidget extends StatelessWidget {
                                       fit: BoxFit.cover,
                                     )
                                   : Image.asset(
-                                      Assets.images.noUser.path,
+                                      Assets.images.emptyStateFood.path,
                                       fit: BoxFit.cover,
                                     ),
                             ),

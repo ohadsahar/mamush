@@ -370,11 +370,51 @@ class S {
     );
   }
 
+  /// `שם המצרך`
+  String get createRecipeStepTwoIngredientName {
+    return Intl.message(
+      'שם המצרך',
+      name: 'createRecipeStepTwoIngredientName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `כמות`
+  String get createRecipeTwoIngredientAmount {
+    return Intl.message(
+      'כמות',
+      name: 'createRecipeTwoIngredientAmount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `מידה`
+  String get createRecipeTwoIngredientType {
+    return Intl.message(
+      'מידה',
+      name: 'createRecipeTwoIngredientType',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `יצירת הוראות הכנה`
   String get createRecipeStepThree {
     return Intl.message(
       'יצירת הוראות הכנה',
       name: 'createRecipeStepThree',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `צריך כאן טיימר`
+  String get createRecipeStepThreeNeedTimer {
+    return Intl.message(
+      'צריך כאן טיימר',
+      name: 'createRecipeStepThreeNeedTimer',
       desc: '',
       args: [],
     );

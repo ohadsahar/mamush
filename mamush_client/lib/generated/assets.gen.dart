@@ -17,6 +17,8 @@ class $AssetsImagesGen {
 
   AssetGenImage get categoryBackground =>
       const AssetGenImage('assets/images/category_background.png');
+  AssetGenImage get emptyStateFood =>
+      const AssetGenImage('assets/images/empty_state_food.jpg');
   AssetGenImage get logoImage =>
       const AssetGenImage('assets/images/logo_image.png');
   AssetGenImage get noUser => const AssetGenImage('assets/images/no_user.png');

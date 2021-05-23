@@ -62,11 +62,19 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("יצירת הוראות הכנה"),
         "createRecipeStepThreeAddInstruction":
             MessageLookupByLibrary.simpleMessage("הקלד/י הוראות הכנה"),
+        "createRecipeStepThreeNeedTimer":
+            MessageLookupByLibrary.simpleMessage("צריך כאן טיימר"),
         "createRecipeStepThreeTimer":
             MessageLookupByLibrary.simpleMessage("זמן"),
         "createRecipeStepTwoAmountInput":
             MessageLookupByLibrary.simpleMessage("הקלד מספר"),
+        "createRecipeStepTwoIngredientName":
+            MessageLookupByLibrary.simpleMessage("שם המצרך"),
         "createRecipeStepTwoType": MessageLookupByLibrary.simpleMessage("סוג"),
+        "createRecipeTwoIngredientAmount":
+            MessageLookupByLibrary.simpleMessage("כמות"),
+        "createRecipeTwoIngredientType":
+            MessageLookupByLibrary.simpleMessage("מידה"),
         "emptyString": MessageLookupByLibrary.simpleMessage(""),
         "gram": MessageLookupByLibrary.simpleMessage("גרם"),
         "homeScreenHelloAndWelcome": m2,

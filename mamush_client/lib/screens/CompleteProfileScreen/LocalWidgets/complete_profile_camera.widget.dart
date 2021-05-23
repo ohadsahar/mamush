@@ -56,19 +56,26 @@ class CompleteProfileCameraWidget extends StatelessWidget {
                           height: height,
                           fit: BoxFit.cover,
                         )
-                      : Uri.parse(filePath).isAbsolute
-                          ? Image.network(
-                              filePath,
+                      : image.path != ""
+                          ? Image.file(
+                              image,
                               width: width,
                               height: height,
                               fit: BoxFit.cover,
                             )
-                          : Image.asset(
-                              Assets.images.noUser.path,
-                              width: width,
-                              height: height,
-                              fit: BoxFit.cover,
-                            ),
+                          : Uri.parse(filePath).isAbsolute
+                              ? Image.network(
+                                  filePath,
+                                  width: width,
+                                  height: height,
+                                  fit: BoxFit.cover,
+                                )
+                              : Image.asset(
+                                  Assets.images.noUser.path,
+                                  width: width,
+                                  height: height,
+                                  fit: BoxFit.cover,
+                                ),
             ),
           ),
           new Positioned(

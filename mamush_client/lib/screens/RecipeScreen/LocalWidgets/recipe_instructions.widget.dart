@@ -22,7 +22,11 @@ class _RecipeInstructionsWidgetState extends State<RecipeInstructionsWidget> {
   final double elevation = 10;
   @override
   Widget build(BuildContext context) {
+    // widget.recipe.instructions = new List.from(
+    //   widget.recipe.instructions.reversed,
+    // );
     final S strings = S.of(context);
+
     return Center(
       child: SizedBox(
         width: Dimensions.getScreenFractionWidth(

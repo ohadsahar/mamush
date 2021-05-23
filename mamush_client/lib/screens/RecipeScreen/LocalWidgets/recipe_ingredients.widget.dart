@@ -13,6 +13,9 @@ class RecipeIngredientsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // recipe.recipeIngredients = new List.from(
+    //   recipe.recipeIngredients.reversed,
+    // );
     final S strings = S.of(context);
     return Card(
       shape: RoundedRectangleBorder(

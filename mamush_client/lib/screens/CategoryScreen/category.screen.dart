@@ -316,6 +316,17 @@ class CategoryScreenState extends State<CategoryScreen> {
   }
 
   _navigateToCreateRecipe() {
+    _recipeBloc = BlocProvider.of<RecipeBloc>(context);
+    final recipe = new Recipe(
+      id: 0,
+      instructions: [],
+      recipeIngredients: [],
+      recipeName: '',
+    );
+    _recipeBloc.add(RecipeEvents.setCurrentRecipe(
+      recipe,
+      _recipeBloc.state.recipes,
+    ));
     final name =
         (ModalRoute.of(context)!.settings.arguments as Map)["name"].toString();
     final id =

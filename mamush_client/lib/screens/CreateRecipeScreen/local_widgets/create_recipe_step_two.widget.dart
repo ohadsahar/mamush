@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:just_debounce_it/just_debounce_it.dart';
 import 'package:momrecipes/bloc/ingredients/ingredients.bloc.dart';
 import 'package:momrecipes/bloc/ingredients/ingredients.events.dart';
 import 'package:momrecipes/bloc/ingredients/ingredients.state.dart';
@@ -16,9 +15,7 @@ import 'package:momrecipes/screens/CreateRecipeScreen/local_widgets/create_recip
 import 'package:momrecipes/screens/CreateRecipeScreen/local_widgets/create_recipe_step_two_ingredient_search_view.widget.dart';
 import 'package:momrecipes/theme/theme.dart';
 import 'package:momrecipes/utils/dimensions.dart';
-import 'package:momrecipes/widgets/app_button.widget.dart';
 import 'package:momrecipes/widgets/custom_input.widget.dart';
-import 'package:momrecipes/widgets/loading.widget.dart';
 
 class CreateRecipeStepTWoWidget extends StatefulWidget {
   final Function onSubmit;
@@ -56,9 +53,10 @@ class _CreateRecipeStepTWoWidgetState extends State<CreateRecipeStepTWoWidget> {
             ) {
               if (state is IngredientLoadedState) {
                 return CreateRecipeStepTwoIngredientSearchViewWidget(
-                    addIngredients: _addIngredients,
-                    searchValue: searchValue,
-                    ingredients: state.ingredients);
+                  addIngredients: _addIngredients,
+                  searchValue: searchValue,
+                  ingredients: state.ingredients,
+                );
               } else {
                 return SizedBox();
               }
@@ -106,8 +104,10 @@ class _CreateRecipeStepTWoWidgetState extends State<CreateRecipeStepTWoWidget> {
                     ],
                   ),
                 ),
-                child: Container(
-                  padding: EdgeInsets.all(8),
+                child: Padding(
+                  padding: const EdgeInsets.all(
+                    Dimensions.sm,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -118,8 +118,8 @@ class _CreateRecipeStepTWoWidgetState extends State<CreateRecipeStepTWoWidget> {
                           0.2,
                         ),
                         child: Text(
-                          'שם המצרך',
-                          style: appTheme.textTheme.headline3,
+                          strings.createRecipeStepTwoIngredientName,
+                          style: appTheme.textTheme.bodyText1,
                         ),
                       ),
                       SizedBox(
@@ -128,8 +128,8 @@ class _CreateRecipeStepTWoWidgetState extends State<CreateRecipeStepTWoWidget> {
                           0.09,
                         ),
                         child: Text(
-                          ' מידה',
-                          style: appTheme.textTheme.headline3,
+                          strings.createRecipeTwoIngredientType,
+                          style: appTheme.textTheme.bodyText1,
                         ),
                       ),
                       SizedBox(
@@ -138,8 +138,8 @@ class _CreateRecipeStepTWoWidgetState extends State<CreateRecipeStepTWoWidget> {
                           0.15,
                         ),
                         child: Text(
-                          ' כמות',
-                          style: appTheme.textTheme.headline3,
+                          strings.createRecipeTwoIngredientAmount,
+                          style: appTheme.textTheme.bodyText1,
                         ),
                       ),
                     ],

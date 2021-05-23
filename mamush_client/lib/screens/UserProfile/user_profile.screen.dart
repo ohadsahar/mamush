@@ -44,6 +44,7 @@ class UserProfileScreenState extends State<UserProfileScreen> {
                     child: RecipeAppBarWidget(
                       goBack: _goBack,
                       recipeName: strings.userProfileScreenGoBack,
+                      color: Colors.black,
                     ),
                   ),
                 ),

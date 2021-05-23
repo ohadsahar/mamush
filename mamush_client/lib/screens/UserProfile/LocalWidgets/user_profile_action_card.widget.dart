@@ -29,7 +29,7 @@ class UserProfileActionCardWidget extends StatelessWidget {
           0.2,
         ),
         decoration: BoxDecoration(
-          color: AppColors.thirdColor,
+          color: AppColors.inputColor,
           border: Border.all(
             color: AppColors.appPrimaryColor,
             width: Dimensions.sm,

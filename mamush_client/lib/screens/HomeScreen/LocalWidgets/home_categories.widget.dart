@@ -12,6 +12,7 @@ class HomeCategoriesWidget extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
+    final double cardBorder = Dimensions.xs;
     return Expanded(
       child: GridView.count(
         padding: EdgeInsets.symmetric(
@@ -30,9 +31,7 @@ class HomeCategoriesWidget extends StatelessWidget {
                 children: <Widget>[
                   Card(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(
-                        Dimensions.sxl,
-                      ),
+                      borderRadius: BorderRadius.circular(cardBorder),
                     ),
                     color: Colors.white,
                     elevation: 5,
@@ -41,9 +40,7 @@ class HomeCategoriesWidget extends StatelessWidget {
                         AspectRatio(
                           aspectRatio: 4 / 3,
                           child: ClipRRect(
-                            borderRadius: BorderRadius.circular(
-                              Dimensions.sxl,
-                            ),
+                            borderRadius: BorderRadius.circular(cardBorder),
                             child: Image.network(
                               category.categoryPicture.filePath,
                               fit: BoxFit.cover,

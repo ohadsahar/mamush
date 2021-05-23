@@ -49,7 +49,7 @@ class CreateRecipeScreenState extends State<CreateRecipeScreen> {
             state is RecipeCurrentLoadedState ||
             state is RecipeLoadedState) {
           return Scaffold(
-            backgroundColor: AppColors.thirdColor,
+            backgroundColor: AppColors.inputColor,
             body: SafeArea(
               child: ColumnScrollView(
                 child: Column(

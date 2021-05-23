@@ -21,7 +21,7 @@ class RecipeInstructionsItemWidget extends StatelessWidget {
     final double maxWidthTimer = 0.3;
     final S strings = S.of(context);
     return Card(
-      color: AppColors.thirdColor,
+      color: AppColors.categoryScreenBackground,
       child: Padding(
         padding: EdgeInsets.all(
           Dimensions.sm,

@@ -13,6 +13,7 @@ class CategoryRecipesWidget extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
+    final double cardBorder = Dimensions.xl;
     final S strings = S.of(context);
     return Container(
       child: recipes.length > 0
@@ -31,6 +32,48 @@ class CategoryRecipesWidget extends StatelessWidget {
                     onTap: () => onPress(
                       recipe,
                     ),
+                    // child: Stack(
+                    //   children: [
+                    //     AspectRatio(
+                    //       aspectRatio: 1,
+                    //       child: Hero(
+                    //         tag: recipe.id,
+                    //         child: Card(
+                    //           shape: RoundedRectangleBorder(
+                    //             borderRadius: BorderRadius.circular(cardBorder),
+                    //           ),
+                    //           color: Colors.white,
+                    //           elevation: 5,
+                    //           child: Column(
+                    //             children: [
+                    //               AspectRatio(
+                    //                 aspectRatio: 4 / 3,
+                    //                 child: ClipRRect(
+                    //                   borderRadius:
+                    //                       BorderRadius.circular(cardBorder),
+                    //                   child: recipe.recipePicture != null
+                    //                       ? Image.network(
+                    //                           recipe.recipePicture.filePath,
+                    //                           fit: BoxFit.cover,
+                    //                         )
+                    //                       : Image.asset(
+                    //                           Assets.images.emptyStateFood.path,
+                    //                           fit: BoxFit.cover,
+                    //                         ),
+                    //                 ),
+                    //               ),
+                    //               Text(recipe.recipeName,
+                    //                   style: appTheme.textTheme.headline4,
+                    //                   softWrap: true,
+                    //                   maxLines: 1,
+                    //                   textAlign: TextAlign.center),
+                    //             ],
+                    //           ),
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
                     child: Stack(
                       alignment: Alignment.bottomCenter,
                       children: <Widget>[
@@ -40,7 +83,7 @@ class CategoryRecipesWidget extends StatelessWidget {
                             tag: recipe.id,
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(
-                                Dimensions.sxl,
+                                cardBorder,
                               ),
                               child: recipe.recipePicture != null
                                   ? Image.network(
@@ -65,8 +108,12 @@ class CategoryRecipesWidget extends StatelessWidget {
                               ],
                             ),
                             borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(Dimensions.sxl),
-                              bottomRight: Radius.circular(Dimensions.sxl),
+                              bottomLeft: Radius.circular(
+                                cardBorder,
+                              ),
+                              bottomRight: Radius.circular(
+                                cardBorder,
+                              ),
                             ),
                           ),
                           height: 100,

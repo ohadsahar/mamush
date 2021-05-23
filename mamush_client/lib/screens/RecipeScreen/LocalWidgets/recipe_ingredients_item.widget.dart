@@ -35,6 +35,9 @@ class _RecipeIngredientsItemWidgetState
               child: Transform.scale(
                 scale: 2,
                 child: Checkbox(
+                  activeColor: Color(
+                    0xff00D38C,
+                  ),
                   value: widget.ingredient.isSelected ?? false,
                   onChanged: (value) {
                     setState(

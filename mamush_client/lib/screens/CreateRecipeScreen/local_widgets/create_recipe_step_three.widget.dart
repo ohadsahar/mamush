@@ -91,6 +91,9 @@ class _CreateRecipeStepThreeWidgetState
                                       Transform.scale(
                                         scale: 1.5,
                                         child: Checkbox(
+                                          activeColor: Color(
+                                            0xff00D38C,
+                                          ),
                                           value: widget
                                                   .instructionsToSave[index]
                                                   .timerOn ??

@@ -42,7 +42,7 @@ class CreateRecipeStepTwoIngredientSearchViewWidget extends StatelessWidget {
                       border: Border(
                         bottom: BorderSide(
                           width: Dimensions.sm,
-                          color: AppColors.thirdColor,
+                          color: AppColors.inputColor,
                         ),
                       ),
                     ),
@@ -78,7 +78,7 @@ class CreateRecipeStepTwoIngredientSearchViewWidget extends StatelessWidget {
                 border: Border(
                   bottom: BorderSide(
                     width: Dimensions.sm,
-                    color: AppColors.thirdColor,
+                    color: AppColors.inputColor,
                   ),
                 ),
               ),

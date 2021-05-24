@@ -256,10 +256,13 @@ class CategoryScreenState extends State<CategoryScreen> {
   _goSearch() {
     final isValid = _formKey.currentState!.saveAndValidate();
     final String name = _formKey.currentState!.value['name'];
+    final id = int.parse(
+        (ModalRoute.of(context)!.settings.arguments as Map)["id"].toString());
     if (isValid) {
       _recipeBloc = BlocProvider.of<RecipeBloc>(context);
       final RecipeFilterDTO recipeFilterDTO = new RecipeFilterDTO(
         name: name,
+        categoryID: id,
       );
       _recipeBloc.add(
         RecipeEvents.filterRecipes(recipeFilterDTO),

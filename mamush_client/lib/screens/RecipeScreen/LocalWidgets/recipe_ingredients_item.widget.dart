@@ -77,6 +77,14 @@ class _RecipeIngredientsItemWidgetState
         return strings.gram;
       case Enums.spoon:
         return strings.spoon;
+      case Enums.cup:
+        return strings.cup;
+      case Enums.kg:
+        return strings.kg;
+      case Enums.ml:
+        return strings.ml;
+      case Enums.tableSpoon:
+        return strings.tableSpoon;
       default:
         return strings.emptyString;
     }

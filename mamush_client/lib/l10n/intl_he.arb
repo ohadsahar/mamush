@@ -41,6 +41,10 @@
     "createRecipeStepThreeTimer": "זמן",
     "unit": "יחידה",
     "gram": "גרם",
-    "spoon": "כפיות",
+    "spoon": "כפית",
+    "kg": "ק״ג",
+    "cup": "כוס",
+    "ml": "מ״ל",
+    "tableSpoon": "כף",
     "emptyString": ""
 }

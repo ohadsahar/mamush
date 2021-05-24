@@ -37,7 +37,7 @@ class _CreateRecipeStepTWoWidgetState extends State<CreateRecipeStepTWoWidget> {
 
   late String searchValue;
   final _formKey = GlobalKey<FormBuilderState>();
-  final typeOptions = ['גרם', 'יחידה', 'כפית'];
+  final typeOptions = ['גרם', 'יחידה', 'כפית', 'ק״ג', 'כף', 'מ״ל', 'כוס'];
 
   @override
   Widget build(BuildContext context) {
@@ -336,6 +336,14 @@ class _CreateRecipeStepTWoWidgetState extends State<CreateRecipeStepTWoWidget> {
         return strings.gram;
       case Enums.spoon:
         return strings.spoon;
+      case Enums.cup:
+        return strings.cup;
+      case Enums.kg:
+        return strings.kg;
+      case Enums.ml:
+        return strings.ml;
+      case Enums.tableSpoon:
+        return strings.tableSpoon;
       default:
         return strings.emptyString;
     }
@@ -350,6 +358,14 @@ class _CreateRecipeStepTWoWidgetState extends State<CreateRecipeStepTWoWidget> {
         return Enums.gram;
       case 'כפית':
         return Enums.spoon;
+      case 'כף':
+        return Enums.tableSpoon;
+      case 'מ״ל':
+        return Enums.ml;
+      case 'כוס':
+        return Enums.cup;
+      case 'ק״ג':
+        return Enums.kg;
       default:
         return strings.emptyString;
     }

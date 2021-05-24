@@ -460,11 +460,51 @@ class S {
     );
   }
 
-  /// `כפיות`
+  /// `כפית`
   String get spoon {
     return Intl.message(
-      'כפיות',
+      'כפית',
       name: 'spoon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ק״ג`
+  String get kg {
+    return Intl.message(
+      'ק״ג',
+      name: 'kg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `כוס`
+  String get cup {
+    return Intl.message(
+      'כוס',
+      name: 'cup',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `מ״ל`
+  String get ml {
+    return Intl.message(
+      'מ״ל',
+      name: 'ml',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `כף`
+  String get tableSpoon {
+    return Intl.message(
+      'כף',
+      name: 'tableSpoon',
       desc: '',
       args: [],
     );

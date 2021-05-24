@@ -75,11 +75,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("כמות"),
         "createRecipeTwoIngredientType":
             MessageLookupByLibrary.simpleMessage("מידה"),
+        "cup": MessageLookupByLibrary.simpleMessage("כוס"),
         "emptyString": MessageLookupByLibrary.simpleMessage(""),
         "gram": MessageLookupByLibrary.simpleMessage("גרם"),
         "homeScreenHelloAndWelcome": m2,
         "homeScreenMainCategories":
             MessageLookupByLibrary.simpleMessage("קטגוריות ראשיות"),
+        "kg": MessageLookupByLibrary.simpleMessage("ק״ג"),
+        "ml": MessageLookupByLibrary.simpleMessage("מ״ל"),
         "phoneInputScreenError":
             MessageLookupByLibrary.simpleMessage("שדה זה אינו בפורמט התקין"),
         "phoneInputScreenInsertPhone":
@@ -96,7 +99,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "splashScreenDescription": MessageLookupByLibrary.simpleMessage(
             "היי ברוכים הבאים לMamush \n הזינו את מספר הטלפון כדי להתחבר"),
         "splashScreenTitle": MessageLookupByLibrary.simpleMessage("Mamush"),
-        "spoon": MessageLookupByLibrary.simpleMessage("כפיות"),
+        "spoon": MessageLookupByLibrary.simpleMessage("כפית"),
+        "tableSpoon": MessageLookupByLibrary.simpleMessage("כף"),
         "unit": MessageLookupByLibrary.simpleMessage("יחידה"),
         "userProfileCardDisconnect":
             MessageLookupByLibrary.simpleMessage("התנתק"),

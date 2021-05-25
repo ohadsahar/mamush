@@ -73,6 +73,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "createRecipeStepTwoType": MessageLookupByLibrary.simpleMessage("סוג"),
         "createRecipeTwoIngredientAmount":
             MessageLookupByLibrary.simpleMessage("כמות"),
+        "createRecipeTwoIngredientOption":
+            MessageLookupByLibrary.simpleMessage("אפשרות"),
         "createRecipeTwoIngredientType":
             MessageLookupByLibrary.simpleMessage("מידה"),
         "cup": MessageLookupByLibrary.simpleMessage("כוס"),

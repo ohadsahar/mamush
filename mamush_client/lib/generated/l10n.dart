@@ -390,6 +390,16 @@ class S {
     );
   }
 
+  /// `אפשרות`
+  String get createRecipeTwoIngredientOption {
+    return Intl.message(
+      'אפשרות',
+      name: 'createRecipeTwoIngredientOption',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `מידה`
   String get createRecipeTwoIngredientType {
     return Intl.message(

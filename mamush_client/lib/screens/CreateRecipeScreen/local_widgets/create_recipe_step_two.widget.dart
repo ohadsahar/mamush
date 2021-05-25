@@ -109,34 +109,34 @@ class _CreateRecipeStepTWoWidgetState extends State<CreateRecipeStepTWoWidget> {
                     Dimensions.sm,
                   ),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SizedBox(
-                        width: Dimensions.getScreenFractionWidth(
-                          context,
-                          0.2,
+                      Container(
+                        margin: EdgeInsets.only(
+                          left: Dimensions.getScreenFractionWidth(
+                            context,
+                            0.035,
+                          ),
                         ),
                         child: Text(
                           strings.createRecipeStepTwoIngredientName,
                           style: appTheme.textTheme.bodyText1,
                         ),
                       ),
-                      SizedBox(
-                        width: Dimensions.getScreenFractionWidth(
-                          context,
-                          0.09,
+                      Container(
+                        margin: EdgeInsets.only(
+                          left: Dimensions.getScreenFractionWidth(
+                            context,
+                            0.3,
+                          ),
                         ),
                         child: Text(
                           strings.createRecipeTwoIngredientType,
                           style: appTheme.textTheme.bodyText1,
                         ),
                       ),
-                      SizedBox(
-                        width: Dimensions.getScreenFractionWidth(
-                          context,
-                          0.15,
-                        ),
+                      Flexible(
                         child: Text(
                           strings.createRecipeTwoIngredientAmount,
                           style: appTheme.textTheme.bodyText1,
@@ -192,49 +192,47 @@ class _CreateRecipeStepTWoWidgetState extends State<CreateRecipeStepTWoWidget> {
                                   SizedBox(
                                     width: Dimensions.getScreenFractionWidth(
                                       context,
-                                      0.3,
+                                      0.1,
                                     ),
-                                    child: Row(
-                                      children: [
-                                        IconButton(
-                                          icon: Icon(
-                                            Icons.delete,
-                                          ),
-                                          onPressed: () =>
-                                              _removeIngredient(index),
-                                        ),
-                                        Text(
-                                          widget.indgredientsToSave[index]
-                                              .ingredient.ingredientName,
-                                          style: appTheme.textTheme.headline4,
-                                        ),
-                                      ],
+                                    child: Text(
+                                      widget.indgredientsToSave[index]
+                                          .ingredient.ingredientName,
+                                      style: appTheme.textTheme.headline4,
                                     ),
                                   ),
                                   SizedBox(
                                     width: Dimensions.getScreenFractionWidth(
                                       context,
-                                      0.2,
+                                      0.3,
                                     ),
                                     child: FormBuilderDropdown(
                                       name: 'type',
-                                      decoration: InputDecoration(
-                                        labelText: convertToLanguage(
-                                          widget.indgredientsToSave[index].type,
-                                        ),
-                                        labelStyle:
-                                            appTheme.textTheme.headline4,
-                                      ),
+                                      style: appTheme.textTheme.headline4,
+                                      initialValue: convertToLanguage(widget
+                                          .indgredientsToSave[index].type),
+                                      // decoration: InputDecoration(
+                                      //   labelText: convertToLanguage(
+                                      //     widget.indgredientsToSave[index].type,
+                                      //   ),
+                                      //   labelStyle:
+                                      //       appTheme.textTheme.headline1,
+                                      // ),
                                       onChanged: (value) => {
-                                        setState(() {
-                                          widget.indgredientsToSave[index]
-                                                  .type =
-                                              languageToEnum(value.toString());
-                                        })
+                                        setState(
+                                          () {
+                                            widget.indgredientsToSave[index]
+                                                .type = languageToEnum(
+                                              value.toString(),
+                                            );
+                                          },
+                                        )
                                       },
-                                      validator: FormBuilderValidators.compose([
-                                        FormBuilderValidators.required(context)
-                                      ]),
+                                      validator: FormBuilderValidators.compose(
+                                        [
+                                          FormBuilderValidators.required(
+                                              context)
+                                        ],
+                                      ),
                                       items: typeOptions
                                           .map(
                                             (type) => DropdownMenuItem(
@@ -271,7 +269,19 @@ class _CreateRecipeStepTWoWidgetState extends State<CreateRecipeStepTWoWidget> {
                                       attribute: 'name',
                                       hint: strings
                                           .createRecipeStepTwoAmountInput,
-                                      type: TextInputType.text,
+                                      type: TextInputType.number,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: Dimensions.getScreenFractionWidth(
+                                      context,
+                                      0.1,
+                                    ),
+                                    child: IconButton(
+                                      icon: Icon(
+                                        Icons.delete,
+                                      ),
+                                      onPressed: () => _removeIngredient(index),
                                     ),
                                   ),
                                 ],

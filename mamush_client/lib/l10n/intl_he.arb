@@ -34,6 +34,7 @@
     "createRecipeStepTwoType": "סוג",
     "createRecipeStepTwoIngredientName": "שם המצרך",
     "createRecipeTwoIngredientAmount": "כמות",
+    "createRecipeTwoIngredientOption": "אפשרות",
     "createRecipeTwoIngredientType": "מידה",
     "createRecipeStepThree": "יצירת הוראות הכנה",
     "createRecipeStepThreeNeedTimer": "צריך כאן טיימר",

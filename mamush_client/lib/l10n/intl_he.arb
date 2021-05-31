@@ -48,5 +48,9 @@
     "cup": "כוס",
     "ml": "מ״ל",
     "tableSpoon": "כף",
+    "units": "יחידות",
+    "spoons": "כפות",
+    "cups": "כוסות",
+    "tableSpoons": "כפיות",
     "emptyString": ""
 }

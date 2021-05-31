@@ -70,7 +70,7 @@ class CategoryRecipesWidget extends StatelessWidget {
                               child: Text(
                                 recipe.recipeName,
                                 style: appTheme.textTheme.headline4,
-                                maxLines: 1,
+                                maxLines: 3,
                                 textAlign: TextAlign.center,
                               ),
                             ),

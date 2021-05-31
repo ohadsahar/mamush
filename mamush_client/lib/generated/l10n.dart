@@ -530,6 +530,46 @@ class S {
     );
   }
 
+  /// `יחידות`
+  String get units {
+    return Intl.message(
+      'יחידות',
+      name: 'units',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `כפות`
+  String get spoons {
+    return Intl.message(
+      'כפות',
+      name: 'spoons',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `כוסות`
+  String get cups {
+    return Intl.message(
+      'כוסות',
+      name: 'cups',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `כפיות`
+  String get tableSpoons {
+    return Intl.message(
+      'כפיות',
+      name: 'tableSpoons',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// ``
   String get emptyString {
     return Intl.message(

@@ -57,8 +57,7 @@ class _RecipeIngredientsItemWidgetState
               strings.recipeAmount(
                 widget.ingredient.amount,
                 convertToLanguage(
-                  widget.ingredient.type,
-                ),
+                    widget.ingredient.type, widget.ingredient.amount),
               ),
               style: appTheme.textTheme.headline3,
             ),
@@ -68,23 +67,31 @@ class _RecipeIngredientsItemWidgetState
     );
   }
 
-  convertToLanguage(String type) {
+  convertToLanguage(String type, String amount) {
     final S strings = S.of(context);
+    var bigger = false;
+    var a = double.tryParse(amount);
+    if (a != null) {
+      if (a > 1) {
+        bigger = true;
+      }
+    }
+    print(bigger);
     switch (type) {
       case Enums.unit:
-        return strings.unit;
+        return bigger ? strings.units : strings.unit;
       case Enums.gram:
         return strings.gram;
       case Enums.spoon:
-        return strings.spoon;
+        return bigger ? strings.spoons : strings.spoon;
       case Enums.cup:
-        return strings.cup;
+        return bigger ? strings.cups : strings.cup;
       case Enums.kg:
         return strings.kg;
       case Enums.ml:
         return strings.ml;
       case Enums.tableSpoon:
-        return strings.tableSpoon;
+        return bigger ? strings.tableSpoons : strings.tableSpoon;
       default:
         return strings.emptyString;
     }

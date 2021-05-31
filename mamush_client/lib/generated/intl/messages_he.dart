@@ -81,6 +81,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "createRecipeTwoIngredientType":
             MessageLookupByLibrary.simpleMessage("מידה"),
         "cup": MessageLookupByLibrary.simpleMessage("כוס"),
+        "cups": MessageLookupByLibrary.simpleMessage("כוסות"),
         "emptyString": MessageLookupByLibrary.simpleMessage(""),
         "gram": MessageLookupByLibrary.simpleMessage("גרם"),
         "homeScreenHelloAndWelcome": m3,
@@ -105,8 +106,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "היי ברוכים הבאים לMamush \n הזינו את מספר הטלפון כדי להתחבר"),
         "splashScreenTitle": MessageLookupByLibrary.simpleMessage("Mamush"),
         "spoon": MessageLookupByLibrary.simpleMessage("כפית"),
+        "spoons": MessageLookupByLibrary.simpleMessage("כפות"),
         "tableSpoon": MessageLookupByLibrary.simpleMessage("כף"),
+        "tableSpoons": MessageLookupByLibrary.simpleMessage("כפיות"),
         "unit": MessageLookupByLibrary.simpleMessage("יחידה"),
+        "units": MessageLookupByLibrary.simpleMessage("יחידות"),
         "userProfileCardDisconnect":
             MessageLookupByLibrary.simpleMessage("התנתק"),
         "userProfileCardEditProfile":

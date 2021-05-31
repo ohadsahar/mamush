@@ -37,6 +37,7 @@
     "createRecipeTwoIngredientOption": "אפשרות",
     "createRecipeTwoIngredientType": "מידה",
     "createRecipeStepThree": "יצירת הוראות הכנה",
+    "createRecipeStepThreeInsturactionCardTitle": "הוראות הכנה מספר: {index}",
     "createRecipeStepThreeNeedTimer": "צריך כאן טיימר",
     "createRecipeStepThreeAddInstruction": "הקלד/י הוראות הכנה",
     "createRecipeStepThreeTimer": "זמן",

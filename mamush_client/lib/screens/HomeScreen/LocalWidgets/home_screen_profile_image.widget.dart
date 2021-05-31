@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:momrecipes/generated/assets.gen.dart';
 import 'package:momrecipes/utils/dimensions.dart';
 
 class HomeScreenProfileImageWidget extends StatelessWidget {
@@ -25,8 +26,9 @@ class HomeScreenProfileImageWidget extends StatelessWidget {
       ),
       child: ClipOval(
         child: Uri.parse(profileImage).isAbsolute
-            ? Image.network(
-                profileImage,
+            ? FadeInImage.assetNetwork(
+                placeholder: Assets.images.loading.path,
+                image: profileImage,
                 width: width,
                 height: height,
                 fit: BoxFit.cover,

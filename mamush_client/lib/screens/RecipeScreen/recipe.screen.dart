@@ -50,8 +50,9 @@ class _RecipeScreenState extends State<RecipeScreen> {
                                     context,
                                     imageHeight,
                                   ),
-                                  child: Image.network(
-                                    state.recipe.recipePicture!.filePath,
+                                  child: FadeInImage.assetNetwork(
+                                    placeholder: Assets.images.loading.path,
+                                    image: state.recipe.recipePicture!.filePath,
                                     fit: BoxFit.cover,
                                   ),
                                 )

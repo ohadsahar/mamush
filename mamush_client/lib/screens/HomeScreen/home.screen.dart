@@ -37,125 +37,131 @@ class HomeScreenState extends State<HomeScreen> {
         return AppScreen(
           withImage: false,
           child: state is UserUpdateState
-              ? Stack(
-                  children: [
-                    Container(
-                      color: AppColors.categoryScreenBackground,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Container(
-                            height: Dimensions.getScreenFractionHeight(
-                              context,
-                              0.25,
-                            ),
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage(
-                                  Assets.images.categoryBackground.path,
-                                ),
-                                fit: BoxFit.cover,
+              ? SingleChildScrollView(
+                  child: Stack(
+                    children: [
+                      Container(
+                        height:
+                            Dimensions.getScreenFractionHeight(context, 0.98),
+                        color: AppColors.categoryScreenBackground,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Container(
+                              height: Dimensions.getScreenFractionHeight(
+                                context,
+                                0.25,
                               ),
-                            ),
-                            child: Column(
-                              children: [
-                                InkWell(
-                                  onTap: _navigateToUserProfile,
-                                  child: Container(
-                                    alignment: Alignment.bottomLeft,
-                                    margin: EdgeInsets.only(
-                                      top: Dimensions.xl,
-                                      left: Dimensions.xl,
-                                    ),
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage(
+                                    Assets.images.categoryBackground.path,
+                                  ),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              child: Column(
+                                children: [
+                                  InkWell(
+                                    onTap: _navigateToUserProfile,
                                     child: Container(
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                          color: Colors.white,
-                                          width: 5,
-                                        ),
-                                        borderRadius: BorderRadius.circular(
-                                          60,
-                                        ),
+                                      alignment: Alignment.bottomLeft,
+                                      margin: EdgeInsets.only(
+                                        top: Dimensions.xl,
+                                        left: Dimensions.xl,
                                       ),
-                                      child: state.user.profilePicture != null
-                                          ? ClipOval(
-                                              child: Image.network(
-                                                state.user.profilePicture!
-                                                    .filePath,
-                                                width: 100,
-                                                height: 100,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            )
-                                          : SizedBox(),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: Colors.white,
+                                            width: 5,
+                                          ),
+                                          borderRadius: BorderRadius.circular(
+                                            60,
+                                          ),
+                                        ),
+                                        child: state.user.profilePicture != null
+                                            ? ClipOval(
+                                                child: FadeInImage.assetNetwork(
+                                                  placeholder: Assets
+                                                      .images.loading.path,
+                                                  image: state.user
+                                                      .profilePicture!.filePath,
+                                                  width: 100,
+                                                  height: 100,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              )
+                                            : SizedBox(),
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            height: Dimensions.getScreenFractionHeight(
-                              context,
-                              0.12,
+                            SizedBox(
+                              height: Dimensions.getScreenFractionHeight(
+                                context,
+                                0.12,
+                              ),
                             ),
-                          ),
-                          Text(
-                            strings.homeScreenHelloAndWelcome(
-                              state.user.fullName!,
+                            Text(
+                              strings.homeScreenHelloAndWelcome(
+                                state.user.fullName!,
+                              ),
+                              style: appTheme.textTheme.headline2,
+                              textAlign: TextAlign.center,
                             ),
-                            style: appTheme.textTheme.headline2,
-                            textAlign: TextAlign.center,
-                          ),
-                          const SizedBox(
-                            height: Dimensions.sxl * 2,
-                          ),
-                          Text(
-                            strings.homeScreenMainCategories,
-                            style: appTheme.textTheme.headline4,
-                          ),
-                          const SizedBox(
-                            height: Dimensions.sxl,
-                          ),
-                          BlocBuilder<CategoryBloc, CategoryState>(
-                            builder: (
-                              BuildContext context,
-                              CategoryState state,
-                            ) {
-                              if (state is CategoryLoaded) {
-                                return HomeCategoriesWidget(
-                                  categories: state.categories,
-                                  onPress: _enterCategoryScreen,
-                                );
-                              } else {
-                                return LoadingWidget();
-                              }
-                            },
-                          ),
-                        ],
+                            const SizedBox(
+                              height: Dimensions.sxl * 2,
+                            ),
+                            Text(
+                              strings.homeScreenMainCategories,
+                              style: appTheme.textTheme.headline4,
+                            ),
+                            const SizedBox(
+                              height: Dimensions.sxl,
+                            ),
+                            BlocBuilder<CategoryBloc, CategoryState>(
+                              builder: (
+                                BuildContext context,
+                                CategoryState state,
+                              ) {
+                                if (state is CategoryLoaded) {
+                                  return HomeCategoriesWidget(
+                                    categories: state.categories,
+                                    onPress: _enterCategoryScreen,
+                                  );
+                                } else {
+                                  return LoadingWidget();
+                                }
+                              },
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    Positioned(
-                      top: Dimensions.getScreenFractionHeight(
-                        context,
-                        0.09,
-                      ),
-                      left: Dimensions.getScreenFractionWidth(
-                        context,
-                        0.28,
-                      ),
-                      child: Container(
-                        width: Dimensions.getScreenFractionWidth(
+                      Positioned(
+                        top: Dimensions.getScreenFractionHeight(
                           context,
-                          0.45,
+                          0.09,
                         ),
-                        height: 400,
-                        child: Image.asset(
-                          Assets.images.logoImage.path,
+                        left: Dimensions.getScreenFractionWidth(
+                          context,
+                          0.28,
+                        ),
+                        child: Container(
+                          width: Dimensions.getScreenFractionWidth(
+                            context,
+                            0.45,
+                          ),
+                          height: 400,
+                          child: Image.asset(
+                            Assets.images.logoImage.path,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 )
               : Center(
                   child: LoadingWidget(),

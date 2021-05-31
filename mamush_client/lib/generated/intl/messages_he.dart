@@ -23,16 +23,18 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m1(name) => "היי ${name} לא נמצא במאגר שלנו, תרצו להוסיף?";
 
-  static String m2(fullName) => "היי ${fullName},\n מה בתפריט של היום ?";
+  static String m2(index) => "הוראות הכנה מספר: ${index}";
 
-  static String m3(ingredientsAmount, unit) => "${ingredientsAmount} ${unit}";
+  static String m3(fullName) => "היי ${fullName},\n מה בתפריט של היום ?";
 
-  static String m4(time) => "טיימר: ${time} דקות";
+  static String m4(ingredientsAmount, unit) => "${ingredientsAmount} ${unit}";
 
-  static String m5(ingredientsLength) =>
+  static String m5(time) => "טיימר: ${time} דקות";
+
+  static String m6(ingredientsLength) =>
       "הרכיבים שצריך: (${ingredientsLength})";
 
-  static String m6(number) => "#${number}";
+  static String m7(number) => "#${number}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -62,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("יצירת הוראות הכנה"),
         "createRecipeStepThreeAddInstruction":
             MessageLookupByLibrary.simpleMessage("הקלד/י הוראות הכנה"),
+        "createRecipeStepThreeInsturactionCardTitle": m2,
         "createRecipeStepThreeNeedTimer":
             MessageLookupByLibrary.simpleMessage("צריך כאן טיימר"),
         "createRecipeStepThreeTimer":
@@ -80,7 +83,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cup": MessageLookupByLibrary.simpleMessage("כוס"),
         "emptyString": MessageLookupByLibrary.simpleMessage(""),
         "gram": MessageLookupByLibrary.simpleMessage("גרם"),
-        "homeScreenHelloAndWelcome": m2,
+        "homeScreenHelloAndWelcome": m3,
         "homeScreenMainCategories":
             MessageLookupByLibrary.simpleMessage("קטגוריות ראשיות"),
         "kg": MessageLookupByLibrary.simpleMessage("ק״ג"),
@@ -89,15 +92,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("שדה זה אינו בפורמט התקין"),
         "phoneInputScreenInsertPhone":
             MessageLookupByLibrary.simpleMessage("הזנ/י מספר טלפון"),
-        "recipeAmount": m3,
-        "recipeInstructionTimer": m4,
-        "recipeScreen": m5,
+        "recipeAmount": m4,
+        "recipeInstructionTimer": m5,
+        "recipeScreen": m6,
         "recipeScreenEditRecipe": MessageLookupByLibrary.simpleMessage("עריכה"),
         "recipeScreenFinishedRecipe":
             MessageLookupByLibrary.simpleMessage("סיימתי"),
         "recipeScreenInstruction":
             MessageLookupByLibrary.simpleMessage("הוראות הכנה"),
-        "recipeScreenInstructionNumber": m6,
+        "recipeScreenInstructionNumber": m7,
         "splashScreenDescription": MessageLookupByLibrary.simpleMessage(
             "היי ברוכים הבאים לMamush \n הזינו את מספר הטלפון כדי להתחבר"),
         "splashScreenTitle": MessageLookupByLibrary.simpleMessage("Mamush"),

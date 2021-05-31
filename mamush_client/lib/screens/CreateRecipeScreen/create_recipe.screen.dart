@@ -200,6 +200,9 @@ class CreateRecipeScreenState extends State<CreateRecipeScreen> {
     _recipeBloc = BlocProvider.of<RecipeBloc>(context);
     final categoryID =
         (ModalRoute.of(context)!.settings.arguments as Map)["id"].toString();
+    final categoryName =
+        (ModalRoute.of(context)!.settings.arguments as Map)["categoryName"]
+            .toString();
     CreateRecipeDTO createRecipeDTO = new CreateRecipeDTO(
       id: id,
       recipeName: data['recipeName'],
@@ -208,7 +211,8 @@ class CreateRecipeScreenState extends State<CreateRecipeScreen> {
       instructions: instructions,
       category: categoryID,
     );
-    _recipeBloc.add(RecipeEvents.createRecipe(createRecipeDTO));
+    _recipeBloc.add(
+        RecipeEvents.createRecipe(createRecipeDTO, categoryName, categoryID));
   }
 
   _imageSelected(image) {

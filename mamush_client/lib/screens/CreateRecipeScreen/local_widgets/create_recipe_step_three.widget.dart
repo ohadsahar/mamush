@@ -25,13 +25,14 @@ class _CreateRecipeStepThreeWidgetState
     extends State<CreateRecipeStepThreeWidget> {
   @override
   Widget build(BuildContext context) {
+    ScrollController _scrollController = new ScrollController();
     final S strings = S.of(context);
     return Stack(
       children: [
         Container(
           height: Dimensions.getScreenFractionHeight(
             context,
-            0.65,
+            0.85,
           ),
           child: ListView.builder(
             shrinkWrap: true,
@@ -46,128 +47,148 @@ class _CreateRecipeStepThreeWidgetState
                   Card(
                     elevation: 5,
                     child: Padding(
-                      padding: const EdgeInsets.all(
-                        Dimensions.sxl,
-                      ),
-                      child: Column(
-                        children: <Widget>[
-                          FormBuilder(
-                            child: Container(
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    width: Dimensions.getScreenFractionWidth(
-                                      context,
-                                      0.9,
-                                    ),
-                                    child: CustomInputWidget(
-                                      onChange: (value) => {
-                                        setState(() {
-                                          widget.instructionsToSave[index]
-                                              .instructionsDescription = value;
-                                        })
-                                      },
-                                      maxLines: 3,
-                                      initialValue: widget
-                                          .instructionsToSave[index]
-                                          .instructionsDescription,
-                                      autoFocus: false,
-                                      validators: FormBuilderValidators.compose(
-                                        [],
-                                      ),
-                                      attribute: 'name',
-                                      hint: strings
-                                          .createRecipeStepThreeAddInstruction,
-                                      type: TextInputType.text,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: Dimensions.md,
-                                  ),
-                                  Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Transform.scale(
-                                        scale: 1.5,
-                                        child: Checkbox(
-                                          activeColor: Color(
-                                            0xff00D38C,
+                        padding: const EdgeInsets.all(
+                          Dimensions.sxl,
+                        ),
+                        child: ExpansionTile(
+                          trailing: SizedBox(),
+                          title: Text(
+                            strings.createRecipeStepThreeInsturactionCardTitle(
+                                index + 1),
+                            style: appTheme.textTheme.headline4,
+                          ),
+                          children: [
+                            Column(
+                              children: <Widget>[
+                                FormBuilder(
+                                  child: Container(
+                                    child: Column(
+                                      children: [
+                                        SizedBox(
+                                          width:
+                                              Dimensions.getScreenFractionWidth(
+                                            context,
+                                            0.9,
                                           ),
-                                          value: widget
-                                                  .instructionsToSave[index]
-                                                  .timerOn ??
-                                              false,
-                                          onChanged: (value) {
-                                            setState(
-                                              () {
+                                          child: CustomInputWidget(
+                                            onChange: (value) => {
+                                              setState(() {
                                                 widget.instructionsToSave[index]
-                                                    .timerOn = value;
-                                              },
-                                            );
-                                          },
+                                                        .instructionsDescription =
+                                                    value;
+                                              })
+                                            },
+                                            maxLines: 3,
+                                            initialValue: widget
+                                                .instructionsToSave[index]
+                                                .instructionsDescription,
+                                            autoFocus: false,
+                                            validators:
+                                                FormBuilderValidators.compose(
+                                              [],
+                                            ),
+                                            attribute: 'name',
+                                            hint: strings
+                                                .createRecipeStepThreeAddInstruction,
+                                            type: TextInputType.text,
+                                          ),
                                         ),
-                                      ),
-                                      Container(
-                                        margin: EdgeInsets.only(
-                                          left: Dimensions.sxl,
+                                        const SizedBox(
+                                          height: Dimensions.md,
                                         ),
-                                        child: Text(
-                                          strings
-                                              .createRecipeStepThreeNeedTimer,
-                                          style: appTheme.textTheme.headline4,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width:
-                                            Dimensions.getScreenFractionWidth(
-                                          context,
-                                          0.25,
-                                        ),
-                                        height: 100,
-                                        child: widget.instructionsToSave[index]
-                                                    .timerOn ==
-                                                true
-                                            ? CustomInputWidget(
-                                                onChange: (value) => {
-                                                  setState(() {
-                                                    widget
-                                                            .instructionsToSave[
-                                                                index]
-                                                            .timer =
-                                                        int.parse(value);
-                                                    widget
+                                        Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Transform.scale(
+                                              scale: 1.5,
+                                              child: Checkbox(
+                                                activeColor: Color(
+                                                  0xff00D38C,
+                                                ),
+                                                value: widget
                                                         .instructionsToSave[
                                                             index]
-                                                        .hasTimer = true;
-                                                  })
+                                                        .timerOn ??
+                                                    false,
+                                                onChanged: (value) {
+                                                  setState(
+                                                    () {
+                                                      widget
+                                                          .instructionsToSave[
+                                                              index]
+                                                          .timerOn = value;
+                                                    },
+                                                  );
                                                 },
-                                                initialValue: widget
-                                                    .instructionsToSave[index]
-                                                    .timer
-                                                    .toString(),
-                                                autoFocus: false,
-                                                validators:
-                                                    FormBuilderValidators
-                                                        .compose(
-                                                  [],
-                                                ),
-                                                attribute: 'timer_on',
-                                                hint: strings
-                                                    .createRecipeStepThreeTimer,
-                                                type: TextInputType.number,
-                                              )
-                                            : SizedBox(),
-                                      ),
-                                    ],
+                                              ),
+                                            ),
+                                            Container(
+                                              margin: EdgeInsets.only(
+                                                left: Dimensions.sxl,
+                                              ),
+                                              child: Text(
+                                                strings
+                                                    .createRecipeStepThreeNeedTimer,
+                                                style: appTheme
+                                                    .textTheme.headline4,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: Dimensions
+                                                  .getScreenFractionWidth(
+                                                context,
+                                                0.25,
+                                              ),
+                                              height: 100,
+                                              child: widget
+                                                          .instructionsToSave[
+                                                              index]
+                                                          .timerOn ==
+                                                      true
+                                                  ? CustomInputWidget(
+                                                      onChange: (value) => {
+                                                        setState(() {
+                                                          widget
+                                                                  .instructionsToSave[
+                                                                      index]
+                                                                  .timer =
+                                                              int.parse(value);
+                                                          widget
+                                                              .instructionsToSave[
+                                                                  index]
+                                                              .hasTimer = true;
+                                                        })
+                                                      },
+                                                      initialValue: widget
+                                                          .instructionsToSave[
+                                                              index]
+                                                          .timer
+                                                          .toString(),
+                                                      autoFocus: false,
+                                                      validators:
+                                                          FormBuilderValidators
+                                                              .compose(
+                                                        [],
+                                                      ),
+                                                      attribute: 'timer_on',
+                                                      hint: strings
+                                                          .createRecipeStepThreeTimer,
+                                                      type:
+                                                          TextInputType.number,
+                                                    )
+                                                  : SizedBox(),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
+                          ],
+                        )),
                   ),
                   const SizedBox(
                     height: Dimensions.sxl,

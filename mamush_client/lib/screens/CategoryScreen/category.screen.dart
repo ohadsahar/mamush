@@ -72,7 +72,7 @@ class CategoryScreenState extends State<CategoryScreen> {
                             ),
                             expandedHeight: Dimensions.getScreenFractionHeight(
                               context,
-                              0.3,
+                              0.32,
                             ),
                             floating: false,
                             pinned: true,

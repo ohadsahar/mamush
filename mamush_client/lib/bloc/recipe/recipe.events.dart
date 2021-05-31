@@ -35,8 +35,14 @@ class RecipeEvents {
     this.recipes = recipes;
     this.eventType = ERecipeEvents.setCurrentRecipe;
   }
-  RecipeEvents.createRecipe(CreateRecipeDTO createRecipeDTO) {
+  RecipeEvents.createRecipe(
+    CreateRecipeDTO createRecipeDTO,
+    String categoryName,
+    String categoryID,
+  ) {
     this.createRecipeDTO = createRecipeDTO;
+    this.categoryName = categoryName;
+    this.categoryID = categoryID;
     this.eventType = ERecipeEvents.createRecipe;
   }
 

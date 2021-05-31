@@ -45,7 +45,7 @@ class Recipe {
 class RecipeIngredients {
   int? id;
   String type;
-  int amount;
+  String amount;
   Ingredient ingredient;
   bool? isSelected;
 

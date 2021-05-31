@@ -64,8 +64,9 @@ class CompleteProfileCameraWidget extends StatelessWidget {
                               fit: BoxFit.cover,
                             )
                           : Uri.parse(filePath).isAbsolute
-                              ? Image.network(
-                                  filePath,
+                              ? FadeInImage.assetNetwork(
+                                  placeholder: Assets.images.loading.path,
+                                  image: filePath,
                                   width: width,
                                   height: height,
                                   fit: BoxFit.cover,

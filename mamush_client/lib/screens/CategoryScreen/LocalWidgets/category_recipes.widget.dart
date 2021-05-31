@@ -48,8 +48,9 @@ class CategoryRecipesWidget extends StatelessWidget {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(cardBorder),
                                 child: recipe.recipePicture != null
-                                    ? Image.network(
-                                        recipe.recipePicture.filePath,
+                                    ? FadeInImage.assetNetwork(
+                                        placeholder: Assets.images.loading.path,
+                                        image: recipe.recipePicture.filePath,
                                         fit: BoxFit.cover,
                                         width: double.infinity,
                                         height: double.infinity,

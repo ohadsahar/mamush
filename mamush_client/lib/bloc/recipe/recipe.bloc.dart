@@ -51,7 +51,10 @@ class RecipeBloc extends Bloc<RecipeEvents, RecipeState> {
         if (response) {
           final NavigationService navigationService =
               getIt<NavigationService>();
-          navigationService.navigateReplace(Routes.homeScreen, null);
+          navigationService.navigate(Routes.categoryScreen, {
+            'id': event.categoryID,
+            'name': event.categoryName,
+          });
         }
         yield RecipLoadedeCreateState();
         break;

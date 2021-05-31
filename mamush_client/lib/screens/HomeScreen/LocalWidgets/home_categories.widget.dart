@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:momrecipes/generated/assets.gen.dart';
 import 'package:momrecipes/model/category/category.response.dart';
 import 'package:momrecipes/theme/theme.dart';
 import 'package:momrecipes/utils/dimensions.dart';
+import 'package:momrecipes/widgets/loading.widget.dart';
 
 class HomeCategoriesWidget extends StatelessWidget {
   final List<Category> categories;
@@ -41,8 +43,9 @@ class HomeCategoriesWidget extends StatelessWidget {
                           aspectRatio: 4 / 3,
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(cardBorder),
-                            child: Image.network(
-                              category.categoryPicture.filePath,
+                            child: FadeInImage.assetNetwork(
+                              placeholder: Assets.images.loading.path,
+                              image: category.categoryPicture.filePath,
                               fit: BoxFit.cover,
                             ),
                           ),

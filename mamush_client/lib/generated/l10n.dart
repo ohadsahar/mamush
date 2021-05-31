@@ -420,6 +420,16 @@ class S {
     );
   }
 
+  /// `הוראות הכנה מספר: {index}`
+  String createRecipeStepThreeInsturactionCardTitle(Object index) {
+    return Intl.message(
+      'הוראות הכנה מספר: $index',
+      name: 'createRecipeStepThreeInsturactionCardTitle',
+      desc: '',
+      args: [index],
+    );
+  }
+
   /// `צריך כאן טיימר`
   String get createRecipeStepThreeNeedTimer {
     return Intl.message(

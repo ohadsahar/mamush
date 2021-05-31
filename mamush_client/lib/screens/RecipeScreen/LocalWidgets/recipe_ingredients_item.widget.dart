@@ -55,7 +55,7 @@ class _RecipeIngredientsItemWidgetState
             ),
             Text(
               strings.recipeAmount(
-                widget.ingredient.amount.toString(),
+                widget.ingredient.amount,
                 convertToLanguage(
                   widget.ingredient.type,
                 ),

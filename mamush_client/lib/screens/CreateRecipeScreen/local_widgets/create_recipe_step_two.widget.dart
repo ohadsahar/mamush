@@ -69,7 +69,7 @@ class _CreateRecipeStepTWoWidgetState extends State<CreateRecipeStepTWoWidget> {
                     new RecipeIngredients(
                   id: null,
                   type: 'GRAM',
-                  amount: 1,
+                  amount: '1',
                   ingredient: state.createdIngredient,
                 );
                 widget.indgredientsToSave.add(
@@ -256,7 +256,7 @@ class _CreateRecipeStepTWoWidgetState extends State<CreateRecipeStepTWoWidget> {
                                       onChange: (value) => {
                                         setState(() {
                                           widget.indgredientsToSave[index]
-                                              .amount = int.parse(value);
+                                              .amount = value;
                                         })
                                       },
                                       initialValue: widget
@@ -328,7 +328,7 @@ class _CreateRecipeStepTWoWidgetState extends State<CreateRecipeStepTWoWidget> {
     final RecipeIngredients recipeIngredients = new RecipeIngredients(
       id: null,
       type: 'GRAM',
-      amount: 1,
+      amount: '1',
       ingredient: existsIngredient,
     );
     widget.indgredientsToSave.add(recipeIngredients);

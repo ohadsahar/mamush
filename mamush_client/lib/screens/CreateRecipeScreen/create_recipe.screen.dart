@@ -103,45 +103,84 @@ class CreateRecipeScreenState extends State<CreateRecipeScreen> {
                 ),
               ),
             ),
-            floatingActionButton: Container(
-              height: MediaQuery.of(context).size.width * 0.13,
-              width: MediaQuery.of(context).size.width * 0.13,
-              child: FloatingActionButton(
-                // backgroundColor: AppColors.appPrimaryColor,
-                elevation: 5,
-                onPressed: () => {
-                  if (counter == 0)
-                    {_onSubmitFirstStep()}
-                  else if (counter == 1)
-                    {
-                      _onSubmitSecondStep(indgredientsToSave),
-                    }
-                  else if (counter == 2)
-                    {
-                      _onFinishForm(instructionsToSave),
-                    }
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    gradient: new LinearGradient(
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                      colors: [
-                        const Color(0xff00B460),
-                        const Color(0xff00D38C),
-                      ],
-                    ),
+            floatingActionButton: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                counter == 2
+                    ? Container(
+                        height: MediaQuery.of(context).size.width * 0.13,
+                        width: MediaQuery.of(context).size.width * 0.13,
+                        child: FloatingActionButton(
+                          // backgroundColor: AppColors.appPrimaryColor,
+                          elevation: 5,
+                          onPressed: () => {_addNewInsturaction()},
+                          child: Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              gradient: new LinearGradient(
+                                begin: Alignment.centerLeft,
+                                end: Alignment.centerRight,
+                                colors: [
+                                  const Color(0xff00B460),
+                                  const Color(0xff00D38C),
+                                ],
+                              ),
+                            ),
+                            height: MediaQuery.of(context).size.width * 0.13,
+                            width: MediaQuery.of(context).size.width * 0.13,
+                            child: Icon(
+                              Icons.add,
+                              size: Dimensions.sxl * 2,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      )
+                    : SizedBox(),
+                Container(
+                  margin: EdgeInsets.only(
+                    right: Dimensions.sxl,
                   ),
                   height: MediaQuery.of(context).size.width * 0.13,
                   width: MediaQuery.of(context).size.width * 0.13,
-                  child: Icon(
-                    Icons.check,
-                    size: Dimensions.sxl * 2,
-                    color: Colors.white,
+                  child: FloatingActionButton(
+                    // backgroundColor: AppColors.appPrimaryColor,
+                    elevation: 5,
+                    onPressed: () => {
+                      if (counter == 0)
+                        {_onSubmitFirstStep()}
+                      else if (counter == 1)
+                        {
+                          _onSubmitSecondStep(indgredientsToSave),
+                        }
+                      else if (counter == 2)
+                        {
+                          _onFinishForm(instructionsToSave),
+                        }
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        gradient: new LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: [
+                            const Color(0xff00B460),
+                            const Color(0xff00D38C),
+                          ],
+                        ),
+                      ),
+                      height: MediaQuery.of(context).size.width * 0.13,
+                      width: MediaQuery.of(context).size.width * 0.13,
+                      child: Icon(
+                        Icons.check,
+                        size: Dimensions.sxl * 2,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ),
-              ),
+              ],
             ),
           );
         } else {
@@ -172,6 +211,18 @@ class CreateRecipeScreenState extends State<CreateRecipeScreen> {
         counter = 0;
       });
     }
+  }
+
+  _addNewInsturaction() {
+    final Instructions newInsturaction = new Instructions(
+      id: null,
+      instructionsDescription: '',
+      hasTimer: false,
+      timer: 0,
+      timerOn: false,
+    );
+    instructionsToSave.add(newInsturaction);
+    setState(() {});
   }
 
   _onSubmitFirstStep() {

@@ -25,7 +25,6 @@ class _CreateRecipeStepThreeWidgetState
     extends State<CreateRecipeStepThreeWidget> {
   @override
   Widget build(BuildContext context) {
-    ScrollController _scrollController = new ScrollController();
     final S strings = S.of(context);
     return Stack(
       children: [
@@ -52,10 +51,25 @@ class _CreateRecipeStepThreeWidgetState
                         ),
                         child: ExpansionTile(
                           trailing: SizedBox(),
-                          title: Text(
-                            strings.createRecipeStepThreeInsturactionCardTitle(
-                                index + 1),
-                            style: appTheme.textTheme.headline4,
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                strings
+                                    .createRecipeStepThreeInsturactionCardTitle(
+                                        index + 1),
+                                style: appTheme.textTheme.headline4,
+                              ),
+                              IconButton(
+                                icon: Icon(
+                                  Icons.delete,
+                                  size: Dimensions.sxl * 1.25,
+                                ),
+                                onPressed: () => _removeInsturaction(
+                                  index,
+                                ),
+                              )
+                            ],
                           ),
                           children: [
                             Column(
@@ -198,31 +212,31 @@ class _CreateRecipeStepThreeWidgetState
             ),
           ),
         ),
-        Positioned(
-          bottom: 0,
-          left: Dimensions.getScreenFractionWidth(
-            context,
-            0.65,
-          ),
-          child: AppButton(
-            onSubmit: _addNewInsturaction,
-            text: strings.createRecipeStepThree,
-          ),
-        )
+        // Positioned(
+        //   bottom: 0,
+        //   left: Dimensions.getScreenFractionWidth(
+        //     context,
+        //     0.65,
+        //   ),
+        //   child: AppButton(
+        //     onSubmit: _addNewInsturaction,
+        //     text: strings.createRecipeStepThree,
+        //   ),
+        // )
       ],
     );
   }
 
   _addNewInsturaction() {
-    final Instructions newInsturaction = new Instructions(
-      id: null,
-      instructionsDescription: '',
-      hasTimer: false,
-      timer: 0,
-      timerOn: false,
-    );
-    widget.instructionsToSave.add(newInsturaction);
-    setState(() {});
+    // final Instructions newInsturaction = new Instructions(
+    //   id: null,
+    //   instructionsDescription: '',
+    //   hasTimer: false,
+    //   timer: 0,
+    //   timerOn: false,
+    // );
+    // widget.instructionsToSave.add(newInsturaction);
+    // setState(() {});
   }
 
   _removeInsturaction(int index) {

@@ -45,7 +45,9 @@ class _CreateRecipeStepTWoWidgetState extends State<CreateRecipeStepTWoWidget> {
     return Center(
       child: Column(
         children: [
-          CreateRecipeStepTwoHeaderWidget(getChanges: _getChanges),
+          CreateRecipeStepTwoHeaderWidget(
+            getChanges: _getChanges,
+          ),
           BlocBuilder<IngrediantBloc, IngredientsState>(
             builder: (
               BuildContext context,
@@ -210,13 +212,6 @@ class _CreateRecipeStepTWoWidgetState extends State<CreateRecipeStepTWoWidget> {
                                       style: appTheme.textTheme.headline4,
                                       initialValue: convertToLanguage(widget
                                           .indgredientsToSave[index].type),
-                                      // decoration: InputDecoration(
-                                      //   labelText: convertToLanguage(
-                                      //     widget.indgredientsToSave[index].type,
-                                      //   ),
-                                      //   labelStyle:
-                                      //       appTheme.textTheme.headline1,
-                                      // ),
                                       onChanged: (value) => {
                                         setState(
                                           () {
@@ -334,7 +329,6 @@ class _CreateRecipeStepTWoWidgetState extends State<CreateRecipeStepTWoWidget> {
     widget.indgredientsToSave.add(recipeIngredients);
     ingrediantBloc = BlocProvider.of<IngrediantBloc>(context);
     ingrediantBloc.add(IngrediantEvents.resetIngredientsSearch());
-    setState(() {});
   }
 
   convertToLanguage(String type) {

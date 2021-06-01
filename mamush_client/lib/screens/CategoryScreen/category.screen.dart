@@ -38,6 +38,8 @@ class CategoryScreenState extends State<CategoryScreen> {
     final S strings = S.of(context);
     return BlocBuilder<RecipeBloc, RecipeState>(
       builder: (BuildContext context, RecipeState state) {
+        print(state);
+
         final name = (ModalRoute.of(context)!.settings.arguments as Map)["name"]
             .toString();
         return SafeArea(
@@ -80,7 +82,6 @@ class CategoryScreenState extends State<CategoryScreen> {
                               centerTitle: false,
                               background: Container(
                                 decoration: BoxDecoration(
-                                  //color: Colors.grey,
                                   image: DecorationImage(
                                     image: AssetImage(
                                       Assets.images.categoryBackground.path,
@@ -95,7 +96,6 @@ class CategoryScreenState extends State<CategoryScreen> {
                                     ),
                                     Text(
                                       name,
-                                      // style: appTheme.textTheme.headline3,
                                       style: TextStyle(
                                         color: Color(0xff000924),
                                         fontSize:
@@ -190,7 +190,6 @@ class CategoryScreenState extends State<CategoryScreen> {
               height: MediaQuery.of(context).size.width * 0.13,
               width: MediaQuery.of(context).size.width * 0.13,
               child: FloatingActionButton(
-                // backgroundColor: AppColors.appPrimaryColor,
                 elevation: 5,
                 onPressed: _navigateToCreateRecipe,
                 child: Container(
@@ -228,7 +227,6 @@ class CategoryScreenState extends State<CategoryScreen> {
       final id =
           (ModalRoute.of(context)!.settings.arguments as Map)["id"].toString();
       _getRecipes(id);
-      _getTags(id);
     });
   }
 
@@ -260,13 +258,19 @@ class CategoryScreenState extends State<CategoryScreen> {
         (ModalRoute.of(context)!.settings.arguments as Map)["id"].toString());
     if (isValid) {
       _recipeBloc = BlocProvider.of<RecipeBloc>(context);
-      final RecipeFilterDTO recipeFilterDTO = new RecipeFilterDTO(
-        name: name,
-        categoryID: id,
-      );
-      _recipeBloc.add(
-        RecipeEvents.filterRecipes(recipeFilterDTO),
-      );
+      if (name == '') {
+        _recipeBloc.add(
+          RecipeEvents.getRecipes(id.toString()),
+        );
+      } else {
+        final RecipeFilterDTO recipeFilterDTO = new RecipeFilterDTO(
+          name: name,
+          categoryID: id,
+        );
+        _recipeBloc.add(
+          RecipeEvents.filterRecipes(recipeFilterDTO),
+        );
+      }
     }
   }
 
@@ -304,8 +308,8 @@ class CategoryScreenState extends State<CategoryScreen> {
         (ModalRoute.of(context)!.settings.arguments as Map)["id"].toString();
     _recipeBloc = BlocProvider.of<RecipeBloc>(context);
     _recipeBloc.add(
-      RecipeEvents.setCurrentRecipe(
-        recipe,
+      RecipeEvents.getCurrentRecipe(
+        recipe.id.toString(),
         _recipeBloc.state.recipes,
       ),
     );

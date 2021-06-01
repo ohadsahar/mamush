@@ -159,7 +159,7 @@ class _RecipeScreenState extends State<RecipeScreen> {
             ),
           );
         } else {
-          return LoadingWidget();
+          return SizedBox();
         }
       },
     );
@@ -197,8 +197,8 @@ class _RecipeScreenState extends State<RecipeScreen> {
   }
 
   _onSubmit(Recipe recipe) {
-    for (var i = 0; i < recipe.recipeIngredients.length; i++) {
-      recipe.recipeIngredients[i].onSelected(false);
+    for (var i = 0; i < recipe.recipeIngredients!.length; i++) {
+      recipe.recipeIngredients![i].onSelected(false);
     }
     setState(() {});
     _goBack();

@@ -79,7 +79,6 @@ class CreateRecipeScreenState extends State<CreateRecipeScreen> {
                     ),
                     counter == 0
                         ? CreateRecipeStepOneWidget(
-                            // onSubmit: _onSubmitFirstStep,
                             formKey: _formKey,
                             imageSelected: _imageSelected,
                             recipeName:
@@ -111,7 +110,6 @@ class CreateRecipeScreenState extends State<CreateRecipeScreen> {
                         height: MediaQuery.of(context).size.width * 0.13,
                         width: MediaQuery.of(context).size.width * 0.13,
                         child: FloatingActionButton(
-                          // backgroundColor: AppColors.appPrimaryColor,
                           elevation: 5,
                           onPressed: () => {_addNewInsturaction()},
                           child: Container(
@@ -144,7 +142,6 @@ class CreateRecipeScreenState extends State<CreateRecipeScreen> {
                   height: MediaQuery.of(context).size.width * 0.13,
                   width: MediaQuery.of(context).size.width * 0.13,
                   child: FloatingActionButton(
-                    // backgroundColor: AppColors.appPrimaryColor,
                     elevation: 5,
                     onPressed: () => {
                       if (counter == 0)
@@ -220,6 +217,7 @@ class CreateRecipeScreenState extends State<CreateRecipeScreen> {
       hasTimer: false,
       timer: 0,
       timerOn: false,
+      expended: true,
     );
     instructionsToSave.add(newInsturaction);
     setState(() {});

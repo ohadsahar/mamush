@@ -50,6 +50,11 @@ class _CreateRecipeStepThreeWidgetState
                           Dimensions.sxl,
                         ),
                         child: ExpansionTile(
+                          initiallyExpanded:
+                              widget.instructionsToSave[index].expended != null
+                                  ? widget.instructionsToSave[index].expended
+                                      as bool
+                                  : false,
                           trailing: SizedBox(),
                           title: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -212,31 +217,8 @@ class _CreateRecipeStepThreeWidgetState
             ),
           ),
         ),
-        // Positioned(
-        //   bottom: 0,
-        //   left: Dimensions.getScreenFractionWidth(
-        //     context,
-        //     0.65,
-        //   ),
-        //   child: AppButton(
-        //     onSubmit: _addNewInsturaction,
-        //     text: strings.createRecipeStepThree,
-        //   ),
-        // )
       ],
     );
-  }
-
-  _addNewInsturaction() {
-    // final Instructions newInsturaction = new Instructions(
-    //   id: null,
-    //   instructionsDescription: '',
-    //   hasTimer: false,
-    //   timer: 0,
-    //   timerOn: false,
-    // );
-    // widget.instructionsToSave.add(newInsturaction);
-    // setState(() {});
   }
 
   _removeInsturaction(int index) {

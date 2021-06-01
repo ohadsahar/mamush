@@ -28,8 +28,6 @@ class CustomInputWidget extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    //final ValueChanged _onChanged = (val) => print(val);
-
     return FormBuilderTextField(
       initialValue: initialValue,
       validator: validators,

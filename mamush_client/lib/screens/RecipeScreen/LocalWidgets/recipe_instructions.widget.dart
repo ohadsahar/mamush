@@ -22,9 +22,6 @@ class _RecipeInstructionsWidgetState extends State<RecipeInstructionsWidget> {
   final double elevation = 10;
   @override
   Widget build(BuildContext context) {
-    // widget.recipe.instructions = new List.from(
-    //   widget.recipe.instructions.reversed,
-    // );
     final S strings = S.of(context);
 
     return Center(
@@ -58,7 +55,7 @@ class _RecipeInstructionsWidgetState extends State<RecipeInstructionsWidget> {
                   style: appTheme.textTheme.headline3,
                 ),
                 for (int index = 0;
-                    index < widget.recipe.instructions.length;
+                    index < widget.recipe.instructions!.length;
                     index++)
                   Container(
                     padding: EdgeInsets.all(
@@ -67,9 +64,10 @@ class _RecipeInstructionsWidgetState extends State<RecipeInstructionsWidget> {
                     child: RecipeInstructionsItemWidget(
                       index: index,
                       instructionsDescription: widget
-                          .recipe.instructions[index].instructionsDescription,
-                      hasTimer: widget.recipe.instructions[index].hasTimer,
-                      timer: widget.recipe.instructions[index].timer.toString(),
+                          .recipe.instructions![index].instructionsDescription,
+                      hasTimer: widget.recipe.instructions![index].hasTimer,
+                      timer:
+                          widget.recipe.instructions![index].timer.toString(),
                     ),
                   ),
               ],

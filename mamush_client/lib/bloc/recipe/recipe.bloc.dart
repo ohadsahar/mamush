@@ -27,7 +27,10 @@ class RecipeBloc extends Bloc<RecipeEvents, RecipeState> {
           );
           break;
         } catch (e) {
-          throw new Error();
+          yield RecipeLoadedState(
+            recipes: [],
+          );
+          return;
         }
       case ERecipeEvents.filterRecipe:
         yield RecipeLoadingState();
@@ -41,6 +44,14 @@ class RecipeBloc extends Bloc<RecipeEvents, RecipeState> {
         yield RecipeLoadingState();
         yield RecipeCurrentLoadedState(
           recipe: event.recipe,
+          recipes: event.recipes,
+        );
+        break;
+      case ERecipeEvents.getCurrentRecipe:
+        yield RecipeLoadingState();
+        final recipe = await recipeController.getCurrentRecipe(event.id);
+        yield RecipeCurrentLoadedState(
+          recipe: recipe,
           recipes: event.recipes,
         );
         break;

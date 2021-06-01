@@ -76,7 +76,6 @@ class _RecipeIngredientsItemWidgetState
         bigger = true;
       }
     }
-    print(bigger);
     switch (type) {
       case Enums.unit:
         return bigger ? strings.units : strings.unit;

@@ -16,33 +16,7 @@ class AppButton extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    return
-        //Container(
-        // decoration: BoxDecoration(
-        //   gradient: new LinearGradient(
-        //     begin: Alignment.centerLeft,
-        //     end: Alignment.centerRight,
-        //     colors: [
-        //       const Color(0xff00B460),
-        //       const Color(0xff00D38C),
-        //     ],
-        //   ),
-        // ),
-        // child:
-        //   ElevatedButton(
-        // style: ButtonStyle(
-        //   minimumSize: MaterialStateProperty.all<Size>(
-        //     Size(
-        //       width,
-        //       height,
-        //     ),
-        //   ),
-        // backgroundColor: MaterialStateProperty.all<Color>(
-        //   color,
-        // ),
-        //  ),
-        // onPressed: onSubmit,
-        InkWell(
+    return InkWell(
       onTap: onSubmit,
       child: Container(
         alignment: Alignment.center,
@@ -54,7 +28,6 @@ class AppButton extends StatelessWidget {
           context,
           0.06,
         ),
-        // width: double.infinity,
         decoration: BoxDecoration(
           gradient: new LinearGradient(
             begin: Alignment.centerLeft,

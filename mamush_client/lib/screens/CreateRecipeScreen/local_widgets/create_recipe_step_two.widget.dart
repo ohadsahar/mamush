@@ -84,7 +84,6 @@ class _CreateRecipeStepTWoWidgetState extends State<CreateRecipeStepTWoWidget> {
               return SizedBox();
             },
           ),
-          // for (var ingredient in indgredientsToSave)
           const SizedBox(
             height: Dimensions.sxl,
           ),
@@ -111,7 +110,6 @@ class _CreateRecipeStepTWoWidgetState extends State<CreateRecipeStepTWoWidget> {
                     Dimensions.sm,
                   ),
                   child: Row(
-                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(

@@ -67,8 +67,6 @@ class _CreateRecipeStepOneWidgetState extends State<CreateRecipeStepOneWidget> {
                 hint: strings.createRecipeAddRecipeName,
                 attribute: 'recipeName',
                 type: TextInputType.text,
-                // change: false,
-                // onChange: _onChanged,
               ),
             ),
             SizedBox(

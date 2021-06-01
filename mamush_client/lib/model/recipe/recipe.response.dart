@@ -23,17 +23,17 @@ class RecipeResponse {
 class Recipe {
   int id;
   String recipeName;
-  List<RecipeIngredients> recipeIngredients;
+  List<RecipeIngredients>? recipeIngredients;
   List<Tags>? tags;
-  List<Instructions> instructions;
+  List<Instructions>? instructions;
   AppFile? recipePicture;
 
   Recipe({
     required this.id,
     required this.recipeName,
-    required this.recipeIngredients,
+    this.recipeIngredients,
     this.tags,
-    required this.instructions,
+    this.instructions,
     this.recipePicture,
   });
   factory Recipe.fromJson(Map<String, dynamic> json) => _$RecipeFromJson(json);
@@ -111,6 +111,7 @@ class Instructions {
   bool hasTimer;
   int? timer;
   bool? timerOn;
+  bool? expended;
 
   Instructions({
     this.id,
@@ -118,6 +119,7 @@ class Instructions {
     required this.hasTimer,
     this.timer,
     this.timerOn = false,
+    this.expended = false,
   });
 
   timerTurn(bool value) {

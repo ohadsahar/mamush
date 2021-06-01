@@ -25,7 +25,6 @@ class CreateRecipeStepTwoHeaderWidget extends StatelessWidget {
           child: CustomInputWidget(
             onChange: (value) => {getChanges(value)},
             change: true,
-            // onChange: _onChanged,
             initialValue: '',
             validators: FormBuilderValidators.compose(
               [

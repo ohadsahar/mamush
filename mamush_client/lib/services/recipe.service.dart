@@ -23,6 +23,15 @@ class RecipeService {
     return recipesResponse.data;
   }
 
+  Future<Recipe> getCurrentRecipe(String id) async {
+    final uri = '/recipe/$id';
+    final response = await dio.get(uri);
+    final recipesResponse = Recipe.fromJson(
+      response.data['data'] as Map<String, dynamic>,
+    );
+    return recipesResponse;
+  }
+
   Future<List<Recipe>> getRecipeByFilter(
       RecipeFilterDTO recipeFilterDTO) async {
     final uri = '/recipe/search';

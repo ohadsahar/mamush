@@ -13,9 +13,6 @@ class RecipeIngredientsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // recipe.recipeIngredients = new List.from(
-    //   recipe.recipeIngredients.reversed,
-    // );
     final S strings = S.of(context);
     return Card(
       shape: RoundedRectangleBorder(
@@ -36,14 +33,14 @@ class RecipeIngredientsWidget extends StatelessWidget {
           children: [
             Text(
               strings.recipeScreen(
-                recipe.recipeIngredients.length,
+                recipe.recipeIngredients!.length,
               ),
               style: appTheme.textTheme.headline3,
             ),
             const SizedBox(
               height: Dimensions.xxl,
             ),
-            for (var ingredient in recipe.recipeIngredients)
+            for (var ingredient in recipe.recipeIngredients!)
               RecipeIngredientsItemWidget(
                 ingredient: ingredient,
               ),

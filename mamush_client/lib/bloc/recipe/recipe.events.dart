@@ -7,7 +7,8 @@ enum ERecipeEvents {
   filterRecipe,
   setCurrentRecipe,
   createRecipe,
-  deleteRecipe
+  deleteRecipe,
+  getCurrentRecipe
 }
 
 class RecipeEvents {
@@ -34,6 +35,12 @@ class RecipeEvents {
     this.recipe = recipe;
     this.recipes = recipes;
     this.eventType = ERecipeEvents.setCurrentRecipe;
+  }
+
+  RecipeEvents.getCurrentRecipe(String id, List<Recipe> recipes) {
+    this.id = id;
+    this.eventType = ERecipeEvents.getCurrentRecipe;
+    this.recipes = recipes;
   }
   RecipeEvents.createRecipe(
     CreateRecipeDTO createRecipeDTO,

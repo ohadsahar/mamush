@@ -115,9 +115,6 @@ class CompleteProfileCameraWidget extends StatelessWidget {
                 padding: EdgeInsets.all(
                   Dimensions.sm,
                 ),
-
-                //  color: AppColors.appPrimaryColor,
-                // textColor: Colors.white,
                 child: Container(
                   child: Icon(
                     Icons.camera_alt,

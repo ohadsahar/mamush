@@ -75,7 +75,6 @@ class RecipeInstructionsItemWidget extends StatelessWidget {
                                 style: appTheme.textTheme.headline3,
                               ),
                             )
-                            // : SizedBox()
                           ],
                         )
                       : SizedBox(),

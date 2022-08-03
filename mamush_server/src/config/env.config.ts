@@ -7,13 +7,13 @@ const constants = {
 	jwt: {
 		forgot_password_token_expires: '1h',
 		token_expires: '365 days',
-		key: 'l23@#shfa1340**@dfg009Alk3#Vk_anlj',
+		key: 'secret-key',
 		ignoreExpiration: false
 	},
 	aws: {
 		aws_s3_bucket: 'uchakra-prod',
 		aws_s3_key_id: 'AKIASE2GFSL5SCT7XFXC',
-		aws_s3_access_key: 'pf1wHhq3E9JGQadhMNKCUK5+LcyH+0TdesQTjkPC',
+		aws_s3_access_key: 'secret-key',
 		upload_dir: 'uploads/'
 	},
 	uploadDir: path.join(__dirname, '../')
